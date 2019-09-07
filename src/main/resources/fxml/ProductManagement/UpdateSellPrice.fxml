@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1350.0" styleClass="parent" stylesheets="@../../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.system.controllers.ProductManagement.UpdateSellPriceController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1350.0" styleClass="parent" stylesheets="@../../css/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.system.controllers.ProductManagement.UpdateSellPriceController">
     <children>
         <AnchorPane layoutY="-14.0" prefHeight="694.0" prefWidth="249.0" style="-fx-background-color: #2A2E37;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -166,14 +166,14 @@
                         <Font size="17.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="productNameBox" layoutX="227.0" layoutY="56.0"  prefHeight="25.0" prefWidth="249.0" promptText="Drop Down to see Products Names" />
+                <ComboBox fx:id="productNameBox" layoutX="227.0" layoutY="56.0" onAction="#getPreviousSellPrice" prefHeight="25.0" prefWidth="249.0" promptText="Drop Down to see Products Names" />
                 <Label layoutX="93.0" layoutY="104.0" prefHeight="25.0" prefWidth="127.0" text="Current Price">
                     <font>
                         <Font size="17.0" />
                     </font>
                 </Label>
                 <TextField fx:id="currentPriceField" editable="false" layoutX="228.0" layoutY="105.0" prefHeight="25.0" prefWidth="81.0" />
-                <JFXButton id="hboxbtn" layoutX="225.0" layoutY="193.0"  prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Update">
+                <JFXButton id="hboxbtn" layoutX="225.0" layoutY="193.0" onAction="#updateButtonEvent" prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Update">
                     <padding>
                         <Insets left="-2.0" />
                     </padding>

@@ -176,10 +176,10 @@
                                                 <Font size="17.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="catName1" prefHeight="25.0" prefWidth="226.0" />
+                                        <TextField fx:id="recpCat" prefHeight="25.0" prefWidth="226.0" />
                                     </children>
                                 </HBox>
-                                <JFXButton id="hboxbtn" layoutX="352.0" layoutY="134.0" prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add">
+                                <JFXButton id="hboxbtn" layoutX="352.0" layoutY="134.0" onAction="#addNewRecipieCategory" prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add">
                                     <padding>
                                         <Insets left="-2.0" />
                                     </padding>
@@ -199,7 +199,7 @@
                                                 <Font size="17.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="catName11" prefHeight="25.0" prefWidth="226.0" />
+                                        <TextField fx:id="newRecipeName" prefHeight="25.0" prefWidth="226.0" />
                                     </children>
                                 </HBox>
                                 <HBox layoutX="225.0" layoutY="257.0" prefHeight="26.0" prefWidth="383.0" spacing="26.0">
@@ -209,10 +209,10 @@
                                                 <Font size="17.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="catName111" prefHeight="25.0" prefWidth="267.0" />
+                                        <TextField fx:id="sellPriceRecipie" prefHeight="25.0" prefWidth="267.0" />
                                     </children>
                                 </HBox>
-                                <JFXButton id="hboxbtn" layoutX="352.0" layoutY="312.0"  prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add">
+                                <JFXButton id="hboxbtn" layoutX="352.0" layoutY="312.0" prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add">
                                     <padding>
                                         <Insets left="-2.0" />
                                     </padding>
@@ -237,7 +237,7 @@
                                             </font>
                                         </Label>
                                         <TextField fx:id="catName" layoutX="212.0" layoutY="32.0" prefHeight="25.0" prefWidth="216.0" />
-                                        <JFXButton id="hboxbtn" layoutX="171.0" layoutY="87.0"  prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add">
+                                        <JFXButton id="hboxbtn" layoutX="171.0" layoutY="87.0" onAction="#categoryButtonEvent" prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add">
                                             <padding>
                                                 <Insets left="-2.0" />
                                             </padding>
@@ -263,8 +263,8 @@
                                                 <Font size="17.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="addField" layoutX="157.0" layoutY="138.0" prefHeight="25.0" prefWidth="489.0" promptText="Address should be Unique" />
-                                        <JFXButton id="hboxbtn" layoutX="157.0" layoutY="237.0"  prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add">
+                                        <TextField fx:id="addField" layoutX="157.0" layoutY="138.0" prefHeight="25.0" prefWidth="489.0" />
+                                        <JFXButton id="hboxbtn" layoutX="157.0" layoutY="237.0" onAction="#suppliearButtonEvent" prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add">
                                             <padding>
                                                 <Insets left="-2.0" />
                                             </padding>
@@ -283,7 +283,7 @@
                                                 <Font size="17.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="phField" layoutX="157.0" layoutY="88.0" prefHeight="25.0" prefWidth="160.0" />
+                                        <TextField fx:id="phField" layoutX="157.0" layoutY="88.0" prefHeight="25.0" prefWidth="201.0" promptText="Ph no should be Unique" />
                                         <Label layoutX="24.0" layoutY="181.0" prefHeight="26.0" prefWidth="133.0" text="Email Address">
                                             <font>
                                                 <Font size="17.0" />
@@ -305,7 +305,7 @@
                                         <Font size="17.0" />
                                     </font>
                                 </Label>
-                                <ComboBox fx:id="spNameBox" layoutX="238.0" layoutY="56.0"  prefHeight="25.0" prefWidth="249.0" />
+                                <ComboBox fx:id="spNameBox" layoutX="238.0" layoutY="56.0" onAction="#getSuppliearDataInList" prefHeight="25.0" prefWidth="249.0" promptText="drop down to see supplier Names" />
                                 <ListView fx:id="spList" layoutX="87.0" layoutY="108.0" prefHeight="335.0" prefWidth="672.0" />
                             </children>
                         </AnchorPane>

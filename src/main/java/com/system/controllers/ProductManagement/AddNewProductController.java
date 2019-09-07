@@ -1,14 +1,25 @@
 package com.system.controllers.ProductManagement;
 
 import animatefx.animation.SlideInDown;
+import com.system.Message.Messages;
 import com.system.config.Config;
+import com.system.dao.ProductManagementDao;
+import com.system.models.Products;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,12 +27,29 @@ import java.util.ResourceBundle;
 
 public class AddNewProductController implements Initializable {
 
+    @FXML
+    private TextField productName;
+    @FXML
+    private ComboBox<String> categoryBox;
+    @FXML
+    private ComboBox<String> suppliearBox;
+    @FXML
+    private TextField sellPrice;
+
+    ProductManagementDao productManagementDao = new ProductManagementDao();
+
+
+    ObservableList<String> getCategoryList = FXCollections.observableList(productManagementDao.getAllCategoryNames());
+    ObservableList<String> getSupplierList = FXCollections.observableList(productManagementDao.getSuppliearNames());
+    ObservableList<String> productNamesList = FXCollections.observableArrayList(productManagementDao.getAllProductsNames());
+
     //button event for the home button use to change the scene and come to dashBoard
     public void homeButtonEvent(ActionEvent event)throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashBoard.fxml"));
         Stage scene2 =(Stage)((Node)event.getSource()).getScene().getWindow();
         scene2.setScene(new Scene(root, Config.width,Config.height));
         scene2.show();
+
     }
 
     //button event for the invoice button use to change the scene and goes to invoice scene
@@ -110,8 +138,50 @@ public class AddNewProductController implements Initializable {
         scene2.setScene(new Scene(root,Config.width,Config.height));
         scene2.show();
     }
+    public void getClearData(){
+        productName.clear();
+        categoryBox.getSelectionModel().clearSelection();
+        suppliearBox.getSelectionModel().clearSelection();
+        sellPrice.clear();
+    }
+    //add button action
+    public void addNewProduct(){
+        ObservableList<String> productNamesList = FXCollections.observableArrayList(productManagementDao.getAllProductsNames());
+        Products product = new Products();
+
+        if(productName.getText().trim().isEmpty() || categoryBox.getSelectionModel().isEmpty() || suppliearBox.getSelectionModel().isEmpty()
+                || sellPrice.getText().trim().isEmpty()){
+            Messages.getWarning("you have to fill all fields");
+        }else{
+            if(productNamesList.contains(productName.getText())){
+
+                Messages.getWarning("there is already an product with same name Enter different name");
+
+            }else {
+
+                product.setProductName(productName.getText());
+                product.setSellPrice(Float.parseFloat(sellPrice.getText()));
+                productManagementDao.addNewProduct(product,categoryBox.getSelectionModel().getSelectedItem(),suppliearBox.getSelectionModel().getSelectedItem());
+                productManagementDao.addSellPrice(product,java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
+                getClearData();
+
+            }
+        }
+    }
+
+    ChangeListener<String> forceNumberListener = (observable, oldValue, newValue) -> {
+        if (!newValue.matches(Config.regix))
+            ((StringProperty) observable).set(oldValue);
+    };
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        categoryBox.setItems(getCategoryList);
+        suppliearBox.setItems(getSupplierList);
+        TextFields.bindAutoCompletion(productName,productNamesList);
+        productName.setPromptText("Product name should not be in auto completeion");
+        sellPrice.textProperty().addListener(forceNumberListener);
     }
 }

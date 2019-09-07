@@ -1,13 +1,23 @@
 package com.system.controllers.ProductManagement;
 
 import animatefx.animation.SlideInDown;
+import com.system.Message.Messages;
 import com.system.config.Config;
+import com.system.dao.ProductManagementDao;
+import com.system.models.Products;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,6 +25,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class UpdateSellPriceController implements Initializable {
+
+    @FXML
+    private ComboBox<String> productNameBox;
+    @FXML
+    private TextField currentPriceField;
+    @FXML
+    private TextField newPriceField;
+
+    ProductManagementDao productManagementDao = new ProductManagementDao();
+
+    ObservableList<String> productNamesList = FXCollections.observableArrayList(productManagementDao.getAllProductsNames());
 
     //button event for the home button use to change the scene and come to dashBoard
     public void homeButtonEvent(ActionEvent event)throws IOException {
@@ -111,9 +132,46 @@ public class UpdateSellPriceController implements Initializable {
         scene2.show();
     }
 
+    public void getClear(){
+        productNameBox.getSelectionModel().clearSelection();
+        newPriceField.clear();
+        currentPriceField.clear();
+    }
 
+    public void getPreviousSellPrice(){
+        if(productNameBox.getSelectionModel().getSelectedItem() == null){
+            System.out.println("Eror Handle");
+        }else {
+            currentPriceField.setText(Float.toString(productManagementDao.getCurrentPrice(productNameBox.getSelectionModel().getSelectedItem())));
+        }
+    }
+
+    public void updateButtonEvent(){
+
+        Products product = new Products();
+
+        if(productNameBox.getSelectionModel().isEmpty() ||
+                newPriceField.getText().trim().isEmpty()){
+            Messages.getAlert("you Have to Fill All the Fields");
+        }else{
+
+            product.setProductName(productNameBox.getSelectionModel().getSelectedItem());
+            product.setSellPrice(Float.parseFloat(newPriceField.getText()));
+            product.setDate(java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
+
+            productManagementDao.setNewSellPrice(product);
+            getClear();
+
+        }
+    }
+
+    ChangeListener<String> forceNumberListener = (observable, oldValue, newValue) -> {
+        if (!newValue.matches(Config.regix))
+            ((StringProperty) observable).set(oldValue);
+    };
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        productNameBox.setItems(productNamesList);
+        newPriceField.textProperty().addListener(forceNumberListener);
     }
 }
