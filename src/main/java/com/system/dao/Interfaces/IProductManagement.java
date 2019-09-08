@@ -1,6 +1,7 @@
 package com.system.dao.Interfaces;
 
 import com.system.models.Products;
+import com.system.models.Recipie;
 import com.system.models.Supplier;
 import javafx.collections.ObservableList;
 
@@ -21,4 +22,13 @@ public interface IProductManagement  {
     public ObservableList<String> getSuppliearInfo(Supplier supplier);
     public ObservableList<String> getRecipieCategorys();
     public void addNewRecipieCategory(String name);
+    public ObservableList<String> getRecipieNames();
+    public int getRecipieCatId(String catName);
+    public void addNewRecipieName(String name,String recipieName);
+    public int getRecipieId(String name);
+    public void addRecipieSellPrice(float sellPrice , String date,String recipieName);
+    public void addRecipeIngredents(Recipie recipie);
+    public ObservableList<Integer> getRecipieId();
+    public float getRecipeCurrentPrice(Recipie recipie);
+    public void setNewRecipieSellPrice(Recipie recipie);
 }

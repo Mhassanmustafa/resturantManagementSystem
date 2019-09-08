@@ -5,6 +5,7 @@ import com.system.Message.Messages;
 import com.system.Queries.Query;
 import com.system.dao.Interfaces.IProductManagement;
 import com.system.models.Products;
+import com.system.models.Recipie;
 import com.system.models.Supplier;
 import com.system.services.SqlConnectionServices;
 import javafx.collections.FXCollections;
@@ -464,6 +465,261 @@ public class ProductManagementDao implements IProductManagement  {
                 Messages.getWarning("Category is not added in sucessfully");
             }else{
                 Messages.getAlert("Category is Successfully Added");
+            }
+
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+    }
+
+    @Override
+    public ObservableList<String> getRecipieNames() {
+
+        ObservableList<String> list = FXCollections.observableArrayList();
+        Connection connection = SqlConnectionServices.getConnection();
+
+        try{
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.recipieNames,null);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                while (resultSet.next()){
+                    list.add(resultSet.getString(1));
+                }
+            }
+
+        }catch (SQLException exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+        return list;
+    }
+
+    @Override
+    public int getRecipieCatId(String catName) {
+        int id = 0;
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+        params.put(1,catName);
+
+        try {
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection,Query.recipieCatId,params);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                while (resultSet.next()){
+                    id = resultSet.getInt(1);
+                }
+            }
+        }catch (SQLException exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+        return id;
+    }
+
+    @Override
+    public void addNewRecipieName(String name,String recipieName) {
+
+        int catId = getRecipieCatId(name);
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+        params.put(1 , catId);
+        params.put(2 , recipieName);
+
+        try{
+
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.addRecipeName,params).executeUpdate();
+
+            if(affectedRows == 0){
+                System.out.println("new name is not Updated try again");
+            }else {
+                System.out.println("new name is successfully updated");
+            }
+
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+    }
+
+    @Override
+    public int getRecipieId(String name) {
+        int id = 0;
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+        params.put(1,name);
+
+        try {
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection,Query.recipieProductId,params);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                while (resultSet.next()){
+                    id = resultSet.getInt(1);
+                }
+            }
+        }catch (SQLException exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+        return id;
+    }
+
+    @Override
+    public void addRecipieSellPrice(float sellPrice, String date,String recipieName) {
+
+        int recipieId = getRecipieId(recipieName);
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+        params.put(1 , recipieId);
+        params.put(2 , sellPrice);
+        params.put(3 , date);
+
+        try{
+
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.recipeSellPrice,params).executeUpdate();
+
+            if(affectedRows == 0){
+                Messages.getWarning("new sellPrice is not Updated try again");
+            }else {
+                Messages.getAlert("new sellPrice is successfully updated");
+            }
+
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+    }
+
+    @Override
+    public void addRecipeIngredents(Recipie recipie) {
+
+        int recipieId = getRecipieId(recipie.getRecipieName());
+        int productId = getProductId(recipie.getProductName());
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+        params.put(1 , recipieId);
+        params.put(2 , productId);
+        params.put(3 , recipie.getQuantity());
+        params.put(4 , recipie.getDate());
+
+        try{
+
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.addRecipieIngredents,params).executeUpdate();
+
+            if(affectedRows == 0){
+                Messages.getWarning("new Ingredents not Added try again");
+            }else {
+                Messages.getAlert("new Ingredents Added");
+            }
+
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+    }
+
+    @Override
+    public ObservableList<Integer> getRecipieId() {
+        ObservableList<Integer> list = FXCollections.observableArrayList();
+        Connection connection = SqlConnectionServices.getConnection();
+
+        try{
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.recipeNameId,null);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                while (resultSet.next()){
+                    list.add(resultSet.getInt(1));
+                }
+            }
+
+        }catch (SQLException exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+        return list;
+    }
+
+    @Override
+    public float getRecipeCurrentPrice(Recipie recipie) {
+
+        float currentPrice = 0;
+        int recipieId = getRecipieId(recipie.getRecipieName());
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+        params.put(1 , recipieId);
+
+        try {
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection,Query.recipieCurrentPrice,params);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                while (resultSet.next()){
+                    currentPrice = resultSet.getInt(1);
+                }
+            }
+        }catch (SQLException exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+        return currentPrice;
+    }
+
+    @Override
+    public void setNewRecipieSellPrice(Recipie recipie) {
+
+        int productId = getRecipieId(recipie.getRecipieName());
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+        params.put(1 , productId);
+        params.put(2 , recipie.getPrice());
+        params.put(3 , recipie.getDate());
+
+        try{
+
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.newRecipieSellPrice,params).executeUpdate();
+
+            if(affectedRows == 0){
+                Messages.getWarning("new Price is not Updated try again");
+            }else {
+                Messages.getAlert("new Price is successfully updated");
             }
 
         }catch (Exception exp){

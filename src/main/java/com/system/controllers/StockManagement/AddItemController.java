@@ -1,13 +1,25 @@
 package com.system.controllers.StockManagement;
 
 import animatefx.animation.SlideInDown;
+import com.jfoenix.controls.JFXDatePicker;
+import com.system.Message.Messages;
 import com.system.config.Config;
+import com.system.dao.ProductManagementDao;
+import com.system.dao.StockManagementDao;
+import com.system.models.Products;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,6 +27,23 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddItemController implements Initializable {
+
+    @FXML
+    private ComboBox<String> productComboBox;
+    @FXML
+    private ComboBox<String> suppliearComboBox;
+    @FXML
+    private TextField quantityField;
+    @FXML
+    private TextField priceField;
+    @FXML
+    private JFXDatePicker datePicker;
+
+    ProductManagementDao productManagementDao = new ProductManagementDao();
+    StockManagementDao stockManagementDao = new StockManagementDao();
+
+    ObservableList<String> productNameList = FXCollections.observableArrayList(productManagementDao.getAllProductsNames());
+    ObservableList<String> suppliearNameList = FXCollections.observableArrayList(productManagementDao.getSuppliearNames());
 
     //button event for the home button use to change the scene and come to dashBoard
     public void homeButtonEvent(ActionEvent event)throws IOException {
@@ -105,9 +134,46 @@ public class AddItemController implements Initializable {
         scene2.show();
     }
 
+    public void clearData(){
+        productComboBox.getSelectionModel().clearSelection();
+        suppliearComboBox.getSelectionModel().clearSelection();
+        quantityField.clear();
+        priceField.clear();
+        datePicker.getEditor().clear();
+    }
+
+
+    public void updateButtonEvent(){
+        Products product = new Products();
+        if(suppliearComboBox.getSelectionModel().isEmpty() || productComboBox.getSelectionModel().isEmpty()
+                || quantityField.getText().trim().isEmpty() || priceField.getText().trim().isEmpty() ||
+                datePicker.getEditor().getText().isEmpty()){
+
+            Messages.getWarning("you should enter values in all fields");
+
+        }else{
+
+            product.setQuantity(Float.parseFloat(quantityField.getText()));
+            product.setBoughtPrice(Float.parseFloat(priceField.getText()));
+            product.setDate(datePicker.getValue().toString() +" "+ java.time.LocalTime.now());
+            product.setProductName(productComboBox.getSelectionModel().getSelectedItem());
+            product.setSuppliearName(suppliearComboBox.getSelectionModel().getSelectedItem());
+            stockManagementDao.addnewStock(product);
+            clearData();
+        }
+    }
+
+    ChangeListener<String> forceNumberListener = (observable, oldValue, newValue) -> {
+        if (!newValue.matches(Config.regix))
+            ((StringProperty) observable).set(oldValue);
+    };
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        productComboBox.setItems(productNameList);
+        suppliearComboBox.setItems(suppliearNameList);
+        quantityField.textProperty().addListener(forceNumberListener);
+        priceField.textProperty().addListener(forceNumberListener);
 
     }
 }

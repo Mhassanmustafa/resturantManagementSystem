@@ -203,7 +203,7 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="37.0" prefWidth="399.0" spacing="1.0">
                     <children>
-                        <JFXButton id="hboxbtn" fx:id="updateButton"  prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Update">
+                        <JFXButton id="hboxbtn" fx:id="updateButton" onAction="#updateButtonEvent" prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Update">
                             <padding>
                                 <Insets left="-2.0" />
                             </padding>

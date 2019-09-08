@@ -1,13 +1,24 @@
 package com.system.controllers.StockManagement;
 
 import animatefx.animation.SlideInDown;
+import com.system.Message.Messages;
 import com.system.config.Config;
+import com.system.dao.ProductManagementDao;
+import com.system.dao.StockManagementDao;
+import com.system.models.Products;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,6 +26,19 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class RemoveItemController implements Initializable {
+
+    @FXML
+    private ComboBox<String> productNameBox;
+    @FXML
+    private TextField availableQuantityField;
+    @FXML
+    private TextField removeQuantityField;
+
+    ProductManagementDao productManagementDao = new ProductManagementDao();
+    StockManagementDao stockManagementDao = new StockManagementDao();
+
+
+    ObservableList<String> productNameList = FXCollections.observableArrayList(productManagementDao.getAllProductsNames());
 
     //button event for the home button use to change the scene and come to dashBoard
     public void homeButtonEvent(ActionEvent event)throws IOException {
@@ -105,10 +129,45 @@ public class RemoveItemController implements Initializable {
         scene2.show();
     }
 
+    public void availableField(){
+        Products product = new Products();
+        if(productNameBox.getSelectionModel().getSelectedItem() == null){
+            System.out.println("Error Handle");
+        }else {
+            product.setProductName(productNameBox.getSelectionModel().getSelectedItem());
+            availableQuantityField.setText(Float.toString(stockManagementDao.getAvailableQuantity(product)));
+        }
+    }
+
+    public void clearData(){
+        productNameBox.getSelectionModel().clearSelection();
+        availableQuantityField.clear();
+        removeQuantityField.clear();
+    }
+
+    public void removeButtonEvent(){
+        Products product = new Products();
+        if(productNameBox.getSelectionModel().isEmpty() || removeQuantityField.getText().trim().isEmpty()){
+            Messages.getWarning("you have to fill all Fields");
+        }else{
+            product.setProductName(productNameBox.getSelectionModel().getSelectedItem());
+            product.setQuantity(Float.parseFloat(removeQuantityField.getText()));
+            product.setDate(java.time.LocalDate.now() + " " + java.time.LocalTime.now());
+            stockManagementDao.removeQuantity(product);
+            clearData();
+        }
+    }
+
+    ChangeListener<String> forceNumberListener = (observable, oldValue, newValue) -> {
+        if (!newValue.matches(Config.regix))
+            ((StringProperty) observable).set(oldValue);
+    };
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        productNameBox.setItems(productNameList);
+        availableQuantityField.textProperty().addListener(forceNumberListener);
+        removeQuantityField.textProperty().addListener(forceNumberListener);
     }
 }

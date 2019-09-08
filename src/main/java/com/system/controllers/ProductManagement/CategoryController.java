@@ -7,6 +7,7 @@ import com.system.config.Config;
 import com.system.dao.ProductManagementDao;
 import com.system.models.Products;
 import com.system.models.Supplier;
+import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -53,6 +54,8 @@ public class CategoryController implements Initializable {
     private TextField newRecipeName;
     @FXML
     private TextField sellPriceRecipie;
+    @FXML
+    private ComboBox<String> recipieCatBox;
 
 
 
@@ -61,6 +64,7 @@ public class CategoryController implements Initializable {
     ObservableList<String> categoryNames = FXCollections.observableArrayList(productManagementDao.getAllCategoryNames());
     ObservableList<String> suppliearNames = FXCollections.observableArrayList(productManagementDao.getSuppliearNames());
     ObservableList<String> recipieCategoryNames = FXCollections.observableArrayList(productManagementDao.getRecipieCategorys());
+    ObservableList<String> recipieNames = FXCollections.observableArrayList(productManagementDao.getRecipieNames());
 
     //button event for the home button use to change the scene and come to dashBoard
     public void homeButtonEvent(ActionEvent event)throws IOException {
@@ -220,23 +224,6 @@ public class CategoryController implements Initializable {
         spList.getItems().addAll(productManagementDao.getSuppliearInfo(supplier));
     }
 
-    public void tabRefresh(){
-        tab.getSelectionModel().selectedItemProperty().addListener(
-                new ChangeListener<Tab>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
-                        suppliearNames = FXCollections.observableArrayList(productManagementDao.getSuppliearNames());
-                        spNameBox.setItems(suppliearNames);
-                        getClearSuppliear();
-                        clearField();
-                        categoryNames = FXCollections.observableArrayList(productManagementDao.getAllCategoryNames());
-                        TextFields.bindAutoCompletion(catName,categoryNames);
-                        spList.getItems().clear();
-                        spNameBox.getSelectionModel().clearSelection();
-                    }
-                }
-        );
-    }
 
     public void addNewRecipieCategory(){
 
@@ -255,11 +242,62 @@ public class CategoryController implements Initializable {
             }
         }
     }
+
+    public void getClearAllData(){
+        recipieNames.clear();
+        recipieCatBox.getSelectionModel().clearSelection();
+        sellPriceRecipie.clear();
+    }
+
+    public void addNewRecipieName(){
+
+            recipieNames = FXCollections.observableArrayList(productManagementDao.getRecipieNames());
+        if(newRecipeName.getText().trim().isEmpty()|| recipieCatBox.getSelectionModel().getSelectedItem().isEmpty()
+                || sellPriceRecipie.getText().trim().isEmpty()){
+            Messages.getWarning("please fill all data in fields");
+        }else{
+            if(recipieNames.contains(newRecipeName.getText())) {
+                Messages.getWarning("there is Already have a Recipie with same name ");
+            }else {
+                productManagementDao.addNewRecipieName(recipieCatBox.getSelectionModel().getSelectedItem(),newRecipeName.getText());
+                productManagementDao.addRecipieSellPrice(Float.parseFloat(sellPriceRecipie.getText()),java.time.LocalDate.now()+ " " + java.time.LocalTime.now(),newRecipeName.getText());
+                getClearAllData();
+            }
+        }
+    }
+
+    public void tabRefresh(){
+        tab.getSelectionModel().selectedItemProperty().addListener(
+                new ChangeListener<Tab>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
+                        suppliearNames = FXCollections.observableArrayList(productManagementDao.getSuppliearNames());
+                        spNameBox.setItems(suppliearNames);
+                        getClearSuppliear();
+                        clearField();
+                        categoryNames = FXCollections.observableArrayList(productManagementDao.getAllCategoryNames());
+                        TextFields.bindAutoCompletion(catName,categoryNames);
+                        spList.getItems().clear();
+                        spNameBox.getSelectionModel().clearSelection();
+                        getClearAllData();
+                        recpCat.clear();
+                    }
+                }
+        );
+    }
+
+    ChangeListener<String> forceNumberListener = (observable, oldValue, newValue) -> {
+        if (!newValue.matches(Config.regix))
+            ((StringProperty) observable).set(oldValue);
+    };
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         tabRefresh();
         spNameBox.setItems(suppliearNames);
         TextFields.bindAutoCompletion(catName,categoryNames);
+        recipieCatBox.setItems(recipieCategoryNames);
+        sellPriceRecipie.textProperty().addListener(forceNumberListener);
 
     }
 }

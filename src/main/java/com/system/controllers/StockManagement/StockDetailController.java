@@ -2,12 +2,20 @@ package com.system.controllers.StockManagement;
 
 import animatefx.animation.SlideInDown;
 import com.system.config.Config;
+import com.system.dao.StockManagementDao;
+import com.system.models.StockDetails;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,6 +23,27 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class StockDetailController implements Initializable {
+
+    @FXML
+    private TableView<StockDetails> detailTable;
+    @FXML
+    private TableColumn<StockDetails, String> productId;
+    @FXML
+    private TableColumn<StockDetails , String> productName;
+    @FXML
+    private TableColumn<StockDetails , String> SupplierName;
+    @FXML
+    private TableColumn<StockDetails , String> Quantity;
+    @FXML
+    private TableColumn<StockDetails , String> SellingPrice;
+    @FXML
+    private TableColumn<StockDetails , String> SupplierPh;
+    @FXML
+    private TableColumn<StockDetails , String> BoughtPrice;
+
+    StockManagementDao stockManagementDao = new StockManagementDao();
+
+    ObservableList<StockDetails> stockList = FXCollections.observableArrayList(stockManagementDao.getStockDetailsData());
 
     //button event for the home button use to change the scene and come to dashBoard
     public void homeButtonEvent(ActionEvent event)throws IOException {
@@ -105,8 +134,23 @@ public class StockDetailController implements Initializable {
         scene2.show();
     }
 
+    public void setColumnData(){
+        productId.setCellValueFactory(new PropertyValueFactory<StockDetails , String>("id"));
+        productName.setCellValueFactory(new PropertyValueFactory<StockDetails , String>("productName"));
+        SupplierName.setCellValueFactory(new PropertyValueFactory<StockDetails , String>("suppliearName"));
+        Quantity.setCellValueFactory(new PropertyValueFactory<StockDetails , String>("quantity"));
+        SellingPrice.setCellValueFactory(new PropertyValueFactory<StockDetails , String>("sellingPrice"));
+        SupplierPh.setCellValueFactory(new PropertyValueFactory<StockDetails , String>("suppliearPhoneNo"));
+        BoughtPrice.setCellValueFactory(new PropertyValueFactory<StockDetails , String>("boughtPrice"));
+    }
+
+    public void getDataInReport() throws Exception{
+        stockManagementDao.printStockDetails();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        setColumnData();
+        detailTable.setItems(stockList);
     }
 }

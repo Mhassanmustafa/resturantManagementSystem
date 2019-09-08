@@ -148,26 +148,26 @@
                 </JFXButton>
             </children>
         </HBox>
-        <VBox layoutX="334.0" layoutY="157.0" prefHeight="467.0" prefWidth="821.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="334.0" AnchorPane.rightAnchor="103.0" AnchorPane.topAnchor="157.0">
+        <VBox layoutX="292.0" layoutY="156.0" prefHeight="467.0" prefWidth="821.0" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="145.0" AnchorPane.topAnchor="156.0">
             <children>
                 <Pane prefHeight="467.0" prefWidth="805.0">
                     <children>
-                        <TableView fx:id="detailTable" prefHeight="467.0" prefWidth="887.0">
+                        <TableView fx:id="detailTable" layoutX="61.0" prefHeight="467.0" prefWidth="887.0">
                             <columns>
                                 <TableColumn fx:id="productId" prefWidth="75.0" text="Product id" />
                                 <TableColumn fx:id="productName" prefWidth="144.0" text="Product Name" />
                                 <TableColumn fx:id="SupplierName" prefWidth="137.0" text="Supplier Name" />
-                                <TableColumn fx:id="Quantity" prefWidth="98.0" text="Quantity" />
-                                <TableColumn fx:id="SellingPrice" prefWidth="105.0" text="Selling Price" />
-                                <TableColumn fx:id="SupplierPh" prefWidth="153.0" text="Supplier Phone no" />
-                                <TableColumn fx:id="BoughtPrice" prefWidth="172.0" text="Bought Price" />
+                                <TableColumn fx:id="Quantity" prefWidth="124.0" text="Quantity Available" />
+                                <TableColumn fx:id="SellingPrice" prefWidth="122.0" text="Selling Price" />
+                                <TableColumn fx:id="SupplierPh" prefWidth="130.0" text="Supplier Phone no" />
+                                <TableColumn fx:id="BoughtPrice" prefWidth="152.0" text="Bought Price" />
                             </columns>
                         </TableView>
                     </children>
                 </Pane>
             </children>
         </VBox>
-        <JFXButton id="hboxbtn" layoutX="1090.0" layoutY="639.0"  prefHeight="34.0" prefWidth="131.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Covert to Pdf">
+        <JFXButton id="hboxbtn" layoutX="1090.0" layoutY="639.0" onAction="#getDataInReport" prefHeight="34.0" prefWidth="131.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Covert to Pdf">
             <padding>
                 <Insets left="-2.0" />
             </padding>

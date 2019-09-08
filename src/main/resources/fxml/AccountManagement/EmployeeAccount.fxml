@@ -118,7 +118,7 @@
         </Pane>
         <HBox alignment="TOP_CENTER" layoutX="263.0" layoutY="79.0" prefHeight="78.0" prefWidth="1009.0" AnchorPane.bottomAnchor="546.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
             <children>
-                <JFXButton id="hboxbtn" onAction="#EmployeeAccountButtonEvent" prefHeight="43.0" prefWidth="175.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Employee Account">
+                <JFXButton id="hboxbtn" onAction="#EmployeeAccountButtonEvent" prefHeight="43.0" prefWidth="175.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Accounts">
                     <HBox.margin>
                         <Insets bottom="1.0" left="37.0" right="3.0" top="15.0" />
                     </HBox.margin>
@@ -182,12 +182,12 @@
                                         </HBox>
                                         <HBox layoutX="10.0" layoutY="68.0" spacing="12.0">
                                             <children>
-                                                <Label prefHeight="29.0" prefWidth="138.0" text="Email Address:">
+                                                <Label prefHeight="29.0" prefWidth="138.0" text="User Name:">
                                                     <font>
                                                         <Font size="17.0" />
                                                     </font>
                                                 </Label>
-                                                <TextField fx:id="empolyeeEmailField" prefHeight="25.0" prefWidth="223.0" promptText="123@gmail.com" />
+                                                <TextField fx:id="empolyeeEmailField" prefHeight="25.0" prefWidth="223.0" promptText="userName Must be unique" />
                                             </children>
                                         </HBox>
                                         <HBox layoutX="10.0" layoutY="142.0" spacing="12.0">
@@ -197,7 +197,7 @@
                                                         <Font size="17.0" />
                                                     </font>
                                                 </Label>
-                                                <JFXPasswordField prefHeight="24.0" prefWidth="223.0" />
+                                                <JFXPasswordField fx:id="empassword" prefHeight="24.0" prefWidth="223.0" promptText="Password" />
                                             </children>
                                         </HBox>
                                         <HBox spacing="12.0">
@@ -222,7 +222,7 @@
                                         </HBox>
                                     </children>
                                 </VBox>
-                                <JFXButton id="hboxbtn" layoutX="403.0" layoutY="352.0"  prefHeight="35.0" prefWidth="131.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add Employee">
+                                <JFXButton id="hboxbtn" layoutX="403.0" layoutY="352.0" onAction="#addNewEmployeeButton" prefHeight="35.0" prefWidth="131.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add Employee">
                                     <padding>
                                         <Insets left="-2.0" />
                                     </padding>
@@ -248,12 +248,12 @@
                                                             <children>
                                                                 <HBox layoutX="10.0" layoutY="10.0" prefHeight="29.0" prefWidth="466.0" spacing="15.0">
                                                                     <children>
-                                                                        <Label prefHeight="29.0" prefWidth="135.0" text="Employee Name:">
+                                                                        <Label prefHeight="29.0" prefWidth="135.0" text="User Name:">
                                                                             <font>
                                                                                 <Font size="17.0" />
                                                                             </font>
                                                                         </Label>
-                                                                        <ComboBox fx:id="updateSalaryNameFielld"  prefHeight="25.0" prefWidth="246.0" promptText="Drop down to see Employee name" />
+                                                                        <ComboBox fx:id="updateSalaryNameFielld" onAction="#setFieldData" prefHeight="25.0" prefWidth="246.0" promptText="Drop down to see Employee name" />
                                                                     </children>
                                                                 </HBox>
                                                                 <HBox>
@@ -278,12 +278,12 @@
                                                                 </HBox>
                                                                 <HBox layoutX="10.0" layoutY="68.0" spacing="12.0">
                                                                     <children>
-                                                                        <Label prefHeight="29.0" prefWidth="138.0" text="Email Address:">
+                                                                        <Label prefHeight="29.0" prefWidth="138.0" text="Employee Name:">
                                                                             <font>
                                                                                 <Font size="17.0" />
                                                                             </font>
                                                                         </Label>
-                                                                        <TextField fx:id="updateSalaryEmail" editable="false" prefHeight="25.0" prefWidth="223.0" promptText="123@gmail.com" />
+                                                                        <TextField fx:id="updateSalaryEmail" editable="false" prefHeight="25.0" prefWidth="223.0" promptText="user Name" />
                                                                     </children>
                                                                 </HBox>
                                                                 <HBox layoutX="10.0" layoutY="142.0" spacing="12.0">
@@ -318,7 +318,7 @@
                                                                 </HBox>
                                                             </children>
                                                         </VBox>
-                                                        <JFXButton id="hboxbtn" layoutX="375.0" layoutY="335.0"  prefHeight="31.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Update">
+                                                        <JFXButton id="hboxbtn" layoutX="375.0" layoutY="335.0" onAction="#updateSalaryButtonEvent" prefHeight="31.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Update">
                                                             <font>
                                                                 <Font size="16.0" />
                                                             </font>
@@ -333,7 +333,7 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="Veiw Accounts Detail">
+                <Tab text="View Customer Details">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
@@ -341,7 +341,7 @@
                                     <children>
                                         <HBox>
                                             <children>
-                                                <Label prefHeight="29.0" prefWidth="138.0" text="Employee Name:">
+                                                <Label prefHeight="29.0" prefWidth="138.0" text="Customer Name:">
                                                     <font>
                                                         <Font size="17.0" />
                                                     </font>
@@ -351,27 +351,27 @@
                                         </HBox>
                                     </children>
                                 </VBox>
-                                <JFXButton id="hboxbtn" layoutX="705.0" layoutY="61.0"  prefHeight="16.0" prefWidth="107.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Search">
+                                <JFXButton id="hboxbtn" layoutX="705.0" layoutY="61.0" prefHeight="16.0" prefWidth="107.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Search">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </JFXButton>
                                 <TableView fx:id="table" layoutY="100.0" prefHeight="318.0" prefWidth="964.0" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="100.0">
                                     <columns>
-                                        <TableColumn fx:id="c1" prefWidth="46.0" text="Id" />
-                                        <TableColumn fx:id="c2" prefWidth="103.0" text="Phone No" />
+                                        <TableColumn fx:id="c1" prefWidth="52.0" text="Id" />
+                                        <TableColumn fx:id="c2" prefWidth="97.0" text="Phone No" />
                                         <TableColumn fx:id="c3" prefWidth="118.0" text="Designation" />
                                         <TableColumn fx:id="c4" minWidth="18.0" prefWidth="97.0" text="Salary" />
                                         <TableColumn fx:id="c7" minWidth="18.0" prefWidth="82.0" text="credit" />
                                         <TableColumn fx:id="c8" minWidth="18.0" prefWidth="97.0" text="debit" />
                                         <TableColumn fx:id="c9" minWidth="18.0" prefWidth="126.0" text="Balance" />
-                                        <TableColumn fx:id="c10" minWidth="18.0" prefWidth="148.0" text="Description" />
-                                        <TableColumn fx:id="c11" minWidth="18.0" prefWidth="144.0" text="Date" />
+                                        <TableColumn fx:id="c10" minWidth="18.0" prefWidth="213.0" text="Description" />
+                                        <TableColumn fx:id="c11" minWidth="18.0" prefWidth="172.0" text="Date" />
                                     </columns>
                                 </TableView>
                                 <HBox layoutX="846.0" layoutY="430.0" prefHeight="30.0" prefWidth="108.0" spacing="14.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="846.0" AnchorPane.rightAnchor="21.0">
                                     <children>
-                                        <JFXButton id="hboxbtn"  prefHeight="16.0" prefWidth="107.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Save">
+                                        <JFXButton id="hboxbtn" prefHeight="16.0" prefWidth="107.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Save">
                                             <font>
                                                 <Font size="14.0" />
                                             </font>

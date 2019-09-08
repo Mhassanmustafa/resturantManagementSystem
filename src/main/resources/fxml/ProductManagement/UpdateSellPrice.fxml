@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1350.0" styleClass="parent" stylesheets="@../../css/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.system.controllers.ProductManagement.UpdateSellPriceController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1350.0" styleClass="parent" stylesheets="@../../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.system.controllers.ProductManagement.UpdateSellPriceController">
     <children>
         <AnchorPane layoutY="-14.0" prefHeight="694.0" prefWidth="249.0" style="-fx-background-color: #2A2E37;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -159,35 +161,85 @@
                 </JFXButton>
             </children>
         </HBox>
-        <Pane layoutX="382.0" layoutY="191.0" prefHeight="328.0" prefWidth="554.0" style="-fx-border-color: transparent;">
-            <children>
-                <Label layoutX="92.0" layoutY="55.0" prefHeight="25.0" prefWidth="127.0" text="Product Name">
-                    <font>
-                        <Font size="17.0" />
-                    </font>
-                </Label>
-                <ComboBox fx:id="productNameBox" layoutX="227.0" layoutY="56.0" onAction="#getPreviousSellPrice" prefHeight="25.0" prefWidth="249.0" promptText="Drop Down to see Products Names" />
-                <Label layoutX="93.0" layoutY="104.0" prefHeight="25.0" prefWidth="127.0" text="Current Price">
-                    <font>
-                        <Font size="17.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="currentPriceField" editable="false" layoutX="228.0" layoutY="105.0" prefHeight="25.0" prefWidth="81.0" />
-                <JFXButton id="hboxbtn" layoutX="225.0" layoutY="193.0" onAction="#updateButtonEvent" prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Update">
-                    <padding>
-                        <Insets left="-2.0" />
-                    </padding>
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </JFXButton>
-                <Label layoutX="93.0" layoutY="147.0" prefHeight="25.0" prefWidth="127.0" text="New Price">
-                    <font>
-                        <Font size="17.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="newPriceField" layoutX="228.0" layoutY="148.0" prefHeight="25.0" prefWidth="81.0" />
-            </children>
-        </Pane>
+      <JFXTabPane fx:id="tab" layoutX="293.0" layoutY="190.0" prefHeight="427.0" prefWidth="936.0">
+         <tabs>
+            <Tab text="Update Product sell Price">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                          <Pane layoutX="196.0" layoutY="31.0" prefHeight="248.0" prefWidth="504.0" style="-fx-border-color: transparent;" AnchorPane.bottomAnchor="108.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="236.0" AnchorPane.topAnchor="31.0">
+                              <children>
+                                  <Label layoutX="87.0" layoutY="20.0" prefHeight="25.0" prefWidth="127.0" text="Product Name">
+                                      <font>
+                                          <Font size="17.0" />
+                                      </font>
+                                  </Label>
+                                  <ComboBox fx:id="productNameBox" layoutX="222.0" layoutY="21.0" onAction="#getPreviousSellPrice" prefHeight="25.0" prefWidth="249.0" promptText="Drop Down to see Products Names" />
+                                  <Label layoutX="88.0" layoutY="69.0" prefHeight="25.0" prefWidth="127.0" text="Current Price">
+                                      <font>
+                                          <Font size="17.0" />
+                                      </font>
+                                  </Label>
+                                  <TextField fx:id="currentPriceField" editable="false" layoutX="223.0" layoutY="70.0" prefHeight="25.0" prefWidth="81.0" />
+                                  <JFXButton id="hboxbtn" layoutX="220.0" layoutY="158.0" onAction="#updateButtonEvent" prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Update">
+                                      <padding>
+                                          <Insets left="-2.0" />
+                                      </padding>
+                                      <font>
+                                          <Font size="16.0" />
+                                      </font>
+                                  </JFXButton>
+                                  <Label layoutX="88.0" layoutY="112.0" prefHeight="25.0" prefWidth="127.0" text="New Price">
+                                      <font>
+                                          <Font size="17.0" />
+                                      </font>
+                                  </Label>
+                                  <TextField fx:id="newPriceField" layoutX="223.0" layoutY="113.0" prefHeight="25.0" prefWidth="81.0" />
+                              </children>
+                          </Pane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Update Recipie Sell Price">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane layoutX="109.0" layoutY="31.0" prefHeight="248.0" prefWidth="504.0" style="-fx-border-color: transparent;" AnchorPane.bottomAnchor="108.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="236.0" AnchorPane.topAnchor="31.0">
+                           <children>
+                              <Label layoutX="87.0" layoutY="20.0" prefHeight="25.0" prefWidth="127.0" text="Recipie Name:">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="productNameBox1" layoutX="222.0" layoutY="21.0" onAction="#getRecipieCurrentPrice" prefHeight="25.0" prefWidth="249.0" promptText="Drop Down to see Recipie Names" />
+                              <Label layoutX="88.0" layoutY="69.0" prefHeight="25.0" prefWidth="127.0" text="Current Price">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="currentPriceField1" editable="false" layoutX="223.0" layoutY="70.0" prefHeight="25.0" prefWidth="81.0" />
+                              <JFXButton id="hboxbtn" layoutX="220.0" layoutY="158.0" onAction="#updateEvent" prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Update">
+                                 <padding>
+                                    <Insets left="-2.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <Label layoutX="88.0" layoutY="112.0" prefHeight="25.0" prefWidth="127.0" text="New Price">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="newPriceField1" layoutX="223.0" layoutY="113.0" prefHeight="25.0" prefWidth="81.0" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
     </children>
 </AnchorPane>

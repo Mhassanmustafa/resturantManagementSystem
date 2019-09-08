@@ -157,14 +157,14 @@
                                 <Font size="17.0" />
                             </font>
                         </Label>
-                        <ComboBox fx:id="productNameBox" layoutX="228.0" layoutY="43.0"  prefHeight="25.0" prefWidth="249.0" promptText="Drop down to see products" />
+                        <ComboBox fx:id="productNameBox" layoutX="228.0" layoutY="43.0" onAction="#availableField" prefHeight="25.0" prefWidth="249.0" promptText="Drop down to see products" />
                         <Label layoutX="76.0" layoutY="88.0" prefHeight="26.0" prefWidth="141.0" text="Available Quantity">
                             <font>
                                 <Font size="17.0" />
                             </font>
                         </Label>
                         <TextField fx:id="availableQuantityField" editable="false" layoutX="228.0" layoutY="89.0" prefHeight="25.0" prefWidth="71.0" />
-                        <JFXButton id="hboxbtn" layoutX="217.0" layoutY="184.0"  prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Remove">
+                        <JFXButton id="hboxbtn" layoutX="217.0" layoutY="184.0" onAction="#removeButtonEvent" prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Remove">
                             <padding>
                                 <Insets left="-2.0" />
                             </padding>
@@ -184,4 +184,3 @@
         </VBox>
     </children>
 </AnchorPane>
-

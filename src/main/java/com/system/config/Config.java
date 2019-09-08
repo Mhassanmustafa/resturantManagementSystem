@@ -1,5 +1,10 @@
 package com.system.config;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -14,5 +19,16 @@ public class Config {
     public static final int height = 700;       //height for stages
     public static final String regix = "\\d{0,7}([\\.]\\d{0,4})?";
     public static final Path logsFile = Paths.get("\\resturantManagementSystem\\Reports\\logs");
+    public static final Path stockDetailPath = Paths.get("\\resturantManagementSystem\\ReportsAndSheets\\StockDetailsReports");  //path of folder where the reports are save
+    public static final Font font = FontFactory.getFont(FontFactory.HELVETICA,10, BaseColor.BLACK); //font
+    public static final String address = "House 44 street 20 A chaklala scheme 3 rawalpindi"; //shop address
+    public static final String shopName = "SK Enterprises"; //shop name
+    public static final int alignRight = Element.ALIGN_RIGHT; //align right
+    public static final int alignCenter = Element.ALIGN_CENTER; //align left
+    public static final String lines = "-------------------------------------------------------------------------------" +
+            "---------------------------------------------------"; //decoration
+    public static final String rotateLines = "-------------------------------------------------------------------------------" +
+            "----------------------------------------------------------------------------------------------------------------"; //decoration
+    public static final String contactNumber = "Contact no : 0303-5992887";
 
 }

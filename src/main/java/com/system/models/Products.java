@@ -11,6 +11,7 @@ public class Products {
     private String suppliearName;
     private int productId;
     private String categoryName;
+    private float Quantity;
 
 
     public Products(int productId, String productName,  String suppliearName, float boughtPrice,float sellPrice,String date ) {
@@ -100,6 +101,14 @@ public class Products {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public float getQuantity() {
+        return Quantity;
+    }
+
+    public void setQuantity(float quantity) {
+        Quantity = quantity;
     }
 
     @Override

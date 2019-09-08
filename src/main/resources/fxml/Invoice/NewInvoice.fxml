@@ -136,7 +136,7 @@
                                                                         <Font size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="totalAmount1" editable="false"  prefHeight="36.0" prefWidth="254.0" />
+                                                                <TextField fx:id="customerName" prefHeight="36.0" prefWidth="254.0" />
                                                             </children>
                                                         </HBox>
                                                         <HBox prefHeight="30.0" prefWidth="375.0">
@@ -146,7 +146,7 @@
                                                                         <Font size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="totalAmount11" editable="false"  prefHeight="36.0" prefWidth="254.0" />
+                                                                <TextField fx:id="phoneNoField" prefHeight="36.0" prefWidth="254.0" />
                                                             </children>
                                                         </HBox>
                                                     </children>
@@ -177,14 +177,14 @@
                                                         <Font size="15.0" />
                                                     </font>
                                                 </Label>
-                                                <TextField fx:id="quantity" layoutX="485.0" layoutY="35.0"  prefHeight="25.0" prefWidth="88.0" />
+                                                <TextField fx:id="quantity" layoutX="485.0" layoutY="35.0" prefHeight="25.0" prefWidth="88.0" />
                                                 <Label contentDisplay="CENTER" layoutX="579.0" layoutY="14.0" prefHeight="21.0" prefWidth="108.0" text="Total Amount:">
                                                     <font>
                                                         <Font size="15.0" />
                                                     </font>
                                                 </Label>
-                                                <TextField fx:id="totalAmount" editable="false" layoutX="578.0" layoutY="34.0"  prefHeight="25.0" prefWidth="126.0" />
-                                                <JFXButton alignment="TOP_CENTER" graphicTextGap="0.0" layoutX="713.0" layoutY="34.0" nodeOrientation="LEFT_TO_RIGHT"  prefHeight="26.0" prefWidth="61.0" stylesheets="@../../css/stylesheet.css" text="Add" textAlignment="CENTER">
+                                                <TextField fx:id="totalAmount" editable="false" layoutX="578.0" layoutY="34.0" onMouseClicked="#getTotalAmount" prefHeight="25.0" prefWidth="126.0" />
+                                                <JFXButton alignment="TOP_CENTER" graphicTextGap="0.0" layoutX="713.0" layoutY="34.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#productAddButtonEvent" prefHeight="26.0" prefWidth="61.0" stylesheets="@../../css/stylesheet.css" text="Add" textAlignment="CENTER">
                                                     <cursor>
                                                         <Cursor fx:constant="OPEN_HAND" />
                                                     </cursor>
@@ -199,7 +199,7 @@
                                                         <RadioButton fx:id="edit" mnemonicParsing="false" prefHeight="17.0" prefWidth="77.0" text="Edit" toggleGroup="$choice" />
                                                     </children>
                                                 </HBox>
-                                                <JFXComboBox fx:id="productNamesField" editable="true" layoutX="14.0" layoutY="33.0"  prefHeight="32.0" prefWidth="338.0" />
+                                                <JFXComboBox fx:id="productNamesField" editable="true" layoutX="14.0" layoutY="33.0" onAction="#ProductNamesFieldAction" prefHeight="32.0" prefWidth="338.0" />
                                             </children>
                                         </AnchorPane>
                                     </top>
@@ -212,11 +212,11 @@
                                                             <columns>
                                                                 <TableColumn fx:id="productNameC" prefWidth="315.0" text="Product Name" />
                                                                 <TableColumn fx:id="priceC" prefWidth="131.0" text="Price" />
-                                                                <TableColumn fx:id="quanttiyC"  prefWidth="118.0" text="Quantity" />
+                                                                <TableColumn fx:id="quanttiyC" onEditCommit="#updateColumnData" prefWidth="118.0" text="Quantity" />
                                                                 <TableColumn fx:id="totalAmountC" prefWidth="245.0" text="Total Amount" />
                                                             </columns>
                                                         </TableView>
-                                                        <JFXButton alignment="TOP_CENTER" graphicTextGap="0.0" layoutX="833.0" layoutY="14.0" nodeOrientation="LEFT_TO_RIGHT"  prefHeight="26.0" prefWidth="68.0" stylesheets="@../../css/stylesheet.css" text="Delete" textAlignment="CENTER">
+                                                        <JFXButton alignment="TOP_CENTER" graphicTextGap="0.0" layoutX="833.0" layoutY="14.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#productRemoveActionEvent" prefHeight="26.0" prefWidth="68.0" stylesheets="@../../css/stylesheet.css" text="Delete" textAlignment="CENTER">
                                                             <cursor>
                                                                 <Cursor fx:constant="OPEN_HAND" />
                                                             </cursor>
@@ -258,12 +258,12 @@
                                                         <Font size="15.0" />
                                                     </font>
                                                 </Label>
-                                                <TextField fx:id="netAmount" editable="false"  prefHeight="25.0" prefWidth="230.0" />
+                                                <TextField fx:id="netAmount" editable="false" onKeyPressed="#discountAction" onMouseClicked="#discountAction" prefHeight="25.0" prefWidth="230.0" />
                                             </children>
                                         </HBox>
                                         <HBox layoutX="703.0" layoutY="117.0" spacing="17.0">
                                             <children>
-                                                <JFXButton alignment="TOP_CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT"  prefHeight="28.0" prefWidth="114.0" stylesheets="@../../css/stylesheet.css" text="Print" textAlignment="CENTER">
+                                                <JFXButton alignment="TOP_CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#printAction" prefHeight="28.0" prefWidth="114.0" stylesheets="@../../css/stylesheet.css" text="Print" textAlignment="CENTER">
                                                     <cursor>
                                                         <Cursor fx:constant="OPEN_HAND" />
                                                     </cursor>
