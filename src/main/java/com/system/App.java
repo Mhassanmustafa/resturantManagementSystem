@@ -12,10 +12,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashBoard.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/LogIn.fxml"));
 
         primaryStage.setTitle("Resturant Management System");
-        primaryStage.setScene(new Scene(root, 1350,700));
+        primaryStage.setScene(new Scene(root, 882,543));
         primaryStage.setResizable(false);
         primaryStage.show();
 

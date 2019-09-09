@@ -14,5 +14,8 @@ public interface IAccountManagement {
     public Employee getEmployeeData(String name);
     public void addnewBaseSalary(Employee employee);
     public Customers getCustomerInfo(String name,String phoneNo);
+    public void UpdatePassword(String userName, String password,String oldPassword);
+    public Boolean adminLogIn(String userName, String password);
+    public Boolean employeeLogIn(String userName, String password);
 
 }

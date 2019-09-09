@@ -214,5 +214,82 @@ public class Query {
     public static final String getProductQuantity = "select quantity  from recipieIngreidents where recipeProductId = ?";
     public static final String getStockQuantityAvailable = "select top 1 totalQuantity from stockHistory where productId = ? order by date desc";
     public static final String newStockHistory = "insert into stockHistory (productId,totalQuantity,description,date) values (?,?,?,?)";
+    public static final String previousBalance = "select top 1 balance from ledger where custId = ? order by date desc";
+    public static final String getOrderId = "select id from customerOrder";
 
+    public static final String customerOrderHistoryQuery = "SELECT customerorder.id, \n" +
+            "       (SELECT NAME \n" +
+            "        FROM   customer \n" +
+            "        WHERE  customer.id = customerorder.customerid)             AS \n" +
+            "       CustomerName, \n" +
+            "       (SELECT NAME \n" +
+            "        FROM   recipieproduct \n" +
+            "        WHERE  recipieproduct.id = customerorderhistory.recipieid) AS \n" +
+            "       productName, \n" +
+            "       (SELECT TOP 1 recipiesellprice.sellprice \n" +
+            "        FROM   recipiesellprice \n" +
+            "        WHERE  recipiesellprice.productid = customerorderhistory.recipieid \n" +
+            "        ORDER  BY date DESC)                                       AS \n" +
+            "       productPrice, \n" +
+            "       customerorderhistory.quantity, \n" +
+            "       customerorderhistory.amount, \n" +
+            "       customerorderhistory.discount, \n" +
+            "       customerorderhistory.date \n" +
+            "FROM   customerorder \n" +
+            "       INNER JOIN customerorderhistory \n" +
+            "               ON customerorder.id = customerorderhistory.customerorderid \n" +
+            "       INNER JOIN recipieproduct \n" +
+            "               ON recipieproduct.id = customerorderhistory.recipieid \n" +
+            "WHERE  customerorder.id = ? ";
+
+    public static final String getDailySales = "select sum(credit) from ledger where accountId = ? and day(date) = ? and MONTH(date) = ? and year(date) = ?";
+    public static final String getDailyProfit = " select ((select isnull (sum(credit) ,0 )from ledger where accountId = ? and day(date) = ? and MONTH(date) = ? and year(date) = ?) -\n" +
+            " (select isnull (sum(boughtPrice * quantity) , 0)from purchaseHistory where day(date) = ? and MONTH(date) = ? and year(date) = ?)" +
+            "-(SELECT isnull (sum(credit) , 0) FROM   ledger where accountId = ? and day(date) = ? and MONTH(date) = ? and year(date) = ?))";
+
+    public static final String getMonthlySale = " select sum(credit) from ledger where accountId = ? and  MONTH(date) = ? and year(date) = ?";
+
+    public static final String getMonthlyProfit = "SELECT( (SELECT isnull(Sum(credit),0) \n" +
+            "         FROM   ledger \n" +
+            "         WHERE  accountid = ? \n" +
+            "                AND Month(date) = ? \n" +
+            "                AND Year(date) = ?) - (SELECT isnull(Sum (boughtprice * quantity),0) \n" +
+            "                                          FROM   purchasehistory \n" +
+            "                                          WHERE  Month(date) = ? \n" +
+            "                                                 AND Year(date) = ?) - \n" +
+            "                (SELECT isnull(Sum(credit) , 0 )\n" +
+            "                 FROM   ledger \n" +
+            "                 WHERE \n" +
+            "                accountid = ? \n" +
+            "                AND Month(date) = ? \n" +
+            "                AND Year(date) = ?)) ";
+
+    public static final String getYearlySales = "select sum(credit) from ledger where accountId = ? and  year(date) = ?";
+
+    public static final String getYearlyProfit = "SELECT( (SELECT isnull(Sum(credit),0) \n" +
+            "         FROM   ledger \n" +
+            "         WHERE  accountid = ? \n" +
+            "                 \n" +
+            "                AND Year(date) = ?) - (SELECT isnull(Sum (boughtprice * quantity),0) \n" +
+            "                                          FROM   purchasehistory \n" +
+            "                                          WHERE   \n" +
+            "                                                  Year(date) = ?) - \n" +
+            "                (SELECT isnull(Sum(credit) , 0 )\n" +
+            "                 FROM   ledger \n" +
+            "                 WHERE \n" +
+            "                accountid = ? \n" +
+            "                 \n" +
+            "                AND Year(date) = ?)) ";
+
+    public static final String getTotalQuantityData =  "\n" +
+            " SELECT NAME, \n" +
+            "       (SELECT TOP 1 totalquantity \n" +
+            "        FROM   stockhistory \n" +
+            "        WHERE  stockhistory.productid = p.id \n" +
+            "        ORDER  BY date DESC) AS quantity \n" +
+            "FROM   product p ";
+
+    public static final String updateAdminPassword = "UPDATE Admin SET password = ? WHERE userName =? and password = ?";
+    public static final String adminLogIn = "select * from admin where userName = ? and password = ?";
+    public static final String employeeLogIn = "select * from empLogIn where userName = ? and password = ?";
 }

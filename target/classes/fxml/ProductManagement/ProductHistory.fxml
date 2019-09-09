@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1350.0" styleClass="parent" stylesheets="@../../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.system.controllers.Invoice.OrderHistoryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1350.0" styleClass="parent" stylesheets="@../../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.system.controllers.ProductManagement.NewRecipeController">
     <children>
         <AnchorPane layoutY="-14.0" prefHeight="694.0" prefWidth="249.0" style="-fx-background-color: #2A2E37;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -105,16 +106,16 @@
         </AnchorPane>
         <Pane layoutX="249.0" prefHeight="92.0" prefWidth="1254.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label layoutX="273.0" layoutY="14.0" prefHeight="57.0" prefWidth="367.0" text="Invoices">
+                <Label layoutX="273.0" layoutY="14.0" prefHeight="32.0" prefWidth="403.0" text="Product Management">
                     <font>
-                        <Font size="39.0" />
+                        <Font size="38.0" />
                     </font>
                 </Label>
             </children>
         </Pane>
-        <HBox alignment="TOP_CENTER" layoutX="14.0" layoutY="79.0" prefHeight="78.0" prefWidth="1015.0" spacing="2.0" AnchorPane.bottomAnchor="537.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.0">
+        <HBox alignment="TOP_CENTER" layoutX="249.0" layoutY="80.0" prefHeight="78.0" prefWidth="1009.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <JFXButton id="hboxbtn" onAction="#NewInvoiceButtonEvent" prefHeight="43.0" prefWidth="157.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="New Invoice">
+                <JFXButton id="hboxbtn" onAction="#addNewProductButtonEvent" prefHeight="43.0" prefWidth="182.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add new product">
                     <HBox.margin>
                         <Insets bottom="1.0" left="37.0" right="3.0" top="15.0" />
                     </HBox.margin>
@@ -125,10 +126,78 @@
                         <Font size="16.0" />
                     </font>
                 </JFXButton>
-                <JFXButton id="hboxbtn" onAction="#OrderHistoryButtonEvent" prefHeight="43.0" prefWidth="157.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Order History">
+                <JFXButton id="hboxbtn" onAction="#UpdateSellPriceButtonEvent" prefHeight="43.0" prefWidth="175.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Update selling price">
                     <HBox.margin>
                         <Insets bottom="1.0" left="37.0" right="3.0" top="15.0" />
                     </HBox.margin>
+                    <padding>
+                        <Insets left="-2.0" />
+                    </padding>
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton id="hboxbtn" onAction="#ProductHistoryButtonEvent" prefHeight="43.0" prefWidth="168.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add new Recipie">
+                    <HBox.margin>
+                        <Insets bottom="1.0" left="37.0" right="3.0" top="15.0" />
+                    </HBox.margin>
+                    <padding>
+                        <Insets left="-2.0" />
+                    </padding>
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton id="hboxbtn" onAction="#CategoryButtonEvent" prefHeight="43.0" prefWidth="182.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Category &amp; Supplier">
+                    <padding>
+                        <Insets left="-2.0" />
+                    </padding>
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets bottom="1.0" left="37.0" right="3.0" top="15.0" />
+                    </HBox.margin>
+                </JFXButton>
+            </children>
+        </HBox>
+        <HBox layoutX="409.0" layoutY="170.0">
+            <children>
+                <Label prefHeight="25.0" prefWidth="127.0" text="Recipe Name:">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Label>
+                <JFXComboBox fx:id="recipieNameBox" editable="true" prefHeight="25.0" prefWidth="275.0" />
+            </children>
+        </HBox>
+        <JFXButton id="hboxbtn" layoutX="1021.0" layoutY="635.0" onAction="#addButton" prefHeight="34.0" prefWidth="137.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add Recipe">
+            <padding>
+                <Insets left="-2.0" />
+            </padding>
+            <font>
+                <Font size="16.0" />
+            </font>
+        </JFXButton>
+        <HBox layoutX="409.0" layoutY="218.0">
+            <children>
+                <Label prefHeight="25.0" prefWidth="127.0" text=" ingredient:">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Label>
+                <JFXComboBox fx:id="ingreidentsBox" editable="true" prefHeight="25.0" prefWidth="275.0" />
+            </children>
+        </HBox>
+        <HBox layoutX="409.0" layoutY="263.0" prefHeight="34.0" prefWidth="294.0" spacing="19.0">
+            <children>
+                <Label prefHeight="26.0" prefWidth="89.0" text="Quantity:">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="quantityField" prefHeight="31.0" prefWidth="82.0" />
+                <JFXButton id="hboxbtn" onAction="#addButtonEvent" prefHeight="31.0" prefWidth="77.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add">
                     <padding>
                         <Insets left="-2.0" />
                     </padding>
@@ -138,50 +207,30 @@
                 </JFXButton>
             </children>
         </HBox>
-        <VBox layoutX="260.0" layoutY="122.0" prefHeight="558.0" prefWidth="998.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="122.0">
+        <AnchorPane layoutX="371.0" layoutY="311.0" prefHeight="316.0" prefWidth="1103.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="515.0" prefWidth="998.0">
-                    <children>
-                        <VBox prefHeight="30.0" prefWidth="367.0" AnchorPane.bottomAnchor="423.0" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="443.0" AnchorPane.topAnchor="62.0">
-                            <children>
-                                <HBox prefHeight="29.0" prefWidth="382.0">
-                                    <children>
-                                        <Label prefHeight="29.0" prefWidth="120.0" text="Order ID:">
-                                            <font>
-                                                <Font size="17.0" />
-                                            </font>
-                                        </Label>
-                                        <TextField fx:id="shopNameField" prefHeight="25.0" prefWidth="245.0" promptText="Maching ID appear upon typing" />
-                                    </children>
-                                </HBox>
-                            </children>
-                        </VBox>
-                        <JFXButton id="hboxbtn" layoutX="583.0" layoutY="62.0" onAction="#searchButtonAction" prefHeight="16.0" prefWidth="107.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Search">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </JFXButton>
-                        <TableView fx:id="table" layoutX="43.0" layoutY="103.0" prefHeight="359.0" prefWidth="894.0" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="43.0" AnchorPane.topAnchor="103.0">
-                            <columns>
-                                <TableColumn fx:id="invoiceIdC" prefWidth="86.0" text="Invoice Id" />
-                                <TableColumn fx:id="customerNameC" prefWidth="157.0" text="Customer Name" />
-                                <TableColumn fx:id="productNameC" prefWidth="154.0" text="Product Name" />
-                                <TableColumn fx:id="unitPriceC" minWidth="18.0" prefWidth="109.0" text="Price" />
-                                <TableColumn fx:id="quantityC" prefWidth="73.0" text="Quantity" />
-                                <TableColumn fx:id="amountC" prefWidth="71.0" text="Amount" />
-                                <TableColumn fx:id="discountC" prefWidth="90.0" text="Discount" />
-                                <TableColumn fx:id="dateC" prefWidth="153.0" text="Date" />
-                            </columns>
-                        </TableView>
-                        <HBox layoutX="661.0" layoutY="478.0" prefHeight="30.0" prefWidth="136.0" spacing="14.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="661.0" AnchorPane.rightAnchor="201.0" />
-                        <JFXButton id="hboxbtn" layoutX="793.0" layoutY="478.0" prefHeight="36.0" prefWidth="144.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Print">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </JFXButton>
-                    </children>
-                </AnchorPane>
+                <TableView fx:id="recipieTable" layoutX="139.0" layoutY="-2.0" prefHeight="316.0" prefWidth="587.0">
+                    <columns>
+                        <TableColumn fx:id="c1" prefWidth="258.0" text=" ingredient Name" />
+                        <TableColumn fx:id="c2" minWidth="0.0" onEditCommit="#updateColumnData" prefWidth="157.0" text="Quantity" />
+                        <TableColumn fx:id="c3" prefWidth="170.0" text="Estimated price" />
+                    </columns>
+                </TableView>
+                <JFXButton id="hboxbtn" layoutX="766.0" layoutY="29.0" onAction="#delButtonEvent" prefHeight="42.0" prefWidth="131.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Delete Selected">
+                    <padding>
+                        <Insets left="-2.0" />
+                    </padding>
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </JFXButton>
+                <Label layoutX="766.0" layoutY="97.0" prefHeight="26.0" prefWidth="168.0" text="Estimated Sell Price:">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="estimatedField" editable="false" layoutX="766.0" layoutY="134.0" prefHeight="34.0" prefWidth="194.0" />
             </children>
-        </VBox>
+        </AnchorPane>
     </children>
 </AnchorPane>

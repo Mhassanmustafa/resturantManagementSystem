@@ -1,18 +1,30 @@
 package com.system.dao;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.system.Message.Messages;
 import com.system.Queries.Query;
+import com.system.config.Config;
 import com.system.dao.Interfaces.IInvoices;
 import com.system.models.Customers;
+import com.system.models.Invoices;
 import com.system.models.Ledger;
 import com.system.services.SqlConnectionServices;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.awt.*;
+import java.awt.Font;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.nio.file.Paths;
+import java.sql.*;
+import java.util.Date;
 import java.util.HashMap;
+
+import static com.system.config.Config.shopName;
 
 public class InvoicesDao implements IInvoices {
 
@@ -328,7 +340,190 @@ public class InvoicesDao implements IInvoices {
     }
 
     @Override
-    public void insertExistingLeger(Ledger ledger, int customerID) {
+    public float getLatestBalance(int customerId) {
+        float balance = 0;
 
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+
+        params.put(1 , customerId);
+        try {
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection,Query.previousBalance,params);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null) {
+                while (resultSet.next()) {
+                    balance = resultSet.getFloat(1);
+                }
+            }
+
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+        return balance;
+    }
+
+    @Override
+    public void insertExistingLeger(Ledger ledger, int customerID) {
+        float previousBlance = getLatestBalance(customerID);
+        previousBlance = previousBlance +(ledger.getDebit() - ledger.getCredit());
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+
+        params.put(1,ledger.getAccountId());
+        params.put(2,customerID);
+        params.put(3,ledger.getCustomerOrderId());
+        params.put(4,ledger.getCredit());
+        params.put(5,ledger.getDebit());
+        params.put(6,previousBlance);
+        params.put(7,ledger.getDescription());
+        params.put(8,ledger.getDate());
+
+        try {
+
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.custLedgerData,params).executeUpdate();
+
+            if(affectedRows == 0){
+                System.out.println("Value is not inserted");
+            }else {
+                System.out.println("Value inserted Successfully");
+            }
+
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+    }
+
+
+    @Override
+    public ObservableList<Integer> getAllCustomerOrderId() {
+
+        ObservableList<Integer> list = FXCollections.observableArrayList();
+        Connection connection = SqlConnectionServices.getConnection();
+
+
+        try{
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection,Query.getOrderId,null);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                while (resultSet.next()){
+                    list.add(resultSet.getInt(1));
+                }
+            }
+
+        }catch (SQLException exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+        return list;
+    }
+
+    @Override
+    public ObservableList<Invoices> getOrderHistory(int  orderId) {
+
+
+
+        ObservableList<Invoices> list = FXCollections.observableArrayList();
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+        params.put(1 , orderId);
+
+        try{
+
+            PreparedStatement preparedStatement =SqlConnectionServices.prepareAStatement(connection,Query.customerOrderHistoryQuery,params);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                while (resultSet.next()){
+                    list.add(new Invoices(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
+                            resultSet.getFloat(4),resultSet.getFloat(5),resultSet.getFloat(7),resultSet.getFloat(6),
+                            resultSet.getString(8)));
+                }
+            }
+
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+        return list;
+    }
+
+    @Override
+    public void printOrderHistory(int orderId) throws Exception {
+
+//        Document doc = new Document(PageSize.A4.rotate());
+//        Date date = new Date();
+//
+//       // String file = Paths.get(Config.OrderHistoryPdf.toAbsolutePath().toString(),
+//                String.format("OrderDetails-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
+//
+//        FileOutputStream fileStream = new FileOutputStream(file);
+//        PdfWriter writer = PdfWriter.getInstance(doc, fileStream);
+//        doc.open();
+//        doc.add(new Paragraph(Config.address, Config.font));
+//        doc.add(new Paragraph(Config.contactNumber, Config.font));
+//        doc.add(new Paragraph("Customer shop name: " + shopName, Config.simpleFont));
+//        Paragraph paraDate = new Paragraph(new Date().toString());
+//        paraDate.setAlignment(Config.alignRight);
+//        doc.add(paraDate);
+//
+//        Paragraph shopTitle = new Paragraph(shopName, Config.boldFont);
+//        shopTitle.setAlignment(Config.alignCenter);
+//        doc.add(shopTitle);
+//
+//        doc.add(new Paragraph(Config.rotateLines));
+//        doc.add(new Paragraph("The Order history is given"));
+//        doc.add(new Paragraph("\n"));
+//
+//        Connection connection = SqlConnectionServices.getConnection();
+//        HashMap<Integer , Object> params = new HashMap<>();
+//
+//
+//        params.put(1 , orderId);
+//
+//        PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.customerOrderHistoryQuery, params);
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//
+//        ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+//        PdfPTable table = new PdfPTable(resultSetMetaData.getColumnCount());
+//        table.setWidthPercentage(100);
+//
+//        String header[] = {"Invoice Id", "Customer Name","product Name","Unit price","Quantity", "Amount" ,"Discount","Date"};
+//        for (int i = 0; i < header.length; i++) {
+//            PdfPCell pdfPCell = new PdfPCell(new Paragraph(header[i], FontFactory.getFont(FontFactory.HELVETICA, 11, Font.BOLD
+//                    , BaseColor.DARK_GRAY)));
+//            table.addCell(pdfPCell);
+//        }
+//
+//        while (resultSet.next()) {
+//            for (int i = 1; i <= resultSetMetaData.getColumnCount(); i++) {
+//                PdfPCell cell = new PdfPCell(new Paragraph(resultSet.getString(i)));
+//                table.addCell(cell);
+//            }
+//        }
+//
+//        doc.add(table);
+//        doc.addCreationDate();
+//        doc.close();
+//        writer.close();
+//        Desktop d = Desktop.getDesktop();
+//        d.open(new File(file));
+//        Messages.getAlert("Exported to Pdf please Wait while file is opening");
+//    }
     }
 }

@@ -1,20 +1,39 @@
 package com.system.controllers;
 
 import animatefx.animation.SlideInDown;
+import com.system.Message.Messages;
 import com.system.config.Config;
+import com.system.dao.AccountManagementDao;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SettingsController implements Initializable {
+
+    @FXML
+    private PasswordField oldPassword;
+
+    @FXML
+    private PasswordField newPassword;
+
+    @FXML
+    private PasswordField retypePassword;
+
+    @FXML
+    private TextField userName;
+
 
     //button event for the home button use to change the scene and come to dashBoard
     public void homeButtonEvent(ActionEvent event)throws IOException {
@@ -80,6 +99,26 @@ public class SettingsController implements Initializable {
         scene2.show();
         new SlideInDown(root).play();
     }
+    public void updateButtonEvent(){
+        AccountManagementDao accountManagementDao = new AccountManagementDao();
+        if(userName.getText().trim().isEmpty() || oldPassword.getText().trim().isEmpty()||newPassword.getText().trim().isEmpty()
+                ||retypePassword.getText().trim().isEmpty()){
+            Messages.getWarning("Please fill All Fields");
+        }else if(newPassword.getText().equals(retypePassword.getText())) {
+            String newPasswordResult = DigestUtils.md5Hex(newPassword.getText());
+            String oldPasswordResult = DigestUtils.md5Hex(oldPassword.getText());
+            accountManagementDao.UpdatePassword(userName.getText(),newPasswordResult,oldPasswordResult);
+            userName.clear();
+            oldPassword.clear();
+            newPassword.clear();
+            retypePassword.clear();
+        }else if(!(newPassword.getText().equals(retypePassword.getText()))){
+            Messages.getWarning("new password and retype password don not match try again");
+            newPassword.clear();
+            retypePassword.clear();
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

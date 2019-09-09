@@ -30,5 +30,9 @@ public class Config {
     public static final String rotateLines = "-------------------------------------------------------------------------------" +
             "----------------------------------------------------------------------------------------------------------------"; //decoration
     public static final String contactNumber = "Contact no : 0303-5992887";
+    public static final Font boldFont = FontFactory.getFont(FontFactory.HELVETICA, 20, Font.BOLD
+            , BaseColor.DARK_GRAY);
+    public static final Font simpleFont = FontFactory.getFont(FontFactory.HELVETICA,13, BaseColor.BLACK);
+    public static final Path billsPdf = Paths.get("\\resturantManagementSystem\\ReportsAndSheets\\Bills");
 
 }

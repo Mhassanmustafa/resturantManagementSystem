@@ -1,6 +1,7 @@
 package com.system.dao.Interfaces;
 
 import com.system.models.Customers;
+import com.system.models.Invoices;
 import com.system.models.Ledger;
 import javafx.collections.ObservableList;
 
@@ -18,4 +19,8 @@ public interface IInvoices {
     public float getStockAvailableQuantity(int ProductId);
     public void insertNewStockHistory (int productId,float totalQuantity,String description,String date);
     public void insertExistingLeger(Ledger ledger, int customerID);
+    public float getLatestBalance(int customerId);
+    public ObservableList<Integer> getAllCustomerOrderId();
+    public ObservableList<Invoices> getOrderHistory(int  orderId);
+    public void printOrderHistory(int orderId) throws Exception;
 }

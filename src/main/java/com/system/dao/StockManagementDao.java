@@ -169,11 +169,11 @@ public class StockManagementDao implements IStockManagement {
 
     @Override
     public void printStockDetails() throws Exception {
-        Document doc = new Document(PageSize.A8);
+        Document doc = new Document(PageSize.A4.rotate());
         Date date = new Date();
         if(!Files.exists(Config.stockDetailPath)){
             Files.createDirectories(Config.stockDetailPath);
-        }else{
+        }
 
             String file = Paths.get(Config.stockDetailPath.toAbsolutePath().toString(),
                     String.format("StockDetailsReport-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
@@ -230,7 +230,7 @@ public class StockManagementDao implements IStockManagement {
             Desktop d = Desktop.getDesktop();
             d.open(new File(file));
             Messages.getAlert("Exported to Pdf please Wait while file is opening");
-        }
+
 
     }
 }

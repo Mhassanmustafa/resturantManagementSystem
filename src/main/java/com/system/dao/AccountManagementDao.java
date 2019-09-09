@@ -300,4 +300,85 @@ public class AccountManagementDao implements IAccountManagement {
 
         return customer;
     }
+
+
+    @Override
+    public void UpdatePassword(String userName, String password,String oldPassword) {
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+
+        params.put(1,password);
+        params.put(2,userName);
+        params.put(3,oldPassword);
+
+        try{
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.updateAdminPassword,params).executeUpdate();
+
+            if(affectedRows == 0){
+                Messages.getWarning("User Name is Wrong");
+            }else{
+                Messages.getAlert("Password Updated Successfully");
+            }
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+    }
+
+
+    @Override
+    public Boolean adminLogIn(String userName, String password) {
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+
+        params.put(1,userName);
+        params.put(2,password);
+
+        try{
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection,Query.adminLogIn,params);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()){
+                return true;
+            }
+
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+        return false;
+    }
+
+    @Override
+    public Boolean employeeLogIn(String userName, String password) {
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+
+        params.put(1,userName);
+        params.put(2,password);
+
+        try{
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection,Query.employeeLogIn,params);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()){
+                return true;
+            }
+
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+        return false;
+    }
 }

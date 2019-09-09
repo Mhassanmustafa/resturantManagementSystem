@@ -2,6 +2,7 @@ package com.system.controllers.Invoice;
 
 import animatefx.animation.SlideInDown;
 import com.jfoenix.controls.JFXComboBox;
+import com.system.InvoiceGenerator.InvoicesGenerator;
 import com.system.Message.Messages;
 import com.system.config.Config;
 import com.system.dao.AccountManagementDao;
@@ -31,6 +32,9 @@ import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -90,6 +94,8 @@ public class NewInvoiceController implements Initializable {
     ProductManagementDao productManagementDao = new ProductManagementDao();
     InvoicesDao invoicesDao = new InvoicesDao();
     AccountManagementDao accountManagementDao = new AccountManagementDao();
+    InvoicesGenerator generator = new InvoicesGenerator();
+    Date date = new Date();
 
 
     ObservableList<String> productList = FXCollections.observableArrayList(productManagementDao.getRecipieNames());
@@ -349,7 +355,7 @@ public class NewInvoiceController implements Initializable {
 
     }
 
-    public void callExistingCustomerInvoice(){
+    public void callExistingCustomerInvoice() throws Exception{
         Customers customer = accountManagementDao.getCustomerInfo(customerName.getText(),phoneNoField.getText());
         int customerId = customer.getId();
         float amountPaid = getAmountPaid();
@@ -384,12 +390,21 @@ public class NewInvoiceController implements Initializable {
         ledger.setDebit( amountPaid);
         ledger.setDescription("Bill added");
         ledger.setDate(java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
-        //invoicesDao.insertExistingData(ledger);
+        invoicesDao.insertExistingLeger(ledger,customerId);
+        if(!Files.exists(Config.billsPdf)){
+            Files.createDirectories(Config.billsPdf);
+        }
+
+        String file = Paths.get(Config.billsPdf.toAbsolutePath().toString(),
+                String.format(customerName.getText() + "-Bill-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
+        generator.createPDF(file, tableData, Integer.toString(orderId), java.time.LocalDate.now().toString()
+                , customer, netAmount.getText(), subTotal.getText(), discount.getText(), Float.toString(amountPaid));
+        clearAllFields();
         clearAllFields();
     }
 
 
-    public void callNewCustomerInvoice(){
+    public void callNewCustomerInvoice() throws Exception{
         Customers customer = getNewCustomer();
         float amountPaid = getAmountPaid();
         invoicesDao.addnewCustomer(customer);
@@ -430,11 +445,22 @@ public class NewInvoiceController implements Initializable {
         invoicesDao.insertLedgerData(ledger);
         customerNamesList.add(customerName.getText());
         customerPhoneList.add(phoneNoField.getText());
+
+        if(!Files.exists(Config.billsPdf)){
+            Files.createDirectories(Config.billsPdf);
+        }
+
+        String file = Paths.get(Config.billsPdf.toAbsolutePath().toString(),
+                String.format(customerName.getText() + "-Bill-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
+        generator.createPDF(file, tableData, Integer.toString(orderId), java.time.LocalDate.now().toString()
+                , customer, netAmount.getText(), subTotal.getText(), discount.getText(), Float.toString(amountPaid));
         clearAllFields();
+
+
     }
 
     //print button action
-    public void printAction() {
+    public void printAction() throws Exception {
         if (customerName.getText().trim().isEmpty() || invoiceTable.getItems().isEmpty() || netAmount.getText().trim().isEmpty()) {
             Messages.getWarning("Please enter Customer  name or date or table data first");
         } else {
