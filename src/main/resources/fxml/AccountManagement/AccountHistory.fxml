@@ -151,25 +151,17 @@
                                             <columns>
                                                 <TableColumn fx:id="c1" prefWidth="53.0" text="Id" />
                                                 <TableColumn fx:id="c2" prefWidth="144.0" text="Customer Name" />
-                                                <TableColumn fx:id="c3" prefWidth="186.0" text="Shop Address" />
-                                                <TableColumn fx:id="c4" prefWidth="107.0" text="Phone No" />
+                                                <TableColumn fx:id="c3" prefWidth="164.0" text="Visted Shop" />
+                                                <TableColumn fx:id="c4" prefWidth="129.0" text="Phone No" />
                                                 <TableColumn fx:id="c5" prefWidth="101.0" text="Credit" />
                                                 <TableColumn fx:id="c6" prefWidth="101.0" text="Debit" />
-                                                <TableColumn fx:id="c7" minWidth="0.0" prefWidth="171.0" text="Balance" />
-                                                <TableColumn fx:id="c8" prefWidth="121.0" text="date" />
+                                                <TableColumn fx:id="c7" minWidth="0.0" prefWidth="141.0" text="Balance" />
+                                                <TableColumn fx:id="c8" prefWidth="151.0" text="date" />
                                             </columns>
                                         </TableView>
                                     </children>
                                 </VBox>
-                                <HBox layoutX="847.0" layoutY="430.0" prefHeight="30.0" prefWidth="107.0" spacing="14.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="847.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="430.0">
-                                    <children>
-                                        <JFXButton id="hboxbtn" prefHeight="16.0" prefWidth="107.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Save">
-                                            <font>
-                                                <Font size="14.0" />
-                                            </font>
-                                        </JFXButton>
-                                    </children>
-                                </HBox>
+                                <HBox layoutX="847.0" layoutY="430.0" prefHeight="30.0" prefWidth="107.0" spacing="14.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="847.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="430.0" />
                             </children>
                         </AnchorPane>
                     </content>

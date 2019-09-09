@@ -17,5 +17,6 @@ public interface IAccountManagement {
     public void UpdatePassword(String userName, String password,String oldPassword);
     public Boolean adminLogIn(String userName, String password);
     public Boolean employeeLogIn(String userName, String password);
+    public ObservableList<Customers> getCustomersData(String custName,String phoneNo);
 
 }

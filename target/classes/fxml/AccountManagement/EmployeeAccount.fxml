@@ -337,8 +337,8 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <VBox AnchorPane.bottomAnchor="384.0" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="229.0" AnchorPane.topAnchor="62.0">
-                                    <children>
+                        <VBox layoutX="195.0" layoutY="27.0" spacing="11.0">
+                           <children>
                                         <HBox>
                                             <children>
                                                 <Label prefHeight="29.0" prefWidth="138.0" text="Customer Name:">
@@ -346,38 +346,38 @@
                                                         <Font size="17.0" />
                                                     </font>
                                                 </Label>
-                                                <TextField fx:id="viewAccountNameField" prefHeight="25.0" prefWidth="346.0" promptText="Maching Name appear upon typing" />
+                                                <TextField fx:id="custNameField" prefHeight="25.0" prefWidth="346.0" promptText="Maching Name appear upon typing" />
                                             </children>
                                         </HBox>
-                                    </children>
-                                </VBox>
-                                <JFXButton id="hboxbtn" layoutX="705.0" layoutY="61.0" prefHeight="16.0" prefWidth="107.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Search">
+                              <HBox>
+                                 <children>
+                                    <Label prefHeight="29.0" prefWidth="138.0" text="Customer Phno:">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="custPhoneField" prefHeight="25.0" prefWidth="346.0" promptText="Maching No appear upon typing" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                                <JFXButton id="hboxbtn" layoutX="699.0" layoutY="47.0" onAction="#getSearchData" prefHeight="16.0" prefWidth="107.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Search">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </JFXButton>
-                                <TableView fx:id="table" layoutY="100.0" prefHeight="318.0" prefWidth="964.0" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="100.0">
+                                <TableView fx:id="table" layoutY="100.0" prefHeight="324.0" prefWidth="976.0" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="91.0" AnchorPane.topAnchor="100.0">
                                     <columns>
-                                        <TableColumn fx:id="c1" prefWidth="52.0" text="Id" />
-                                        <TableColumn fx:id="c2" prefWidth="97.0" text="Phone No" />
-                                        <TableColumn fx:id="c3" prefWidth="118.0" text="Designation" />
-                                        <TableColumn fx:id="c4" minWidth="18.0" prefWidth="97.0" text="Salary" />
-                                        <TableColumn fx:id="c7" minWidth="18.0" prefWidth="82.0" text="credit" />
-                                        <TableColumn fx:id="c8" minWidth="18.0" prefWidth="97.0" text="debit" />
-                                        <TableColumn fx:id="c9" minWidth="18.0" prefWidth="126.0" text="Balance" />
-                                        <TableColumn fx:id="c10" minWidth="18.0" prefWidth="213.0" text="Description" />
-                                        <TableColumn fx:id="c11" minWidth="18.0" prefWidth="172.0" text="Date" />
+                                        <TableColumn fx:id="c1" prefWidth="66.0" text="Id" />
+                                        <TableColumn fx:id="c2" prefWidth="157.0" text="Customer Name" />
+                                        <TableColumn fx:id="c3" prefWidth="142.0" text="Phone no" />
+                                        <TableColumn fx:id="c4" minWidth="18.0" prefWidth="111.0" text="Last Order Id" />
+                                        <TableColumn fx:id="c5" minWidth="18.0" prefWidth="117.0" text="credit" />
+                                        <TableColumn fx:id="c6" minWidth="18.0" prefWidth="125.0" text="debit" />
+                                        <TableColumn fx:id="c7" minWidth="18.0" prefWidth="112.0" text="Balance" />
+                                        <TableColumn fx:id="c8" minWidth="18.0" prefWidth="145.0" text="Visted before" />
                                     </columns>
                                 </TableView>
-                                <HBox layoutX="846.0" layoutY="430.0" prefHeight="30.0" prefWidth="108.0" spacing="14.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="846.0" AnchorPane.rightAnchor="21.0">
-                                    <children>
-                                        <JFXButton id="hboxbtn" prefHeight="16.0" prefWidth="107.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Save">
-                                            <font>
-                                                <Font size="14.0" />
-                                            </font>
-                                        </JFXButton>
-                                    </children>
-                                </HBox>
                             </children></AnchorPane>
                     </content>
                 </Tab>

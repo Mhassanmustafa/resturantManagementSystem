@@ -2,12 +2,21 @@ package com.system.controllers.AccountManagement;
 
 import animatefx.animation.SlideInDown;
 import com.system.config.Config;
+import com.system.dao.AccountManagementDao;
+import com.system.models.Customers;
+import com.system.models.Employee;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,6 +25,45 @@ import java.util.ResourceBundle;
 
 public class AccountHistoryController implements Initializable {
 
+    @FXML
+    private TableView<Customers> customerTable;
+    @FXML
+    private TableColumn<Customers ,String> c1;
+    @FXML
+    private TableColumn<Customers ,String> c2;
+    @FXML
+    private TableColumn<Customers ,String> c3;
+    @FXML
+    private TableColumn<Customers ,String> c4;
+    @FXML
+    private TableColumn<Customers ,String> c5;
+    @FXML
+    private TableColumn<Customers ,String> c6;
+    @FXML
+    private TableColumn<Customers ,String> c7;
+    @FXML
+    private TableColumn<Customers,String> c8;
+
+    //table 2
+    @FXML
+    private TableView<Employee> EmployeeTable1;
+    @FXML
+    private TableColumn<Employee ,String> ec1;
+    @FXML
+    private TableColumn<Employee,String> ec2;
+    @FXML
+    private TableColumn<Employee ,String> ec3;
+    @FXML
+    private TableColumn<Employee ,String> ec4;
+    @FXML
+    private TableColumn<Employee ,String> ec5;
+    @FXML
+    private TableColumn<Employee ,String> ec6;
+
+    AccountManagementDao accountManagementDao = new AccountManagementDao();
+
+    ObservableList<Customers> customerTableList = FXCollections.observableArrayList(accountManagementDao.getAllCustomersData());
+    ObservableList<Employee> empSalaryList = FXCollections.observableArrayList(accountManagementDao.getAllSalaryHistory());
 
     //button event for the home button use to change the scene and come to dashBoard
     public void homeButtonEvent(ActionEvent event)throws IOException {
@@ -102,8 +150,34 @@ public class AccountHistoryController implements Initializable {
         scene2.show();
     }
 
+    public void setCustomerTableColmn(){
+        c1.setCellValueFactory(new PropertyValueFactory<Customers , String>("id"));
+        c2.setCellValueFactory(new PropertyValueFactory<Customers , String>("name"));
+        c3.setCellValueFactory(new PropertyValueFactory<Customers , String>("vistedShop"));
+        c4.setCellValueFactory(new PropertyValueFactory<Customers , String>("phoneNumber"));
+        c5.setCellValueFactory(new PropertyValueFactory<Customers , String>("credit"));
+        c6.setCellValueFactory(new PropertyValueFactory<Customers , String>("debit"));
+        c7.setCellValueFactory(new PropertyValueFactory<Customers , String>("balance"));
+        c8.setCellValueFactory(new PropertyValueFactory<Customers , String>("dat"));
+    }
+
+    public void setEmployeeTableData(){
+        ec1.setCellValueFactory(new PropertyValueFactory<Employee , String>("id"));
+        ec2.setCellValueFactory(new PropertyValueFactory<Employee , String>("name"));
+        ec3.setCellValueFactory(new PropertyValueFactory<Employee , String>("phNo"));
+        ec4.setCellValueFactory(new PropertyValueFactory<Employee , String>("designation"));
+        ec5.setCellValueFactory(new PropertyValueFactory<Employee , String>("basicSalary"));
+        ec6.setCellValueFactory(new PropertyValueFactory<Employee , String>("date"));
+    }
+
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        setCustomerTableColmn();
+        customerTable.setItems(customerTableList);
+        setEmployeeTableData();
+        EmployeeTable1.setItems(empSalaryList);
     }
 }

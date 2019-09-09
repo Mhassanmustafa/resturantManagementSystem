@@ -12,6 +12,8 @@ public class Customers {
     private float credit;
     private float debit;
     private float balance;
+    private int OrderId;
+    private int vistedShop;
 
     public Customers(int id, String name, String shopName, String phoneNumber, String emailAddress, String dat) {
         this.id = id;
@@ -44,15 +46,26 @@ public class Customers {
         this.dat = dat;
     }
 
-    public Customers(int id, String name, String shopName, String phoneNumber, float credit, float debit, float balance , String dat) {
+    public Customers(int id, String name, int vistedShop, String phoneNumber, float credit, float debit, float balance , String dat) {
         this.id = id;
         this.name = name;
-        this.shopName = shopName;
+        this.vistedShop = vistedShop;
         this.phoneNumber = phoneNumber;
         this.credit = credit;
         this.debit = debit;
         this.balance = balance;
         this.dat = dat;
+    }
+
+    public Customers(int id, String name, String phoneNumber, int orderId, float credit, float debit, float balance, int vistedShop) {
+        this.id = id;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.credit = credit;
+        this.debit = debit;
+        this.balance = balance;
+        OrderId = orderId;
+        this.vistedShop = vistedShop;
     }
 
     public Customers() {
@@ -96,6 +109,22 @@ public class Customers {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    public int getOrderId() {
+        return OrderId;
+    }
+
+    public void setOrderId(int orderId) {
+        OrderId = orderId;
+    }
+
+    public int getVistedShop() {
+        return vistedShop;
+    }
+
+    public void setVistedShop(int vistedShop) {
+        this.vistedShop = vistedShop;
     }
 
     public String getDat() {

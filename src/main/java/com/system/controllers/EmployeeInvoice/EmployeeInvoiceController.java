@@ -155,9 +155,16 @@ public class EmployeeInvoiceController implements Initializable {
 
     //get new Customer
     public Customers getNewCustomer(){
+        Date date = new Date();
         Customers customer  = new Customers();
         customer.setName(customerName.getText());
-        customer.setPhoneNumber(phoneNoField.getText());
+        String ph ;
+        if(phoneNoField.getText().trim().isEmpty()){
+            ph = "null";
+        }else{
+            ph = phoneNoField.getText();
+        }
+        customer.setPhoneNumber(ph);
         return customer;
     }
 
@@ -300,7 +307,14 @@ public class EmployeeInvoiceController implements Initializable {
     }
 
     public void callExistingCustomerInvoice() throws Exception{
-        Customers customer = accountManagementDao.getCustomerInfo(customerName.getText(),phoneNoField.getText());
+        Date date = new Date();
+        String ph ;
+        if(phoneNoField.getText().trim().isEmpty()){
+            ph = "null";
+        }else{
+            ph = phoneNoField.getText();
+        }
+        Customers customer = accountManagementDao.getCustomerInfo(customerName.getText(),ph);
         int customerId = customer.getId();
         float amountPaid = getAmountPaid();
 
@@ -349,11 +363,17 @@ public class EmployeeInvoiceController implements Initializable {
 
 
     public void callNewCustomerInvoice() throws Exception{
+        Date date = new Date();
         Customers customer = getNewCustomer();
         float amountPaid = getAmountPaid();
         invoicesDao.addnewCustomer(customer);
-
-        Customers currentCustomer = accountManagementDao.getCustomerInfo(customerName.getText(),phoneNoField.getText());
+        String ph ;
+        if(phoneNoField.getText().trim().isEmpty()){
+            ph = "null";
+        }else{
+            ph = phoneNoField.getText();
+        }
+        Customers currentCustomer = accountManagementDao.getCustomerInfo(customerName.getText(),ph);
         int customerId = currentCustomer.getId();
         invoicesDao.addNewOrder(customerId,java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
 

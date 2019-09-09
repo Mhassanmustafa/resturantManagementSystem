@@ -213,7 +213,13 @@ public class NewInvoiceController implements Initializable {
     public Customers getNewCustomer(){
         Customers customer  = new Customers();
         customer.setName(customerName.getText());
-        customer.setPhoneNumber(phoneNoField.getText());
+        String ph;
+        if(phoneNoField.getText().trim().isEmpty()){
+            ph = "null";
+        }else{
+            ph = phoneNoField.getText();
+        }
+        customer.setPhoneNumber(ph);
         return customer;
     }
 
@@ -356,7 +362,14 @@ public class NewInvoiceController implements Initializable {
     }
 
     public void callExistingCustomerInvoice() throws Exception{
-        Customers customer = accountManagementDao.getCustomerInfo(customerName.getText(),phoneNoField.getText());
+        Date date = new Date();
+        String ph ;
+        if(phoneNoField.getText().trim().isEmpty()){
+            ph = "null";
+        }else{
+            ph = phoneNoField.getText();
+        }
+        Customers customer = accountManagementDao.getCustomerInfo(customerName.getText(),ph);
         int customerId = customer.getId();
         float amountPaid = getAmountPaid();
 
@@ -391,6 +404,7 @@ public class NewInvoiceController implements Initializable {
         ledger.setDescription("Bill added");
         ledger.setDate(java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
         invoicesDao.insertExistingLeger(ledger,customerId);
+
         if(!Files.exists(Config.billsPdf)){
             Files.createDirectories(Config.billsPdf);
         }
@@ -400,16 +414,24 @@ public class NewInvoiceController implements Initializable {
         generator.createPDF(file, tableData, Integer.toString(orderId), java.time.LocalDate.now().toString()
                 , customer, netAmount.getText(), subTotal.getText(), discount.getText(), Float.toString(amountPaid));
         clearAllFields();
-        clearAllFields();
+
     }
 
 
     public void callNewCustomerInvoice() throws Exception{
+        Date date = new Date();
         Customers customer = getNewCustomer();
         float amountPaid = getAmountPaid();
         invoicesDao.addnewCustomer(customer);
 
-        Customers currentCustomer = accountManagementDao.getCustomerInfo(customerName.getText(),phoneNoField.getText());
+        String ph ;
+        if(phoneNoField.getText().trim().isEmpty()){
+            ph = "null";
+        }else{
+            ph = phoneNoField.getText();
+        }
+
+        Customers currentCustomer = accountManagementDao.getCustomerInfo(customerName.getText(),ph);
         int customerId = currentCustomer.getId();
         invoicesDao.addNewOrder(customerId,java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
 

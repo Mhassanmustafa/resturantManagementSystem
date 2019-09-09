@@ -292,4 +292,134 @@ public class Query {
     public static final String updateAdminPassword = "UPDATE Admin SET password = ? WHERE userName =? and password = ?";
     public static final String adminLogIn = "select * from admin where userName = ? and password = ?";
     public static final String employeeLogIn = "select * from empLogIn where userName = ? and password = ?";
+    public static final String getCustomerDetails = "SELECT TOP 1 customer.id, \n" +
+            "             customer.NAME, \n" +
+            "             customer.phoneno, \n" +
+            "             (SELECT TOP 1 customerorder.id \n" +
+            "              FROM   customerorder \n" +
+            "              WHERE  customer.id = customerorder.customerid \n" +
+            "              ORDER  BY date DESC)                AS LastOrderId, \n" +
+            "             (SELECT TOP 1 ledger.credit \n" +
+            "              FROM   ledger \n" +
+            "              WHERE  customer.id = ledger.custid \n" +
+            "              ORDER  BY date DESC)                AS credit, \n" +
+            "             (SELECT TOP 1 ledger.debit \n" +
+            "              FROM   ledger \n" +
+            "              WHERE  customer.id = ledger.custid \n" +
+            "              ORDER  BY date DESC)                AS debit, \n" +
+            "             (SELECT TOP 1 ledger.balance \n" +
+            "              FROM   ledger \n" +
+            "              WHERE  customer.id = ledger.custid \n" +
+            "              ORDER  BY date DESC)                AS balance, \n" +
+            "             (SELECT Count(custid) \n" +
+            "              FROM   ledger \n" +
+            "              WHERE  customer.id = ledger.custid) AS visted \n" +
+            "FROM   customer \n" +
+            "       INNER JOIN customerorder \n" +
+            "               ON customer.id = customerorder.customerid \n" +
+            "       INNER JOIN ledger \n" +
+            "               ON customer.id = ledger.custid \n" +
+            "WHERE  customer.NAME = ? \n" +
+            "       AND customer.phoneno = ? ";
+
+    public static final String getCustomerDetailsByPh = "SELECT TOP 1 customer.id, \n" +
+            "             customer.NAME, \n" +
+            "             customer.phoneno, \n" +
+            "             (SELECT TOP 1 customerorder.id \n" +
+            "              FROM   customerorder \n" +
+            "              WHERE  customer.id = customerorder.customerid \n" +
+            "              ORDER  BY date DESC)                AS LastOrderId, \n" +
+            "             (SELECT TOP 1 ledger.credit \n" +
+            "              FROM   ledger \n" +
+            "              WHERE  customer.id = ledger.custid \n" +
+            "              ORDER  BY date DESC)                AS credit, \n" +
+            "             (SELECT TOP 1 ledger.debit \n" +
+            "              FROM   ledger \n" +
+            "              WHERE  customer.id = ledger.custid \n" +
+            "              ORDER  BY date DESC)                AS debit, \n" +
+            "             (SELECT TOP 1 ledger.balance \n" +
+            "              FROM   ledger \n" +
+            "              WHERE  customer.id = ledger.custid \n" +
+            "              ORDER  BY date DESC)                AS balance, \n" +
+            "             (SELECT Count(custid) \n" +
+            "              FROM   ledger \n" +
+            "              WHERE  customer.id = ledger.custid) AS visted \n" +
+            "FROM   customer \n" +
+            "       INNER JOIN customerorder \n" +
+            "               ON customer.id = customerorder.customerid \n" +
+            "       INNER JOIN ledger \n" +
+            "               ON customer.id = ledger.custid \n" +
+            "WHERE  \n" +
+            "        customer.phoneno = ? ";
+
+    public static final String getCustomerDetailsByName = "SELECT TOP 1 customer.id, \n" +
+            "             customer.NAME, \n" +
+            "             customer.phoneno, \n" +
+            "             (SELECT TOP 1 customerorder.id \n" +
+            "              FROM   customerorder \n" +
+            "              WHERE  customer.id = customerorder.customerid \n" +
+            "              ORDER  BY date DESC)                AS LastOrderId, \n" +
+            "             (SELECT TOP 1 ledger.credit \n" +
+            "              FROM   ledger \n" +
+            "              WHERE  customer.id = ledger.custid \n" +
+            "              ORDER  BY date DESC)                AS credit, \n" +
+            "             (SELECT TOP 1 ledger.debit \n" +
+            "              FROM   ledger \n" +
+            "              WHERE  customer.id = ledger.custid \n" +
+            "              ORDER  BY date DESC)                AS debit, \n" +
+            "             (SELECT TOP 1 ledger.balance \n" +
+            "              FROM   ledger \n" +
+            "              WHERE  customer.id = ledger.custid \n" +
+            "              ORDER  BY date DESC)                AS balance, \n" +
+            "             (SELECT Count(custid) \n" +
+            "              FROM   ledger \n" +
+            "              WHERE  customer.id = ledger.custid) AS visted \n" +
+            "FROM   customer \n" +
+            "       INNER JOIN customerorder \n" +
+            "               ON customer.id = customerorder.customerid \n" +
+            "       INNER JOIN ledger \n" +
+            "               ON customer.id = ledger.custid \n" +
+            "WHERE  \n" +
+            "        customer.name = ? ";
+
+
+    public  static final String getAllCustomersDetails = "SELECT cus.id, \n" +
+            "       cus.NAME, \n" +
+            "       (SELECT Count(custid) \n" +
+            "        FROM   ledger \n" +
+            "        WHERE  cus.id = ledger.custid) AS shopVisted, \n" +
+            "       cus.phoneno, \n" +
+            "       (SELECT TOP 1 led.credit \n" +
+            "        FROM   ledger AS led \n" +
+            "        WHERE  cus.id = led.custid \n" +
+            "        ORDER  BY date DESC)           AS credit, \n" +
+            "       (SELECT TOP 1 led.debit \n" +
+            "        FROM   ledger AS led \n" +
+            "        WHERE  cus.id = led.custid \n" +
+            "        ORDER  BY date DESC)           AS debit, \n" +
+            "       (SELECT TOP 1 led.balance \n" +
+            "        FROM   ledger AS led \n" +
+            "        WHERE  cus.id = led.custid \n" +
+            "        ORDER  BY date DESC)           AS balance, \n" +
+            "       (SELECT TOP 1 led.date \n" +
+            "        FROM   ledger AS led \n" +
+            "        WHERE  cus.id = led.custid \n" +
+            "        ORDER  BY date DESC)           AS date \n" +
+            "FROM   customer AS cus ";
+
+
+    public static final String getSalaryDetails = "SELECT employee.id, \n" +
+            "       employee.NAME, \n" +
+            "       employee.phoneno, \n" +
+            "       employee.designation, \n" +
+            "       (SELECT TOP 1 salaryhistory.basicsalary \n" +
+            "        FROM   salaryhistory \n" +
+            "        WHERE  salaryhistory.employeeid = employee.id \n" +
+            "        ORDER  BY salaryhistory.date DESC) AS basicSalary, \n" +
+            "       (SELECT TOP 1 salaryhistory.date \n" +
+            "        FROM   salaryhistory \n" +
+            "        WHERE  salaryhistory.employeeid = employee.id \n" +
+            "        ORDER  BY salaryhistory.date DESC) AS date \n" +
+            "FROM   employee ";
+
 }

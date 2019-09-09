@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -14,13 +16,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="882.0" style="-fx-background-color: gray;" stylesheets="@../../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.system.controllers.EmployeeInvoice.EmpLoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="882.0" style="-fx-background-color: rgb(255,168,29);" stylesheets="@../../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.system.controllers.EmployeeInvoice.EmpLoginController">
     <children>
         <VBox layoutX="503.0" layoutY="28.0" prefHeight="487.0" prefWidth="345.0">
             <children>
                 <Pane prefHeight="498.0" prefWidth="345.0" style="-fx-background-color: #fff; -fx-background-radius: 50 50 0% 0%;">
                     <children>
-                        <HBox alignment="CENTER" layoutY="437.0" prefHeight="49.0" prefWidth="345.0" style="-fx-background-color: #96cb7f;">
+                        <HBox alignment="CENTER" layoutY="437.0" prefHeight="49.0" prefWidth="345.0" style="-fx-background-color: rgb(54,54,54);">
                             <children>
                                 <Label text="Please Enter User Name or Password to Log in">
                                     <textFill>
@@ -39,7 +41,7 @@
                         </HBox>
                         <VBox alignment="CENTER" layoutX="3.0" layoutY="137.0" prefHeight="66.0" prefWidth="345.0">
                             <children>
-                                <Label text="SK Enterprises">
+                                <Label prefHeight="26.0" prefWidth="126.0" text="BIG BNG BRGR">
                                     <font>
                                         <Font name="System Bold" size="17.0" />
                                     </font>
@@ -73,6 +75,11 @@
             </children>
         </VBox>
         <Button layoutX="848.0" layoutY="2.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: light gray;" />
+      <ImageView fitHeight="493.0" fitWidth="505.0" layoutX="14.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="381.0" AnchorPane.topAnchor="21.0">
+         <image>
+            <Image url="@../../images/image.png" />
+         </image>
+      </ImageView>
     </children>
     <styleClass>
         <String fx:value="parent" />

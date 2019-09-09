@@ -111,7 +111,7 @@
         </Pane>
         <HBox alignment="TOP_CENTER" layoutX="249.0" layoutY="80.0" prefHeight="78.0" prefWidth="1009.0" AnchorPane.bottomAnchor="537.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.0">
             <children>
-                <JFXButton id="hboxbtn" onAction="#EmployeeAccountButtonEvent" prefHeight="43.0" prefWidth="175.0" styleClass="hboxbtn" stylesheets="@../css/stylesheet.css" text="Employee Account">
+                <JFXButton id="hboxbtn" onAction="#EmployeeAccountButtonEvent" prefHeight="43.0" prefWidth="175.0" styleClass="hboxbtn" stylesheets="@../css/stylesheet.css" text="Accounts">
                     <HBox.margin>
                         <Insets bottom="1.0" left="37.0" right="3.0" top="15.0" />
                     </HBox.margin>

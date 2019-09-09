@@ -2,6 +2,7 @@ package com.system;
 
 
 import animatefx.animation.SlideInDown;
+import com.system.config.Config;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,10 +13,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/LogIn.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashBoard.fxml"));
 
         primaryStage.setTitle("Resturant Management System");
-        primaryStage.setScene(new Scene(root, 882,543));
+        primaryStage.setScene(new Scene(root, Config.width,Config.height));
         primaryStage.setResizable(false);
         primaryStage.show();
 

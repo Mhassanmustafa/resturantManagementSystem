@@ -381,4 +381,164 @@ public class AccountManagementDao implements IAccountManagement {
         }
         return false;
     }
+
+    @Override
+    public ObservableList<Customers> getCustomersData(String custName, String phoneNo) {
+        ObservableList<Customers> list = FXCollections.observableArrayList();
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+        params.put(1,custName);
+        params.put(2,phoneNo);
+
+
+        try{
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.getCustomerDetails,params);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                while (resultSet.next()){
+                    list.add(new Customers(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3)
+                    ,resultSet.getInt(4),resultSet.getFloat(5),resultSet.getFloat(6),resultSet.getFloat(7),
+                            resultSet.getInt(8)));
+                }
+            }
+
+        }catch (SQLException exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+        return list;
+    }
+
+    public ObservableList<Customers> getCustomersDataByPh( String phoneNo) {
+        ObservableList<Customers> list = FXCollections.observableArrayList();
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+
+        params.put(1,phoneNo);
+
+
+        try{
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.getCustomerDetailsByPh,params);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                while (resultSet.next()){
+                    list.add(new Customers(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3)
+                            ,resultSet.getInt(4),resultSet.getFloat(5),resultSet.getFloat(6),resultSet.getFloat(7),
+                            resultSet.getInt(8)));
+                }
+            }
+
+        }catch (SQLException exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+        return list;
+    }
+    public ObservableList<Customers> getCustomersDataByName( String name) {
+
+        ObservableList<Customers> list = FXCollections.observableArrayList();
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+
+        params.put(1,name);
+
+
+        try{
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.getCustomerDetailsByName,params);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                while (resultSet.next()){
+                    list.add(new Customers(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3)
+                            ,resultSet.getInt(4),resultSet.getFloat(5),resultSet.getFloat(6),resultSet.getFloat(7),
+                            resultSet.getInt(8)));
+                }
+            }
+
+        }catch (SQLException exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+        return list;
+    }
+
+    public ObservableList<Customers> getAllCustomersData() {
+
+        ObservableList<Customers> list = FXCollections.observableArrayList();
+
+        Connection connection = SqlConnectionServices.getConnection();
+
+
+
+        try{
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection,Query.getAllCustomersDetails,null);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                while (resultSet.next()){
+                    list.add(new Customers(resultSet.getInt(1),resultSet.getString(2),resultSet.getInt(3),
+                            resultSet.getString(4),resultSet.getFloat(5),resultSet.getFloat(6),resultSet.getFloat(7),
+                            resultSet.getString(8)));
+                }
+            }
+
+        }catch (Exception exp){
+
+            exp.printStackTrace();
+
+        }finally {
+
+            this.closeSqlConnection(connection);
+
+        }
+
+        return list;
+    }
+
+    public ObservableList<Employee> getAllSalaryHistory(){
+        ObservableList<Employee> list = FXCollections.observableArrayList();
+
+        Connection connection = SqlConnectionServices.getConnection();
+
+
+
+        try {
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection,Query.getSalaryDetails,null);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet != null) {
+                while (resultSet.next()) {
+                    list.add(new Employee(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
+                            resultSet.getString(4),resultSet.getFloat(5),resultSet.getString(6)));
+
+                }
+            }else{
+                System.out.println("here");
+            }
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+        return list;
+
+    }
 }

@@ -6,6 +6,8 @@ import com.jfoenix.controls.JFXTabPane;
 import com.system.Message.Messages;
 import com.system.config.Config;
 import com.system.dao.AccountManagementDao;
+import com.system.dao.InvoicesDao;
+import com.system.models.Customers;
 import com.system.models.Employee;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
@@ -20,7 +22,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
 import java.net.URL;
@@ -61,32 +65,37 @@ public class EmployeeAccountController implements Initializable {
     @FXML
     private TextField UpdateSalaryprevious;
     @FXML
-    private TextField viewAccountNameField;
+    private TextField custNameField;
     @FXML
-    private TableView<Employee> table;
+    private TextField custPhoneField;
     @FXML
-    private TableColumn<Employee , String> c1;
+    private TableView<Customers> table;
     @FXML
-    private TableColumn<Employee , String> c2;
+    private TableColumn<Customers , String> c1;
     @FXML
-    private TableColumn<Employee , String> c3;
+    private TableColumn<Customers , String> c2;
     @FXML
-    private TableColumn<Employee , String> c4;
+    private TableColumn<Customers , String> c3;
     @FXML
-    private TableColumn<Employee , String> c7;
+    private TableColumn<Customers , String> c4;
     @FXML
-    private TableColumn<Employee , String> c8;
+    private TableColumn<Customers , String> c5;
     @FXML
-    private TableColumn<Employee , String> c9;
+    private TableColumn<Customers , String> c6;
     @FXML
-    private TableColumn<Employee , String> c10;
+    private TableColumn<Customers , String> c7;
     @FXML
-    private TableColumn<Employee , String> c11;
+    private TableColumn<Customers , String> c8;
+
+
 
     AccountManagementDao accountManagementDao = new AccountManagementDao();
+    InvoicesDao invoicesDao = new InvoicesDao();
 
     ObservableList<String> userNameList = FXCollections.observableArrayList(accountManagementDao.getAllUserNames());
     ObservableList<String> empNameList = FXCollections.observableArrayList(accountManagementDao.getAllUserNames());
+    ObservableList<String> customerNamesList = FXCollections.observableArrayList(invoicesDao.getCustomerNames());
+    ObservableList<String> custPhnoList = FXCollections.observableArrayList(invoicesDao.getCustomerPhoneNos());
 
     //button event for the home button use to change the scene and come to dashBoard
     public void homeButtonEvent(ActionEvent event)throws IOException {
@@ -161,6 +170,19 @@ public class EmployeeAccountController implements Initializable {
         Stage scene2 =(Stage)((Node)event.getSource()).getScene().getWindow();
         scene2.setScene(new Scene(root,Config.width,Config.height));
         scene2.show();
+    }
+
+    //column data
+    public void fillColumn(){
+        c1.setCellValueFactory(new PropertyValueFactory<Customers , String>("id"));
+        c2.setCellValueFactory(new PropertyValueFactory<Customers , String>("name"));
+        c3.setCellValueFactory(new PropertyValueFactory<Customers , String>("phoneNumber"));
+        c4.setCellValueFactory(new PropertyValueFactory<Customers , String>("OrderId"));
+        c5.setCellValueFactory(new PropertyValueFactory<Customers , String>("credit"));
+        c6.setCellValueFactory(new PropertyValueFactory<Customers , String>("debit"));
+        c7.setCellValueFactory(new PropertyValueFactory<Customers , String>("balance"));
+        c8.setCellValueFactory(new PropertyValueFactory<Customers , String>("vistedShop"));
+
     }
 
 
@@ -257,6 +279,54 @@ public class EmployeeAccountController implements Initializable {
         }
     }
 
+    public void searchExistingCustomerData(){
+        if(customerNamesList.contains(custNameField.getText()) || custPhnoList.contains(custPhoneField.getText())) {
+            ObservableList<Customers> acclist = FXCollections.observableArrayList(accountManagementDao.getCustomersData(custNameField.getText(),custPhoneField.getText()));
+            fillColumn();
+            table.setItems(acclist);
+
+        }else {
+            Messages.getWarning("there is no such customer in the DataBase");
+        }
+
+    }
+
+
+//    public void serchByPhoneNo(){
+//        if(custPhnoList.contains(custPhoneField.getText())){
+//            table.getItems().clear();
+//            ObservableList<Customers> acclist = FXCollections.observableArrayList(accountManagementDao.getCustomersDataByPh(custPhoneField.getText()));
+//            fillColumn();
+//            table.setItems(acclist);
+//        }else{
+//            Messages.getWarning("there is no such phone no in dataBase");
+//        }
+//    }
+//    public void searchByName(){
+//        if(customerNamesList.contains(custNameField.getText())){
+//            table.getItems().clear();
+//            ObservableList<Customers> acclist = FXCollections.observableArrayList(accountManagementDao.getCustomersDataByName(custNameField.getText()));
+//            fillColumn();
+//            table.setItems(acclist);
+//        }else{
+//            Messages.getWarning("there is no such phone no in dataBase");
+//        }
+//    }
+
+
+    public void getSearchData(){
+        if(custNameField.getText().trim().isEmpty() && custPhoneField.getText().trim().isEmpty()){
+            Messages.getWarning("please enter customer name or phone numbers");
+        }else{
+            searchExistingCustomerData();
+            if(table.getItems().isEmpty()){
+                Messages.getWarning("Customer not found try again ");
+                custNameField.clear();
+                custPhoneField.clear();
+            }
+        }
+    }
+
     ChangeListener<String> forceNumberListener = (observable, oldValue, newValue) -> {
         if (!newValue.matches(Config.regix))
             ((StringProperty) observable).set(oldValue);
@@ -269,5 +339,7 @@ public class EmployeeAccountController implements Initializable {
         tabRefresh();
         basicSalField.textProperty().addListener(forceNumberListener);
         updateSalaryNameFielld.setItems(empNameList);
+        TextFields.bindAutoCompletion(custNameField,customerNamesList);
+        TextFields.bindAutoCompletion(custPhoneField,custPhnoList);
     }
 }
