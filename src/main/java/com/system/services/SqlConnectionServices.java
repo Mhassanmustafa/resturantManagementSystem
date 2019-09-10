@@ -1,7 +1,12 @@
 package com.system.services;
 
 import com.system.config.Config;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.sql.*;
 import java.util.HashMap;
 
@@ -9,13 +14,29 @@ public class SqlConnectionServices {
 
 
     //getting connection with sql server
-    public static Connection getConnection() {
+    public static Connection getConnection(){
+        ObservableList<String> list = FXCollections.observableArrayList();
+        try {
+
+            File file = new File(Config.filePath);
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+                list.add(line);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        System.out.println(list.get(0));
         String connectionString = String.format(
                 "jdbc:sqlserver://%s:1433;"
                         + "database=%s;"
                         + "user=%s;"
                         + "password={%s};"
-                , Config.DB_ADDRESS, Config.DB_NAME, Config.DB_USERNAME, Config.DB_PASSWORD);
+                , Config.DB_USERNAME, Config.DB_PASSWORD, Config.DB_ADDRESS,Config.DB_NAME);
         try {
             return DriverManager.getConnection(connectionString);
         } catch (SQLException e) {

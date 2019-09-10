@@ -243,9 +243,8 @@ public class Query {
             "WHERE  customerorder.id = ? ";
 
     public static final String getDailySales = "select sum(credit) from ledger where accountId = ? and day(date) = ? and MONTH(date) = ? and year(date) = ?";
-    public static final String getDailyProfit = " select ((select isnull (sum(credit) ,0 )from ledger where accountId = ? and day(date) = ? and MONTH(date) = ? and year(date) = ?) -\n" +
-            " (select isnull (sum(boughtPrice * quantity) , 0)from purchaseHistory where day(date) = ? and MONTH(date) = ? and year(date) = ?)" +
-            "-(SELECT isnull (sum(credit) , 0) FROM   ledger where accountId = ? and day(date) = ? and MONTH(date) = ? and year(date) = ?))";
+    public static final String getDailyProfit = "select ((select isnull (sum(credit) ,0 )from ledger where accountId = ? and day(date) = ? and MONTH(date) = ? and year(date) = ?) -\n" +
+            " (select isnull (sum(totalPurchase) , 0) from temp where day(date) = ? and Month(date) = ? and year( date) = ? ))";
 
     public static final String getMonthlySale = " select sum(credit) from ledger where accountId = ? and  MONTH(date) = ? and year(date) = ?";
 
@@ -253,8 +252,8 @@ public class Query {
             "         FROM   ledger \n" +
             "         WHERE  accountid = ? \n" +
             "                AND Month(date) = ? \n" +
-            "                AND Year(date) = ?) - (SELECT isnull(Sum (boughtprice * quantity),0) \n" +
-            "                                          FROM   purchasehistory \n" +
+            "                AND Year(date) = ?) - (SELECT isnull(Sum (totalPurchase),0) \n" +
+            "                                          FROM   temp \n" +
             "                                          WHERE  Month(date) = ? \n" +
             "                                                 AND Year(date) = ?) - \n" +
             "                (SELECT isnull(Sum(credit) , 0 )\n" +
@@ -270,8 +269,8 @@ public class Query {
             "         FROM   ledger \n" +
             "         WHERE  accountid = ? \n" +
             "                 \n" +
-            "                AND Year(date) = ?) - (SELECT isnull(Sum (boughtprice * quantity),0) \n" +
-            "                                          FROM   purchasehistory \n" +
+            "                AND Year(date) = ?) - (SELECT isnull(Sum (totalPurchase ),0) \n" +
+            "                                          FROM   temp \n" +
             "                                          WHERE   \n" +
             "                                                  Year(date) = ?) - \n" +
             "                (SELECT isnull(Sum(credit) , 0 )\n" +
@@ -421,5 +420,10 @@ public class Query {
             "        WHERE  salaryhistory.employeeid = employee.id \n" +
             "        ORDER  BY salaryhistory.date DESC) AS date \n" +
             "FROM   employee ";
+
+    public static final String getLatestPurchasePrice = " select top 1 boughtPrice from purchaseHistory where productId = ? order by date desc";
+    public static final String insertRecipiePurchase = " insert into recipiePurchase (productId , purchasePrice,date) values(?,?,?)";
+    public static final String getRecipePurchasePrice = " select top 1 purchasePrice from recipiePurchase where productId = ? order by date desc";
+    public static final String insertTemp = " insert into temp (totalPurchase ,date) values (?,?)";
 
 }

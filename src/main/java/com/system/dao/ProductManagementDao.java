@@ -19,6 +19,26 @@ import java.util.HashMap;
 
 public class ProductManagementDao implements IProductManagement  {
 
+    public static void getLogInfo (String message){
+        try {
+            Log log = new Log();
+            log.logger.info(message);
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }
+
+    }
+
+    public static void getLogWarning (String message){
+        try {
+            Log log = new Log();
+            log.logger.warning(message);
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }
+
+    }
+
     //to close the open sql connections
     public void closeSqlConnection(Connection connection){
         if(connection != null){
@@ -44,6 +64,7 @@ public class ProductManagementDao implements IProductManagement  {
             }
 
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -70,6 +91,7 @@ public class ProductManagementDao implements IProductManagement  {
             }
 
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -99,6 +121,7 @@ public class ProductManagementDao implements IProductManagement  {
                 }
             }
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -128,6 +151,7 @@ public class ProductManagementDao implements IProductManagement  {
                 }
             }
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -153,6 +177,7 @@ public class ProductManagementDao implements IProductManagement  {
             }
 
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -181,6 +206,7 @@ public class ProductManagementDao implements IProductManagement  {
                 }
             }
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -207,11 +233,14 @@ public class ProductManagementDao implements IProductManagement  {
             int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.addSellHistory,params).executeUpdate();
 
             if(affectedRows == 0){
+                getLogInfo("sell price not successfully added");
                 System.out.println("sell price not inserted");
             }else {
+                getLogInfo("sell price add successfully");
                 System.out.println("selling history inserted");
             }
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -237,13 +266,16 @@ public class ProductManagementDao implements IProductManagement  {
             int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.addNewProductQuery,params).executeUpdate();
 
             if(affectedRows == 0){
+                getLogInfo("new product added successfully");
                 Messages.getWarning("Data is not Inserted");
 
             }else {
+                getLogInfo("new product not added successfully");
                 Messages.getAlert("Data Inserted SuccessFully");
 
             }
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -274,6 +306,7 @@ public class ProductManagementDao implements IProductManagement  {
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -298,12 +331,15 @@ public class ProductManagementDao implements IProductManagement  {
             int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.updateSellingPrice,params).executeUpdate();
 
             if(affectedRows == 0){
+                getLogInfo("new Price is not Updated try again");
                 Messages.getWarning("new Price is not Updated try again");
             }else {
+                getLogInfo("new Price is successfully updated");
                 Messages.getAlert("new Price is successfully updated");
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -324,12 +360,15 @@ public class ProductManagementDao implements IProductManagement  {
             int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.newCategoryName,params).executeUpdate();
 
             if(affectedRows == 0){
+                getLogInfo("Category is not added in sucessfully");
                 Messages.getWarning("Category is not added in sucessfully");
             }else{
+                getLogInfo("Category is Successfully Added");
                 Messages.getAlert("Category is Successfully Added");
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -352,12 +391,15 @@ public class ProductManagementDao implements IProductManagement  {
             int affcctedRows = SqlConnectionServices.prepareAStatement(connection,Query.newSupplier,params).executeUpdate();
 
             if(affcctedRows == 0){
+                getLogInfo("Suppliear is not Entered ");
                 Messages.getWarning("Suppliear is not Entered ");
             }else {
+                getLogInfo("Suppliear is Successfully entered.");
                 Messages.getAlert("Suppliear is Successfully entered.");
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -382,6 +424,7 @@ public class ProductManagementDao implements IProductManagement  {
             }
 
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -415,6 +458,7 @@ public class ProductManagementDao implements IProductManagement  {
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
              System.out.println("eror comming check it later");
         }finally {
             this.closeSqlConnection(connection);
@@ -440,6 +484,7 @@ public class ProductManagementDao implements IProductManagement  {
             }
 
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -462,12 +507,15 @@ public class ProductManagementDao implements IProductManagement  {
             int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.newRecipieCategory,params).executeUpdate();
 
             if(affectedRows == 0){
+                getLogInfo("recipie category not added successfully");
                 Messages.getWarning("Category is not added in sucessfully");
             }else{
+                getLogInfo("recipie category added succeddfully");
                 Messages.getAlert("Category is Successfully Added");
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -492,6 +540,7 @@ public class ProductManagementDao implements IProductManagement  {
             }
 
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -520,6 +569,7 @@ public class ProductManagementDao implements IProductManagement  {
                 }
             }
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -544,12 +594,15 @@ public class ProductManagementDao implements IProductManagement  {
             int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.addRecipeName,params).executeUpdate();
 
             if(affectedRows == 0){
+                getLogInfo("new recipie not added successfull");
                 System.out.println("new name is not Updated try again");
             }else {
+                getLogInfo("new recipie added successfull");
                 System.out.println("new name is successfully updated");
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -577,6 +630,7 @@ public class ProductManagementDao implements IProductManagement  {
                 }
             }
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -602,12 +656,15 @@ public class ProductManagementDao implements IProductManagement  {
             int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.recipeSellPrice,params).executeUpdate();
 
             if(affectedRows == 0){
+                getLogInfo("new recipie sell price is not added");
                 Messages.getWarning("new sellPrice is not Updated try again");
             }else {
+                getLogInfo("new recipie sell price is added");
                 Messages.getAlert("new sellPrice is successfully updated");
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -634,12 +691,15 @@ public class ProductManagementDao implements IProductManagement  {
             int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.addRecipieIngredents,params).executeUpdate();
 
             if(affectedRows == 0){
+                getLogInfo("new Ingredents not Added try again");
                 Messages.getWarning("new Ingredents not Added try again");
             }else {
+                getLogInfo("new Ingredents not Added ");
                 Messages.getAlert("new Ingredents Added");
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -663,6 +723,7 @@ public class ProductManagementDao implements IProductManagement  {
             }
 
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -692,6 +753,7 @@ public class ProductManagementDao implements IProductManagement  {
                 }
             }
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -717,12 +779,144 @@ public class ProductManagementDao implements IProductManagement  {
             int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.newRecipieSellPrice,params).executeUpdate();
 
             if(affectedRows == 0){
+                getLogInfo("new recipie sell price is not updated");
                 Messages.getWarning("new Price is not Updated try again");
             }else {
+                getLogInfo("new recipie sell price is added");
                 Messages.getAlert("new Price is successfully updated");
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+    }
+
+    @Override
+    public float getLatestPurchasePrice(String name) {
+
+        float currentPrice = 0;
+        int recipieId = getProductId(name);
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+        params.put(1 , recipieId);
+
+        try {
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection,Query.getLatestPurchasePrice,params);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                while (resultSet.next()){
+                    currentPrice = resultSet.getInt(1);
+                }
+            }
+        }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+        return currentPrice;
+    }
+
+    @Override
+    public void addnewRecipiePurchase(Recipie recipie) {
+
+        int productId = getRecipieId(recipie.getRecipieName());
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+
+        params.put(1,productId);
+        params.put(2,recipie.getPurPrice());
+        params.put(3,recipie.getDate());
+
+        try{
+
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.insertRecipiePurchase,params).executeUpdate();
+
+            if(affectedRows == 0){
+                getLogInfo("recipie purchase is not inserted");
+                System.out.println("Data is not Inserted");
+
+            }else {
+                getLogInfo("recipie purchase inserted");
+                System.out.println("Data Inserted SuccessFully");
+
+            }
+        }catch (Exception exp){
+            getLogWarning(exp.getMessage());
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+    }
+
+    public float getRecipiePurchasePrice(String recipieName){
+        int id = getRecipieId(recipieName);
+
+        float price = 0;
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+
+        params.put(1,id);
+
+        try {
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection,Query.getRecipePurchasePrice,params);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                while (resultSet.next()){
+                    price = resultSet.getFloat(1);
+                }
+            }
+        }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+
+        return  price;
+
+    }
+
+    public void insertTemp(float price ,String date){
+
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer , Object> params = new HashMap<>();
+
+
+        params.put(1,price);
+        params.put(2,date);
+
+
+        try{
+
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.insertTemp,params).executeUpdate();
+
+            if(affectedRows == 0){
+                getLogInfo("temp data is not inserted");
+                System.out.println("Data is not Inserted");
+
+            }else {
+                getLogInfo("temp data inserted");
+                System.out.println("Data Inserted SuccessFully");
+
+            }
+        }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);

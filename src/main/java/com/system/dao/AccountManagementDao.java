@@ -1,7 +1,9 @@
 package com.system.dao;
 
+import com.system.Logs.Log;
 import com.system.Message.Messages;
 import com.system.Queries.Query;
+import com.system.config.Config;
 import com.system.dao.Interfaces.IAccountManagement;
 import com.system.models.Customers;
 import com.system.models.Employee;
@@ -16,7 +18,27 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
-public class AccountManagementDao implements IAccountManagement {
+public class AccountManagementDao  implements IAccountManagement  {
+
+    public static void getLogInfo (String message){
+        try {
+            Log log = new Log();
+            log.logger.info(message);
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }
+
+    }
+
+    public static void getLogWarning (String message){
+        try {
+            Log log = new Log();
+            log.logger.warning(message);
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }
+
+    }
 
     //to close the open sql connections
     public void closeSqlConnection(Connection connection){
@@ -41,10 +63,12 @@ public class AccountManagementDao implements IAccountManagement {
                 while (resultSet.next()){
                     list.add(resultSet.getString(1));
                 }
+                getLogInfo("user names added  in observable list ");
             }
 
         }catch (SQLException exp){
             exp.printStackTrace();
+            getLogWarning(exp.getMessage());
         }finally {
             this.closeSqlConnection(connection);
         }
@@ -71,12 +95,15 @@ public class AccountManagementDao implements IAccountManagement {
 
             if(affectedRows == 0){
                 System.out.println("Data Not Inserted");
+                getLogInfo("Data is not inserted in Employee table");
             }else {
                 System.out.println("Data Inserted SuccessFully");
+                getLogInfo("Data is Sucessfully inserted in Employee table");
             }
 
         }catch (Exception exp){
             exp.printStackTrace();
+            getLogWarning(exp.getMessage());
         }finally {
             this.closeSqlConnection(connection);
         }
@@ -105,7 +132,9 @@ public class AccountManagementDao implements IAccountManagement {
             }
 
         }catch (Exception exp){
+
             exp.printStackTrace();
+            getLogWarning(exp.getMessage());
         }finally {
             this.closeSqlConnection(connection);
         }
@@ -132,8 +161,10 @@ public class AccountManagementDao implements IAccountManagement {
 
             if(affectedRows == 0){
                 Messages.getWarning("Data Not Inserted");
+                getLogInfo("Data is not inserted in Employee Salary table");
             }else {
                 Messages.getAlert("Data Inserted SuccessFully");
+                getLogInfo("Data is  inserted in Employee Salary table");
             }
 
 
@@ -162,13 +193,16 @@ public class AccountManagementDao implements IAccountManagement {
 
             if(affectedRows == 0){
                 Messages.getWarning("Data Not Inserted");
+                getLogInfo("Employee log in data not inserted ");
             }else {
                 Messages.getAlert("Data Inserted SuccessFully");
+                getLogInfo("Employee log in data inserted ");
             }
 
 
         }catch (Exception exp){
             exp.printStackTrace();
+            getLogWarning(exp.getMessage());
         }finally {
             this.closeSqlConnection(connection);
         }
@@ -189,10 +223,12 @@ public class AccountManagementDao implements IAccountManagement {
                 while (resultSet.next()){
                     list.add(resultSet.getString(1));
                 }
+
             }
 
         }catch (SQLException exp){
             exp.printStackTrace();
+            getLogWarning(exp.getMessage());
         }finally {
             this.closeSqlConnection(connection);
         }
@@ -225,9 +261,11 @@ public class AccountManagementDao implements IAccountManagement {
                     employee.setBasicSalary(resultSet.getFloat(6));
 
                 }
+                getLogInfo("Exployee data added in list");
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -255,12 +293,15 @@ public class AccountManagementDao implements IAccountManagement {
 
             if(affectedRows == 0){
                 Messages.getWarning("Data Not Inserted");
+                getLogInfo("Employee base Salary not inserted");
             }else {
                 Messages.getAlert("Data Inserted SuccessFully");
+                getLogInfo("Employee base Salary  inserted successfully");
             }
 
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -293,6 +334,7 @@ public class AccountManagementDao implements IAccountManagement {
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -318,10 +360,13 @@ public class AccountManagementDao implements IAccountManagement {
 
             if(affectedRows == 0){
                 Messages.getWarning("User Name is Wrong");
+                getLogInfo("password is not updated successfully");
             }else{
                 Messages.getAlert("Password Updated Successfully");
+                getLogInfo("password updated successfull");
             }
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -330,7 +375,7 @@ public class AccountManagementDao implements IAccountManagement {
 
 
     @Override
-    public Boolean adminLogIn(String userName, String password) {
+    public Boolean adminLogIn(String userName, String password)  {
 
         Connection connection = SqlConnectionServices.getConnection();
         HashMap<Integer , Object> params = new HashMap<>();
@@ -345,14 +390,18 @@ public class AccountManagementDao implements IAccountManagement {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if(resultSet.next()){
+               getLogInfo("Admin log in successfull");
                 return true;
             }
 
         }catch (Exception exp){
             exp.printStackTrace();
+            getLogWarning(exp.getMessage());
         }finally {
             this.closeSqlConnection(connection);
         }
+
+        getLogInfo("Admin login Unsuccessfull");
         return false;
     }
 
@@ -371,14 +420,17 @@ public class AccountManagementDao implements IAccountManagement {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if(resultSet.next()){
+                getLogInfo("Employee log in success full");
                 return true;
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
         }
+        getLogInfo("employee log in not successfull");
         return false;
     }
 
@@ -404,9 +456,11 @@ public class AccountManagementDao implements IAccountManagement {
                     ,resultSet.getInt(4),resultSet.getFloat(5),resultSet.getFloat(6),resultSet.getFloat(7),
                             resultSet.getInt(8)));
                 }
+                getLogInfo("customer data successfully added");
             }
 
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -498,10 +552,11 @@ public class AccountManagementDao implements IAccountManagement {
                             resultSet.getString(4),resultSet.getFloat(5),resultSet.getFloat(6),resultSet.getFloat(7),
                             resultSet.getString(8)));
                 }
+                getLogInfo("Data added in list");
             }
 
         }catch (Exception exp){
-
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
 
         }finally {
@@ -531,9 +586,10 @@ public class AccountManagementDao implements IAccountManagement {
 
                 }
             }else{
-                System.out.println("here");
+              getLogInfo("Data is not add in list salary history data");
             }
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);

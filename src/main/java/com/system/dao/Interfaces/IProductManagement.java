@@ -31,4 +31,6 @@ public interface IProductManagement  {
     public ObservableList<Integer> getRecipieId();
     public float getRecipeCurrentPrice(Recipie recipie);
     public void setNewRecipieSellPrice(Recipie recipie);
+    public float getLatestPurchasePrice(String name);
+    public void addnewRecipiePurchase(Recipie recipie);
 }

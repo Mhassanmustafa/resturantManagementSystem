@@ -6,12 +6,14 @@ public class Recipie {
     private float quantity;
     private float price;
     private String date;
+    private float PurPrice;
 
 
-    public Recipie(String productName, float quantity, float price) {
+    public Recipie(String productName, float quantity, float price ,float PurPrice) {
         this.productName = productName;
         this.quantity = quantity;
         this.price = price;
+        this.PurPrice = PurPrice;
     }
 
     public Recipie() {
@@ -55,6 +57,14 @@ public class Recipie {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public float getPurPrice() {
+        return PurPrice;
+    }
+
+    public void setPurPrice(float purPrice) {
+        PurPrice = purPrice;
     }
 
     @Override

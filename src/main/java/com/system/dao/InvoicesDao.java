@@ -4,6 +4,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.system.Logs.Log;
 import com.system.Message.Messages;
 import com.system.Queries.Query;
 import com.system.config.Config;
@@ -27,6 +28,26 @@ import java.util.HashMap;
 import static com.system.config.Config.shopName;
 
 public class InvoicesDao implements IInvoices {
+
+    public static void getLogInfo (String message){
+        try {
+            Log log = new Log();
+            log.logger.info(message);
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }
+
+    }
+
+    public static void getLogWarning (String message){
+        try {
+            Log log = new Log();
+            log.logger.warning(message);
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }
+
+    }
 
     //to close the open sql connections
     public void closeSqlConnection(Connection connection){
@@ -53,6 +74,7 @@ public class InvoicesDao implements IInvoices {
             }
 
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -78,6 +100,7 @@ public class InvoicesDao implements IInvoices {
             }
 
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -102,12 +125,15 @@ public class InvoicesDao implements IInvoices {
             int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.addNewCustomer,params).executeUpdate();
 
             if(affectedRows == 0){
+                getLogInfo("new customer not add successfully");
                 System.out.println("data is not inserted");
             }else {
                 System.out.println("Data inserted Successfully");
+                getLogInfo("new customer add successfull");
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -127,11 +153,14 @@ public class InvoicesDao implements IInvoices {
             int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.customerOrder,params).executeUpdate();
 
             if(affectedRows == 0){
+                getLogInfo("new order is not added");
                 System.out.println("Value is not inserted");
             }else {
                 System.out.println("Value inserted Successfully");
+                getLogInfo("new order is added in database");
             }
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -158,6 +187,7 @@ public class InvoicesDao implements IInvoices {
                 }
             }
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -182,11 +212,14 @@ public class InvoicesDao implements IInvoices {
             int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.customerOrderHistoy,params).executeUpdate();
 
             if(affectedRows == 0){
+                getLogInfo("insert in orderHistory not successfull");
                 System.out.println("Value is not inserted");
             }else {
                 System.out.println("Value inserted Successfully");
+                getLogInfo("insert in orderHistory is successfull");
             }
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -214,12 +247,15 @@ public class InvoicesDao implements IInvoices {
             int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.custLedgerData,params).executeUpdate();
 
             if(affectedRows == 0){
+                getLogInfo("ledger data is not inserted successfull");
                 System.out.println("Value is not inserted");
             }else {
+                getLogInfo("ledger data is inserted successfull");
                 System.out.println("Value inserted Successfully");
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -247,6 +283,7 @@ public class InvoicesDao implements IInvoices {
             }
 
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -275,6 +312,7 @@ public class InvoicesDao implements IInvoices {
             }
 
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -303,6 +341,7 @@ public class InvoicesDao implements IInvoices {
                 }
             }
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -327,12 +366,15 @@ public class InvoicesDao implements IInvoices {
             int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.newStockHistory,params).executeUpdate();
 
             if(affectedRows == 0){
+                getLogInfo("values not inserted in new stock history");
                 System.out.println("Value is not inserted");
             }else {
                 System.out.println("Value inserted Successfully");
+                getLogInfo("values inserted in new stock history");
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -360,6 +402,7 @@ public class InvoicesDao implements IInvoices {
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -390,12 +433,15 @@ public class InvoicesDao implements IInvoices {
             int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.custLedgerData,params).executeUpdate();
 
             if(affectedRows == 0){
+                getLogInfo("existing  ledger data not inserted");
                 System.out.println("Value is not inserted");
             }else {
                 System.out.println("Value inserted Successfully");
+                getLogInfo("existing edger data inserted");
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -422,6 +468,7 @@ public class InvoicesDao implements IInvoices {
             }
 
         }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);
@@ -456,6 +503,7 @@ public class InvoicesDao implements IInvoices {
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.closeSqlConnection(connection);

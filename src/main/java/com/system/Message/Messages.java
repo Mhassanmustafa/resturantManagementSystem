@@ -1,5 +1,6 @@
 package com.system.Message;
 
+import com.system.Logs.Log;
 import javafx.scene.control.Alert;
 
 public class Messages {
@@ -21,4 +22,6 @@ public class Messages {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+
 }

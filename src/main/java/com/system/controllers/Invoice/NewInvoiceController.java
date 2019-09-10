@@ -91,6 +91,9 @@ public class NewInvoiceController implements Initializable {
     @FXML
     private TextField netAmount;
 
+    public float purPri = 0;
+    public float tempPri = 0;
+
     ProductManagementDao productManagementDao = new ProductManagementDao();
     InvoicesDao invoicesDao = new InvoicesDao();
     AccountManagementDao accountManagementDao = new AccountManagementDao();
@@ -102,6 +105,7 @@ public class NewInvoiceController implements Initializable {
     ObservableList<String> customerNamesList = FXCollections.observableArrayList(invoicesDao.getCustomerNames());
     ObservableList<String> customerPhoneList = FXCollections.observableArrayList(invoicesDao.getCustomerPhoneNos());
     ObservableList<Invoices> tableData = FXCollections.observableArrayList();
+    ObservableList<Float> pricelist = FXCollections.observableArrayList();
 
 
     ChangeListener<String> forceNumberListener = (observable, oldValue, newValue) -> {
@@ -195,7 +199,11 @@ public class NewInvoiceController implements Initializable {
         float amount = 0;
         float totalQuantity = Float.parseFloat(quantity.getText());
         amount = totalQuantity * Float.parseFloat(price.getText());
+        purPri = totalQuantity * tempPri;
+        pricelist.add(purPri);
+        purPri = 0;
         totalAmount.setText(Float.toString(amount));
+
     }
 
     //set  product names combo box action to get the current selling price of the product.
@@ -206,6 +214,7 @@ public class NewInvoiceController implements Initializable {
             Recipie recipie = new Recipie();
             recipie.setRecipieName(productNamesField.getSelectionModel().getSelectedItem());
             price.setText(Float.toString(productManagementDao.getRecipeCurrentPrice(recipie)));
+            tempPri = productManagementDao.getRecipiePurchasePrice(productNamesField.getSelectionModel().getSelectedItem());
         }
     }
 
@@ -278,6 +287,14 @@ public class NewInvoiceController implements Initializable {
         float total = 0;
         for (Invoices value : table.getItems()) {
             total = total + value.getTotalAmount();
+        }
+        return total;
+    }
+
+    public float getPricelistSum(){
+        float total = 0;
+        for(int i =0 ; i<pricelist.size() ; i++){
+            total = total + pricelist.get(i);
         }
         return total;
     }
@@ -404,6 +421,7 @@ public class NewInvoiceController implements Initializable {
         ledger.setDescription("Bill added");
         ledger.setDate(java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
         invoicesDao.insertExistingLeger(ledger,customerId);
+        productManagementDao.insertTemp(getPricelistSum(),java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
 
         if(!Files.exists(Config.billsPdf)){
             Files.createDirectories(Config.billsPdf);
@@ -465,6 +483,8 @@ public class NewInvoiceController implements Initializable {
         ledger.setDescription("Bill added");
         ledger.setDate(java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
         invoicesDao.insertLedgerData(ledger);
+        productManagementDao.insertTemp(getPricelistSum(),java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
+
         customerNamesList.add(customerName.getText());
         customerPhoneList.add(phoneNoField.getText());
 

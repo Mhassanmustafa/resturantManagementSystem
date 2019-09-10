@@ -5,6 +5,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.system.Logs.Log;
 import com.system.Message.Messages;
 import com.system.Queries.Query;
 import com.system.config.Config;
@@ -28,6 +29,26 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 public class StockManagementDao implements IStockManagement {
+
+    public static void getLogInfo (String message){
+        try {
+            Log log = new Log();
+            log.logger.info(message);
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }
+
+    }
+
+    public static void getLogWarning (String message){
+        try {
+            Log log = new Log();
+            log.logger.warning(message);
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }
+
+    }
 
     ProductManagementDao productManagementDao = new ProductManagementDao();
     //to close the open sql connections
@@ -59,11 +80,14 @@ public class StockManagementDao implements IStockManagement {
 
             if (affectedRows == 0) {
                 Messages.getWarning("Insertation failed");
+                getLogInfo("insertation failed in add new Stock");
             } else {
                 Messages.getAlert("Successfully Inserted");
+                getLogInfo("insertation successfull in add new Stock");
             }
 
         } catch (Exception exp) {
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         } finally {
             this.closeSqlConnection(connection);
@@ -93,6 +117,7 @@ public class StockManagementDao implements IStockManagement {
             }
 
         } catch (SQLException exp) {
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         } finally {
             this.closeSqlConnection(connection);
@@ -125,12 +150,15 @@ public class StockManagementDao implements IStockManagement {
             int affectedRows = SqlConnectionServices.prepareAStatement(connection, Query.removeStockQuantity, params).executeUpdate();
 
             if (affectedRows == 0) {
+                getLogInfo("Insertation not sucessfully in remove quantity");
                 Messages.getWarning("Insertation not sucessfully");
             } else {
                 Messages.getAlert("Successfully Removed");
+                getLogInfo("Insert successfull in remove quantity");
             }
 
         } catch (SQLException exp) {
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         } finally {
             this.closeSqlConnection(connection);
@@ -160,6 +188,7 @@ public class StockManagementDao implements IStockManagement {
             }
 
         } catch (SQLException exp) {
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         } finally {
             this.closeSqlConnection(connection);
@@ -168,7 +197,8 @@ public class StockManagementDao implements IStockManagement {
     }
 
     @Override
-    public void printStockDetails() throws Exception {
+    public void printStockDetails() {
+        try{
         Document doc = new Document(PageSize.A4.rotate());
         Date date = new Date();
         if(!Files.exists(Config.stockDetailPath)){
@@ -230,7 +260,10 @@ public class StockManagementDao implements IStockManagement {
             Desktop d = Desktop.getDesktop();
             d.open(new File(file));
             Messages.getAlert("Exported to Pdf please Wait while file is opening");
-
+        }catch (Exception exp){
+            getLogWarning(exp.getMessage());
+            exp.printStackTrace();
+        }
 
     }
 }

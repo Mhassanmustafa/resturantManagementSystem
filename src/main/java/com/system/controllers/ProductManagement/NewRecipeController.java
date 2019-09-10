@@ -54,7 +54,14 @@ public class NewRecipeController implements Initializable {
     private TableColumn<Recipie, String> c3;
 
     @FXML
+    private TableColumn<Recipie, String> c4;
+
+    @FXML
     private TextField estimatedField;
+
+    @FXML
+    private TextField pPf;
+
 
 
     ProductManagementDao productManagementDao = new ProductManagementDao();
@@ -163,10 +170,12 @@ public class NewRecipeController implements Initializable {
         c1.setCellValueFactory(new PropertyValueFactory<>("productName"));
         c2.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         c3.setCellValueFactory(new PropertyValueFactory<>("price"));
+        c4.setCellValueFactory(new PropertyValueFactory<>("PurPrice"));
     }
 
     public void addButtonEvent(){
         float sellPrice = 0;
+        float puchasePrice = 0;
         if(recipieNameBox.getSelectionModel().getSelectedItem().isEmpty() || quantityField.getText().trim().isEmpty()
         || ingreidentsBox.getSelectionModel().getSelectedItem().isEmpty()){
             Messages.getWarning("Please enter data in above Fields first");
@@ -174,11 +183,14 @@ public class NewRecipeController implements Initializable {
             if(recipieProducts.contains(recipieNameBox.getSelectionModel().getSelectedItem())){
                 if(productList.contains(ingreidentsBox.getSelectionModel().getSelectedItem())){
                     float price = Float.parseFloat(quantityField.getText());
+                    puchasePrice = productManagementDao.getLatestPurchasePrice(ingreidentsBox.getSelectionModel().getSelectedItem());
                     sellPrice = productManagementDao.getCurrentPrice(ingreidentsBox.getSelectionModel().getSelectedItem());
-                    tableData.add(new Recipie(ingreidentsBox.getSelectionModel().getSelectedItem(),Float.parseFloat(quantityField.getText()),price*sellPrice));
+                    tableData.add(new Recipie(ingreidentsBox.getSelectionModel().getSelectedItem(),Float.parseFloat(quantityField.getText()),price*sellPrice,price*puchasePrice));
                     setColumnData();
                     recipieTable.setItems(tableData);
                     estimatedField.setText(Float.toString(getSum()));
+                    pPf.setText(Float.toString(getSumP()));
+                    System.out.println(getSumP());
                     ingreidentsBox.getSelectionModel().clearSelection();
                     quantityField.clear();
 
@@ -199,6 +211,7 @@ public class NewRecipeController implements Initializable {
             recipieTable.getItems().remove(recipieTable.getSelectionModel().getSelectedItem());
             recipieTable.getSelectionModel().clearSelection();
             estimatedField.setText(Float.toString(getSum()));
+            pPf.setText(Float.toString(getSumP()));
         }
     }
 
@@ -212,6 +225,7 @@ public class NewRecipeController implements Initializable {
             recipieTable.refresh();
             recipieTable.getSelectionModel().clearSelection();
             estimatedField.setText(Float.toString(getSum()));
+            pPf.setText(Float.toString(getSumP()));
         }
     }
 
@@ -220,6 +234,15 @@ public class NewRecipeController implements Initializable {
         float total = 0;
         for(Recipie recipie : table.getItems()){
             total = total + recipie.getPrice();
+        }
+        return total;
+    }
+
+    public float getSumP(){
+        TableView<Recipie> table = c4.getTableView();
+        float total = 0;
+        for(Recipie recipie : table.getItems()){
+            total = total + recipie.getPurPrice();
         }
         return total;
     }
@@ -249,6 +272,8 @@ public class NewRecipeController implements Initializable {
                     sqlData.setQuantity(recipie.getQuantity());
                     sqlData.setDate(java.time.LocalDate.now() + " " + java.time.LocalTime.now());
                     productManagementDao.addRecipeIngredents(sqlData);
+                    sqlData.setPurPrice(Float.parseFloat(pPf.getText()));
+                    productManagementDao.addnewRecipiePurchase(sqlData);
                     getClearData();
                 }
             }

@@ -209,11 +209,12 @@
         </HBox>
         <AnchorPane layoutX="371.0" layoutY="311.0" prefHeight="316.0" prefWidth="1103.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <TableView fx:id="recipieTable" layoutX="139.0" layoutY="-2.0" prefHeight="316.0" prefWidth="587.0">
+                <TableView fx:id="recipieTable" layoutX="139.0" layoutY="-2.0" prefHeight="316.0" prefWidth="606.0">
                     <columns>
-                        <TableColumn fx:id="c1" prefWidth="258.0" text=" ingredient Name" />
-                        <TableColumn fx:id="c2" minWidth="0.0" onEditCommit="#updateColumnData" prefWidth="157.0" text="Quantity" />
-                        <TableColumn fx:id="c3" prefWidth="170.0" text="Estimated price" />
+                        <TableColumn fx:id="c1" prefWidth="215.0" text=" ingredient Name" />
+                        <TableColumn fx:id="c2" minWidth="0.0" onEditCommit="#updateColumnData" prefWidth="118.0" text="Quantity" />
+                        <TableColumn fx:id="c3" prefWidth="141.0" text="Estimated Sell price" />
+                  <TableColumn fx:id="c4" prefWidth="131.0" text="Estimated Purchase" />
                     </columns>
                 </TableView>
                 <JFXButton id="hboxbtn" layoutX="766.0" layoutY="29.0" onAction="#delButtonEvent" prefHeight="42.0" prefWidth="131.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Delete Selected">
@@ -230,6 +231,12 @@
                     </font>
                 </Label>
                 <TextField fx:id="estimatedField" editable="false" layoutX="766.0" layoutY="134.0" prefHeight="34.0" prefWidth="194.0" />
+            <Label layoutX="766.0" layoutY="182.0" prefHeight="26.0" prefWidth="194.0" text="Estimated Purchase Price:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="pPf" editable="false" layoutX="766.0" layoutY="219.0" prefHeight="34.0" prefWidth="194.0" />
             </children>
         </AnchorPane>
     </children>

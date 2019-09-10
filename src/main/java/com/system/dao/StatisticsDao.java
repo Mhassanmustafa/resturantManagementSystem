@@ -1,5 +1,6 @@
 package com.system.dao;
 
+import com.system.Logs.Log;
 import com.system.Queries.Query;
 import com.system.dao.Interfaces.IStatistics;
 import com.system.services.SqlConnectionServices;
@@ -13,6 +14,26 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 
 public class StatisticsDao implements IStatistics {
+
+    public static void getLogInfo (String message){
+        try {
+            Log log = new Log();
+            log.logger.info(message);
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }
+
+    }
+
+    public static void getLogWarning (String message){
+        try {
+            Log log = new Log();
+            log.logger.warning(message);
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }
+
+    }
 
     public void close(Connection connection){
         if(connection != null){
@@ -53,6 +74,7 @@ public class StatisticsDao implements IStatistics {
             }
 
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.close(connection);
@@ -64,7 +86,7 @@ public class StatisticsDao implements IStatistics {
     public float getDailyProfit(String date) {
 
         float profit = 0;
-        int empAccId = 2;
+
 
 
         String[] dateParts = date.split("-");
@@ -84,10 +106,7 @@ public class StatisticsDao implements IStatistics {
         params.put(5,day);
         params.put(6,month);
         params.put(7,year);
-        params.put(8,empAccId);
-        params.put(9,day);
-        params.put(10,month);
-        params.put(11,year);
+
 
         try{
 
@@ -100,6 +119,7 @@ public class StatisticsDao implements IStatistics {
                 }
             }
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.close(connection);
@@ -137,6 +157,7 @@ public class StatisticsDao implements IStatistics {
                 }
             }
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.close(connection);
@@ -184,6 +205,7 @@ public class StatisticsDao implements IStatistics {
                 }
             }
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.close(connection);
@@ -220,6 +242,7 @@ public class StatisticsDao implements IStatistics {
                 }
             }
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.close(connection);
@@ -262,6 +285,7 @@ public class StatisticsDao implements IStatistics {
                 }
             }
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.close(connection);
@@ -288,6 +312,7 @@ public class StatisticsDao implements IStatistics {
                 }
             }
         }catch (Exception exp){
+            getLogWarning(exp.getMessage());
             exp.printStackTrace();
         }finally {
             this.close(connection);

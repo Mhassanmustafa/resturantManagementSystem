@@ -34,7 +34,7 @@ public class LoginController implements Initializable {
 
     AccountManagementDao accountManagementDao = new AccountManagementDao();
     //log in button action
-    public void logInAction(ActionEvent event)throws IOException {
+    public void logInAction(ActionEvent event)throws Exception {
         String result = DigestUtils.md5Hex(password.getText());
         if(accountManagementDao.adminLogIn(userName.getText(),result)){
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashBoard.fxml"));
