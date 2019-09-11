@@ -1,0 +1,6 @@
+Sep 11, 2019 8:42:34 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: user names added  in observable list 
+Sep 11, 2019 8:42:43 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: customer data successfully added
+Sep 11, 2019 8:42:53 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Data added in list

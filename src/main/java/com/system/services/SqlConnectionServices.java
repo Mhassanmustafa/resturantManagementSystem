@@ -1,5 +1,6 @@
 package com.system.services;
 
+import com.system.Message.Messages;
 import com.system.config.Config;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,6 +8,7 @@ import javafx.collections.ObservableList;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.nio.file.Files;
 import java.sql.*;
 import java.util.HashMap;
 
@@ -17,26 +19,35 @@ public class SqlConnectionServices {
     public static Connection getConnection(){
         ObservableList<String> list = FXCollections.observableArrayList();
         try {
-
             File file = new File(Config.filePath);
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-            String line;
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
-                list.add(line);
+            if(!Files.exists(Config.logFile)){
+                Files.createDirectories(Config.logFile);
+                if(!file.exists()){
+                    file.createNewFile();
+                    Messages.getWarning("Please add server details first in config files and try again");
+                }
+            }else{
+
+                    FileReader fr = new FileReader(file);
+                    BufferedReader br = new BufferedReader(fr);
+                    String line;
+                    while ((line = br.readLine()) != null) {
+
+                        list.add(line);
+                    }
             }
+
+
         }catch (Exception e){
             e.printStackTrace();
         }
 
-        System.out.println(list.get(0));
         String connectionString = String.format(
                 "jdbc:sqlserver://%s:1433;"
                         + "database=%s;"
                         + "user=%s;"
                         + "password={%s};"
-                , Config.DB_USERNAME, Config.DB_PASSWORD, Config.DB_ADDRESS,Config.DB_NAME);
+                ,list.get(2), list.get(3), list.get(0),list.get(1));
         try {
             return DriverManager.getConnection(connectionString);
         } catch (SQLException e) {

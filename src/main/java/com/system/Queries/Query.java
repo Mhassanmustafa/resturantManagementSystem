@@ -425,5 +425,6 @@ public class Query {
     public static final String insertRecipiePurchase = " insert into recipiePurchase (productId , purchasePrice,date) values(?,?,?)";
     public static final String getRecipePurchasePrice = " select top 1 purchasePrice from recipiePurchase where productId = ? order by date desc";
     public static final String insertTemp = " insert into temp (totalPurchase ,date) values (?,?)";
+    public static final String sqlBackupQuery = "BACKUP DATABASE [data_database] TO  DISK = N'C:\\Program Files\\Microsoft SQL Server\\MSSQL12.MSSQLSERVER\\MSSQL\\Backup\\data_database.bak'";
 
 }

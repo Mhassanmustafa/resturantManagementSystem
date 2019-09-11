@@ -54,26 +54,7 @@ public class Config {
     public static final Font simpleFont = FontFactory.getFont(FontFactory.HELVETICA,13, BaseColor.BLACK);
     public static final Path billsPdf = Paths.get("\\resturantManagementSystem\\ReportsAndSheets\\Bills");
 
-    public static void createDirectory() throws Exception{
 
-        File file = new File(filePath);
-        if(!Files.exists(logFile)){
-            Files.createDirectories(logFile);
-        }else{
-            if(!file.exists()){
-                file.createNewFile();
-            }else{
-
-                FileReader fr = new FileReader(file);
-                BufferedReader br = new BufferedReader(fr);
-                String line;
-                while((line = br.readLine()) != null){
-                   list.add(line);
-                }
-
-            }
-        }
-    }
 
 
     }

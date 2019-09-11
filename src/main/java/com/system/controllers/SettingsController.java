@@ -2,8 +2,11 @@ package com.system.controllers;
 
 import animatefx.animation.SlideInDown;
 import com.system.Message.Messages;
+import com.system.Queries.Query;
+import com.system.SqlBackup.SqlBackUp;
 import com.system.config.Config;
 import com.system.dao.AccountManagementDao;
+import com.system.services.SqlConnectionServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +21,8 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class SettingsController implements Initializable {
@@ -119,6 +124,53 @@ public class SettingsController implements Initializable {
         }
     }
 
+    public void makeBackupOnDisk(){
+        try {
+            Connection connection = SqlConnectionServices.getConnection();
+            Statement stmt = connection.createStatement();
+            stmt.execute(Query.sqlBackupQuery);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void backupData(){
+        SqlBackUp sqlBackUp = new SqlBackUp();
+        if (sqlBackUp.checkInternetIsConnected()){
+            if(sqlBackUp.checkFileisPresent()){
+                if(sqlBackUp.delfile()){
+                    makeBackupOnDisk();
+                    try {
+
+
+                        if (sqlBackUp.checkFilePresent()) {
+                            sqlBackUp.getSqlDataBackup();
+                        } else {
+                            Messages.getWarning("operation unsucess");
+                            System.out.println("operation unsuccess");
+                        }
+                    }catch (Exception exp){
+                        exp.printStackTrace();
+                    }
+                }
+            }else {
+                makeBackupOnDisk();
+                try {
+                    if (sqlBackUp.checkFilePresent()) {
+                        sqlBackUp.getSqlDataBackup();
+                    } else {
+                        Messages.getWarning("operation unsuccess");
+                        System.out.println("operation unsuccess");
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }else {
+            Messages.getWarning("Internet not connected backup not made");
+            System.out.println("Internet not connected backup not made");
+        }
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
