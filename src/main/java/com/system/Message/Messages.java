@@ -23,5 +23,14 @@ public class Messages {
         alert.showAndWait();
     }
 
+    public static void getLogInfo (String message){
+        try {
+            Log log = Log.getInstance();
+            log.logger.info(message);
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }
+
+    }
 
 }

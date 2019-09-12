@@ -1,116 +1,48 @@
-Sep 10, 2019 12:10:30 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 12:10:50 PM com.system.dao.AccountManagementDao getLogInfo
+Sep 12, 2019 8:55:28 PM com.system.dao.AccountManagementDao getLogInfo
 INFO: Admin log in successfull
-Sep 10, 2019 2:35:15 PM com.system.dao.AccountManagementDao getLogInfo
+Sep 12, 2019 8:58:03 PM com.system.dao.AccountManagementDao getLogInfo
 INFO: Admin log in successfull
-Sep 10, 2019 6:53:22 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 6:53:22 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 6:54:45 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 6:54:45 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 6:56:39 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 6:56:39 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 7:00:12 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 7:00:12 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 7:07:34 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 7:07:34 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 7:09:05 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 7:09:05 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 7:17:46 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 7:17:46 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 7:28:24 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 7:28:24 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 7:32:38 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 7:32:38 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 7:44:29 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 7:44:29 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 7:51:04 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 7:51:04 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 8:00:17 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 8:00:17 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 8:19:11 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 8:19:11 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 8:19:49 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 8:19:49 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 8:24:22 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 8:24:22 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 8:27:42 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 8:27:42 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 8:33:12 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 8:33:12 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 8:50:00 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 8:50:00 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 10:13:31 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 10:13:31 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 10:17:15 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 10:17:15 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 10:23:36 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 10:23:36 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 10, 2019 11:17:21 PM com.system.dao.AccountManagementDao getLogWarning
-WARNING: null
-Sep 10, 2019 11:17:21 PM com.system.dao.AccountManagementDao getLogInfo
-INFO: Admin login Unsuccessfull
-Sep 11, 2019 8:36:29 PM com.system.dao.AccountManagementDao getLogInfo
+Sep 12, 2019 9:19:31 PM com.system.dao.AccountManagementDao getLogInfo
 INFO: Admin log in successfull
-Sep 11, 2019 8:40:06 PM com.system.dao.AccountManagementDao getLogInfo
+Sep 12, 2019 9:22:14 PM com.system.dao.AccountManagementDao getLogInfo
 INFO: Admin log in successfull
-Sep 11, 2019 8:49:33 PM com.system.dao.AccountManagementDao getLogInfo
+Sep 12, 2019 9:38:32 PM com.system.dao.AccountManagementDao getLogInfo
 INFO: Admin log in successfull
-Sep 11, 2019 8:53:59 PM com.system.dao.AccountManagementDao getLogInfo
+Sep 12, 2019 9:39:37 PM com.system.dao.AccountManagementDao getLogInfo
 INFO: Admin log in successfull
-Sep 11, 2019 9:06:53 PM com.system.dao.AccountManagementDao getLogInfo
+Sep 12, 2019 9:52:50 PM com.system.dao.AccountManagementDao getLogInfo
 INFO: Admin log in successfull
-Sep 11, 2019 9:07:45 PM com.system.dao.AccountManagementDao getLogInfo
+Sep 12, 2019 9:54:46 PM com.system.dao.AccountManagementDao getLogInfo
 INFO: Admin log in successfull
-Sep 11, 2019 11:48:44 PM com.system.dao.AccountManagementDao getLogInfo
+Sep 12, 2019 9:57:41 PM com.system.dao.AccountManagementDao getLogInfo
 INFO: Admin log in successfull
-Sep 11, 2019 11:57:07 PM com.system.dao.AccountManagementDao getLogInfo
+Sep 12, 2019 9:58:41 PM com.system.dao.AccountManagementDao getLogInfo
 INFO: Admin log in successfull
-Sep 12, 2019 12:17:56 AM com.system.dao.AccountManagementDao getLogInfo
+Sep 12, 2019 9:59:50 PM com.system.dao.AccountManagementDao getLogInfo
 INFO: Admin log in successfull
-Sep 12, 2019 12:19:52 AM com.system.dao.AccountManagementDao getLogInfo
+Sep 12, 2019 10:01:29 PM com.system.dao.AccountManagementDao getLogInfo
 INFO: Admin log in successfull
-Sep 12, 2019 12:29:25 AM com.system.dao.AccountManagementDao getLogInfo
+Sep 12, 2019 10:05:49 PM com.system.dao.AccountManagementDao getLogInfo
 INFO: Admin log in successfull
+Sep 12, 2019 10:06:43 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 12, 2019 10:12:07 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 12, 2019 10:13:51 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 12, 2019 10:15:30 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 12, 2019 10:16:46 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 12, 2019 10:23:54 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 12, 2019 10:26:09 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 12, 2019 10:27:59 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 12, 2019 10:31:52 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 12, 2019 10:34:04 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 12, 2019 10:34:41 PM com.system.Message.Messages getLogInfo
+INFO: Back up is maked

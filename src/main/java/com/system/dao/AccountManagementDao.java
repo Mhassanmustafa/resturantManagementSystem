@@ -22,7 +22,7 @@ public class AccountManagementDao  implements IAccountManagement  {
 
     public static void getLogInfo (String message){
         try {
-            Log log = new Log();
+            Log log = Log.getInstance();
             log.logger.info(message);
         }catch (Exception exp){
             exp.printStackTrace();
@@ -32,7 +32,7 @@ public class AccountManagementDao  implements IAccountManagement  {
 
     public static void getLogWarning (String message){
         try {
-            Log log = new Log();
+            Log log = Log.getInstance();
             log.logger.warning(message);
         }catch (Exception exp){
             exp.printStackTrace();

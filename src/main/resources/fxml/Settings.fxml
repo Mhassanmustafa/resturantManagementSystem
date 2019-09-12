@@ -182,8 +182,8 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ProgressBar layoutX="257.0" layoutY="157.0" prefHeight="18.0" prefWidth="363.0" progress="0.0" />
-                              <JFXButton layoutX="323.0" layoutY="251.0" onAction="#backupData" prefHeight="57.0" prefWidth="222.0" text="Back Up Database " />
+                              <ProgressBar fx:id="backUpProgress" layoutX="199.0" layoutY="157.0" prefHeight="18.0" prefWidth="408.0" progress="0.0" />
+                              <JFXButton layoutX="323.0" layoutY="251.0" onAction="#backupData" prefHeight="42.0" prefWidth="150.0" text="Back Up Database " />
                            </children>
                         </AnchorPane>
                     </content>

@@ -72,6 +72,12 @@
             <version>1.2.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.victorlaerte</groupId>
+            <artifactId>jfx-asynctask</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
 
     </dependencies>
 

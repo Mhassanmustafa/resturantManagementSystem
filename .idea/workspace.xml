@@ -3,24 +3,51 @@
   <component name="ChangeListManager">
     <list default="true" id="ed3671e0-8356-4071-8a31-47a3f0b173be" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/Sql/Config.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/logs/logs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.1" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/logs/logs.txt.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.2" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/logs/logs.txt.2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.2.lck" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.3" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/logs/logs.txt.3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.4" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/logs/logs.txt.4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.5" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/logs/logs.txt.5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.6" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/logs/logs.txt.6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.7" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/logs/logs.txt.7" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.8" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/logs/logs.txt.8" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.1.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.10.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.11" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.11.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.12.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.13" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.13.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.14" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.14.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.15" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.15.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.16" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.16.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.3.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.4.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.5.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.6.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.7.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.8.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.9.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt.lck" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/Queries/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/Queries/Query.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/config/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/Logs/Log.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/Message/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/Message/Messages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/SqlBackup/SqlBackUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/SqlBackup/SqlBackUp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/system/controllers/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/controllers/SettingsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/services/SqlConnectionServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/services/SqlConnectionServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/dao/AccountManagementDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/dao/AccountManagementDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/dao/InvoicesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/dao/InvoicesDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/dao/ProductManagementDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/dao/ProductManagementDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/dao/StatisticsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/dao/StatisticsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/dao/StockManagementDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/dao/StockManagementDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/Settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/Settings.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -50,19 +77,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/App.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/config/Config.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/dao/ProductManagementDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="52" column="67" selection-start-line="52" selection-start-column="67" selection-end-line="52" selection-end-column="67" />
+            <state relative-caret-position="326">
+              <caret line="38" column="103" selection-start-line="38" selection-start-column="103" selection-end-line="38" selection-end-column="111" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,10 +89,52 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/LoginController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/SettingsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
+            <state relative-caret-position="190">
+              <caret line="138" column="40" selection-start-line="138" selection-start-column="40" selection-end-line="138" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/SqlBackup/SqlBackUp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/Logs/Log.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="731">
+              <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/InvoiceController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/dao/AccountManagementDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="31" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -83,64 +143,29 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/SettingsController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/Tasks/SqlBackupTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="136" column="26" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/dao/AccountManagementDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="409" column="70" lean-forward="true" selection-start-line="409" selection-start-column="8" selection-end-line="409" selection-end-column="70" />
+            <state relative-caret-position="295">
+              <caret line="114" column="45" selection-start-line="114" selection-start-column="45" selection-end-line="114" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#238#239#0" expanded="true" />
+                <element signature="e#284#285#0" expanded="true" />
+                <element signature="e#1079#1080#0" expanded="true" />
+                <element signature="e#1114#1115#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/services/SqlConnectionServices.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/Message/Messages.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-255">
-              <caret line="26" column="102" selection-start-line="26" selection-start-column="102" selection-end-line="26" selection-end-column="102" />
+            <state relative-caret-position="309">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/SqlBackup/SqlBackUp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="55" column="22" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/Queries/Query.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="427" column="188" selection-start-line="427" selection-start-column="94" selection-end-line="427" selection-end-column="188" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Reports/Sql/Config.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -148,8 +173,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+            <state relative-caret-position="204">
+              <caret line="78" column="21" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/services/SqlConnectionServices.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="26" column="102" selection-start-line="26" selection-start-column="102" selection-end-line="26" selection-end-column="102" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -169,7 +206,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>@../../ManagementSystem-master/src/main/resources/css/stylesheet.css</find>
       <find>addnewca</find>
       <find>getRecipieNames</find>
       <find>import javafx.util.converter.FloatStringConverter;</find>
@@ -199,11 +235,14 @@
       <find>adminlo</find>
       <find>Files</find>
       <find>insert into ledgerr</find>
+      <find>new Log();</find>
     </findStrings>
     <replaceStrings>
       <replace>@../css/stylesheet.css</replace>
       <replace>@../../css/stylesheet.css</replace>
       <replace>pPf</replace>
+      <replace />
+      <replace>Log.getInstance();</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -212,7 +251,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/fxml/ProductManagement/UpdateSellPrice.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/models/Supplier.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/controllers/ProductManagement/CategoryController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/controllers/ProductManagement/UpdateSellPriceController.java" />
@@ -246,23 +284,24 @@
         <option value="$PROJECT_DIR$/src/main/java/com/system/controllers/EmployeeInvoice/EmployeeInvoiceController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/dao/Interfaces/IAccountManagement.java" />
         <option value="$PROJECT_DIR$/Reports/logs/logs.txt.1" />
-        <option value="$PROJECT_DIR$/src/main/java/com/system/Message/Messages.java" />
         <option value="$PROJECT_DIR$/Reports/logs/logs.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/com/system/dao/AccountManagementDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/dao/StockManagementDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/dao/StatisticsDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/dao/InvoicesDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/dao/ProductManagementDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/system/Logs/Log.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/config/Config.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/services/SqlConnectionServices.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/Reports/Sql/Config.txt" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/Queries/Query.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/system/SqlBackup/SqlBackUp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/controllers/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/system/dao/AccountManagementDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/system/Logs/Log.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/system/SqlBackup/SqlBackUp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/controllers/SettingsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/system/Message/Messages.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/system/Tasks/SqlBackupTask.java" />
       </list>
     </option>
   </component>
@@ -304,6 +343,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -315,6 +356,12 @@
               <item name="resturantManagementSystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="resturantManagementSystem" type="462c0819:PsiDirectoryNode" />
               <item name="Reports" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="resturantManagementSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="resturantManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="Reports" type="462c0819:PsiDirectoryNode" />
+              <item name="logs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="resturantManagementSystem" type="b2602c69:ProjectViewProjectNode" />
@@ -355,15 +402,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="system" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="resturantManagementSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="resturantManagementSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -373,16 +411,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="system" type="462c0819:PsiDirectoryNode" />
-              <item name="Queries" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="resturantManagementSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="resturantManagementSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="Message" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="resturantManagementSystem" type="b2602c69:ProjectViewProjectNode" />
@@ -397,15 +426,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/fxml/DashBoard.fxml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -492,12 +519,13 @@
       <workItem from="1567841362457" duration="140694000" />
       <workItem from="1568125609026" duration="4647000" />
       <workItem from="1568135498518" duration="2550000" />
-      <workItem from="1568216018817" duration="12904000" />
+      <workItem from="1568216018817" duration="15372000" />
+      <workItem from="1568303858766" duration="5405000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="181210000" />
+    <option name="totallyTimeSpent" value="189083000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -512,7 +540,7 @@
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4982079" visible="true" weight="0.22314675" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4982079" visible="true" weight="0.22617246" />
       <window_info id="Structure" order="1" sideWeight="0.50179213" side_tool="true" weight="0.19818456" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -587,18 +615,6 @@
     </SUITE>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/EmployerLogin/EmpLogIn.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="359" selection-start-line="16" selection-start-column="341" selection-end-line="16" selection-end-column="359" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/AccountManagement/AccountHistory.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-      <provider editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/Login.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
@@ -740,65 +756,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/Message/Messages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/dao/StatisticsDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="314" column="44" selection-start-line="314" selection-start-column="44" selection-end-line="314" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/dao/StockManagementDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="32" column="3" lean-forward="true" selection-start-line="32" selection-start-column="3" selection-end-line="50" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/dao/InvoicesDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-256">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.3">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.4">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.6">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.3" />
+    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.4" />
+    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.6" />
     <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.9" />
-    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.7.lck">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.8.lck">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.1">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.7.lck" />
+    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.8.lck" />
+    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.1" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/EmployeeInvoice/EmpLoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-46">
@@ -819,70 +783,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/Logs/Log.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="25" column="51" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.7">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.8">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.7" />
+    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.8" />
     <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.lck" />
-    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.5">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.2">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-178" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/config/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1470" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/SqlBackup/file.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.5" />
+    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.2" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/SqlBackup/file.txt" />
     <entry file="file://$PROJECT_DIR$/Reports/Sql/Config.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/dao/ProductManagementDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="52" column="67" selection-start-line="52" selection-start-column="67" selection-end-line="52" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -900,30 +810,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/services/SqlConnectionServices.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/dao/StockManagementDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
-          <caret line="26" column="102" selection-start-line="26" selection-start-column="102" selection-end-line="26" selection-end-column="102" />
+        <state relative-caret-position="102">
+          <caret line="32" column="3" lean-forward="true" selection-start-line="32" selection-start-column="3" selection-end-line="50" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/dao/AccountManagementDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/dao/StatisticsDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="409" column="70" lean-forward="true" selection-start-line="409" selection-start-column="8" selection-end-line="409" selection-end-column="70" />
+        <state relative-caret-position="210">
+          <caret line="314" column="44" selection-start-line="314" selection-start-column="44" selection-end-line="314" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/SqlBackup/SqlBackUp.java">
+    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/dao/ProductManagementDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="55" column="22" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
+        <state relative-caret-position="884">
+          <caret line="52" column="67" selection-start-line="52" selection-start-column="67" selection-end-line="52" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -932,7 +845,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="833">
           <caret line="49" selection-start-line="49" selection-end-line="49" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -940,10 +853,108 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/SettingsController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/dao/InvoicesDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/services/SqlConnectionServices.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="102" selection-start-line="26" selection-start-column="102" selection-end-line="26" selection-end-column="102" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/config/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="38" column="103" selection-start-line="38" selection-start-column="103" selection-end-line="38" selection-end-column="111" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="136" column="26" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="26" />
+          <caret line="78" column="21" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/SettingsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="138" column="40" selection-start-line="138" selection-start-column="40" selection-end-line="138" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/SqlBackup/SqlBackUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/InvoiceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/dao/AccountManagementDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="31" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/Logs/Log.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/Message/Messages.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/Tasks/SqlBackupTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="114" column="45" selection-start-line="114" selection-start-column="45" selection-end-line="114" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#238#239#0" expanded="true" />
+            <element signature="e#284#285#0" expanded="true" />
+            <element signature="e#1079#1080#0" expanded="true" />
+            <element signature="e#1114#1115#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

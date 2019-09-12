@@ -31,7 +31,7 @@ public class InvoicesDao implements IInvoices {
 
     public static void getLogInfo (String message){
         try {
-            Log log = new Log();
+            Log log = Log.getInstance();
             log.logger.info(message);
         }catch (Exception exp){
             exp.printStackTrace();
@@ -41,7 +41,7 @@ public class InvoicesDao implements IInvoices {
 
     public static void getLogWarning (String message){
         try {
-            Log log = new Log();
+            Log log = Log.getInstance();
             log.logger.warning(message);
         }catch (Exception exp){
             exp.printStackTrace();

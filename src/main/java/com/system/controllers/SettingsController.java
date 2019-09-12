@@ -4,6 +4,7 @@ import animatefx.animation.SlideInDown;
 import com.system.Message.Messages;
 import com.system.Queries.Query;
 import com.system.SqlBackup.SqlBackUp;
+import com.system.Tasks.SqlBackupTask;
 import com.system.config.Config;
 import com.system.dao.AccountManagementDao;
 import com.system.services.SqlConnectionServices;
@@ -15,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -38,6 +40,9 @@ public class SettingsController implements Initializable {
 
     @FXML
     private TextField userName;
+
+    @FXML
+    private ProgressBar backUpProgress;
 
 
     //button event for the home button use to change the scene and come to dashBoard
@@ -124,51 +129,17 @@ public class SettingsController implements Initializable {
         }
     }
 
-    public void makeBackupOnDisk(){
-        try {
-            Connection connection = SqlConnectionServices.getConnection();
-            Statement stmt = connection.createStatement();
-            stmt.execute(Query.sqlBackupQuery);
 
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
     public void backupData(){
         SqlBackUp sqlBackUp = new SqlBackUp();
         if (sqlBackUp.checkInternetIsConnected()){
-            if(sqlBackUp.checkFileisPresent()){
-                if(sqlBackUp.delfile()){
-                    makeBackupOnDisk();
-                    try {
-
-
-                        if (sqlBackUp.checkFilePresent()) {
-                            sqlBackUp.getSqlDataBackup();
-                        } else {
-                            Messages.getWarning("operation unsucess");
-                            System.out.println("operation unsuccess");
-                        }
-                    }catch (Exception exp){
-                        exp.printStackTrace();
-                    }
-                }
-            }else {
-                makeBackupOnDisk();
-                try {
-                    if (sqlBackUp.checkFilePresent()) {
-                        sqlBackUp.getSqlDataBackup();
-                    } else {
-                        Messages.getWarning("operation unsuccess");
-                        System.out.println("operation unsuccess");
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+            SqlBackupTask sqlBackupTask = new SqlBackupTask(this.backUpProgress);
+            sqlBackupTask.execute();
+            if(sqlBackupTask.isAlive()){
+                System.out.println("wait");
             }
         }else {
-            Messages.getWarning("Internet not connected backup not made");
-            System.out.println("Internet not connected backup not made");
+            Messages.getAlert("Please connect internet before making backup");
         }
     }
     @Override

@@ -1,6 +1,7 @@
 package com.system.SqlBackup;
 
 import com.dropbox.core.DbxRequestConfig;
+import com.dropbox.core.util.IOUtil;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.FileMetadata;
 import com.dropbox.core.v2.files.GetMetadataErrorException;
@@ -19,20 +20,8 @@ import java.net.URLConnection;
 
 public class SqlBackUp  {
     private static final String DEVELOPER_TOKEN = "k5OI9gvwWsAAAAAAAAAADC-VCglptlR3nhA1Bhs-EYUjVv8k-e5mFbD5qtqiTiRb";
-  public void getSqlDataBackup() throws Exception{
 
-      DbxRequestConfig config = DbxRequestConfig.newBuilder("dropbox/hassan").build();
-      DbxClientV2 client = new DbxClientV2(config, DEVELOPER_TOKEN);
-
-      // Upload "test.txt" to Dropbox
-      try (InputStream in = new FileInputStream("C:\\Program Files\\Microsoft SQL Server\\MSSQL12.MSSQLSERVER\\MSSQL\\Backup\\data_database.bak")) {
-          FileMetadata metadata = client.files().uploadBuilder("/data_database.bak")
-                  .uploadAndFinish(in);
-          System.out.println( metadata);
-      }
-  }
-
-  public boolean checkInternetIsConnected(){
+    public boolean checkInternetIsConnected(){
       try {
           final URL url = new URL("http://www.google.com");
           final URLConnection conn = url.openConnection();
