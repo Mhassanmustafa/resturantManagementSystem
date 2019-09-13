@@ -29,29 +29,29 @@ import static com.system.config.Config.shopName;
 
 public class InvoicesDao implements IInvoices {
 
-    public static void getLogInfo (String message){
+    public static void getLogInfo(String message) {
         try {
             Log log = Log.getInstance();
             log.logger.info(message);
-        }catch (Exception exp){
+        } catch (Exception exp) {
             exp.printStackTrace();
         }
 
     }
 
-    public static void getLogWarning (String message){
+    public static void getLogWarning(String message) {
         try {
             Log log = Log.getInstance();
             log.logger.warning(message);
-        }catch (Exception exp){
+        } catch (Exception exp) {
             exp.printStackTrace();
         }
 
     }
 
     //to close the open sql connections
-    public void closeSqlConnection(Connection connection){
-        if(connection != null){
+    public void closeSqlConnection(Connection connection) {
+        if (connection != null) {
             SqlConnectionServices.closeConnection(connection);
         }
     }
@@ -62,21 +62,21 @@ public class InvoicesDao implements IInvoices {
         ObservableList<String> list = FXCollections.observableArrayList();
         Connection connection = SqlConnectionServices.getConnection();
 
-        try{
+        try {
 
-            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.customerNames,null);
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.customerNames, null);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if(resultSet != null){
-                while (resultSet.next()){
+            if (resultSet != null) {
+                while (resultSet.next()) {
                     list.add(resultSet.getString(1));
                 }
             }
 
-        }catch (SQLException exp){
+        } catch (SQLException exp) {
             getLogWarning(exp.getMessage());
             exp.printStackTrace();
-        }finally {
+        } finally {
             this.closeSqlConnection(connection);
         }
 
@@ -88,21 +88,21 @@ public class InvoicesDao implements IInvoices {
         ObservableList<String> list = FXCollections.observableArrayList();
         Connection connection = SqlConnectionServices.getConnection();
 
-        try{
+        try {
 
-            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.customerPhonos,null);
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.customerPhonos, null);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if(resultSet != null){
-                while (resultSet.next()){
+            if (resultSet != null) {
+                while (resultSet.next()) {
                     list.add(resultSet.getString(1));
                 }
             }
 
-        }catch (SQLException exp){
+        } catch (SQLException exp) {
             getLogWarning(exp.getMessage());
             exp.printStackTrace();
-        }finally {
+        } finally {
             this.closeSqlConnection(connection);
         }
 
@@ -113,29 +113,29 @@ public class InvoicesDao implements IInvoices {
     public void addnewCustomer(Customers customer) {
 
         Connection connection = SqlConnectionServices.getConnection();
-        HashMap<Integer , Object> params = new HashMap<>();
+        HashMap<Integer, Object> params = new HashMap<>();
 
 
-        params.put(1 , customer.getName());
-        params.put(2 , customer.getPhoneNumber());
+        params.put(1, customer.getName());
+        params.put(2, customer.getPhoneNumber());
 
 
-        try{
+        try {
 
-            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.addNewCustomer,params).executeUpdate();
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection, Query.addNewCustomer, params).executeUpdate();
 
-            if(affectedRows == 0){
+            if (affectedRows == 0) {
                 getLogInfo("new customer not add successfully");
                 System.out.println("data is not inserted");
-            }else {
+            } else {
                 System.out.println("Data inserted Successfully");
                 getLogInfo("new customer add successfull");
             }
 
-        }catch (Exception exp){
+        } catch (Exception exp) {
             getLogWarning(exp.getMessage());
             exp.printStackTrace();
-        }finally {
+        } finally {
             this.closeSqlConnection(connection);
         }
     }
@@ -143,26 +143,26 @@ public class InvoicesDao implements IInvoices {
     @Override
     public void addNewOrder(int customerId, String date) {
         Connection connection = SqlConnectionServices.getConnection();
-        HashMap<Integer , Object> params = new HashMap<>();
+        HashMap<Integer, Object> params = new HashMap<>();
 
 
-        params.put(1 , customerId);
-        params.put(2 , date);
+        params.put(1, customerId);
+        params.put(2, date);
 
-        try{
-            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.customerOrder,params).executeUpdate();
+        try {
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection, Query.customerOrder, params).executeUpdate();
 
-            if(affectedRows == 0){
+            if (affectedRows == 0) {
                 getLogInfo("new order is not added");
                 System.out.println("Value is not inserted");
-            }else {
+            } else {
                 System.out.println("Value inserted Successfully");
                 getLogInfo("new order is added in database");
             }
-        }catch (Exception exp){
+        } catch (Exception exp) {
             getLogWarning(exp.getMessage());
             exp.printStackTrace();
-        }finally {
+        } finally {
             this.closeSqlConnection(connection);
         }
     }
@@ -172,24 +172,24 @@ public class InvoicesDao implements IInvoices {
         int orderId = 0;
 
         Connection connection = SqlConnectionServices.getConnection();
-        HashMap<Integer , Object> params = new HashMap<>();
+        HashMap<Integer, Object> params = new HashMap<>();
 
 
-        params.put(1 , customerId);
+        params.put(1, customerId);
 
-        try{
-            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection,Query.customerOrderId,params);
+        try {
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.customerOrderId, params);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if(resultSet != null){
-                while (resultSet.next()){
+            if (resultSet != null) {
+                while (resultSet.next()) {
                     orderId = resultSet.getInt(1);
                 }
             }
-        }catch (Exception exp){
+        } catch (Exception exp) {
             getLogWarning(exp.getMessage());
             exp.printStackTrace();
-        }finally {
+        } finally {
             this.closeSqlConnection(connection);
         }
         return orderId;
@@ -198,30 +198,30 @@ public class InvoicesDao implements IInvoices {
     @Override
     public void insertOrderHistory(int orderId, int productId, float quantity, float amount, float discount, String date) {
         Connection connection = SqlConnectionServices.getConnection();
-        HashMap<Integer , Object> params = new HashMap<>();
+        HashMap<Integer, Object> params = new HashMap<>();
 
 
-        params.put(1 , orderId);
-        params.put(2 , productId);
-        params.put(3 , quantity);
-        params.put(4 , amount);
-        params.put(5 , discount);
-        params.put(6 , date);
+        params.put(1, orderId);
+        params.put(2, productId);
+        params.put(3, quantity);
+        params.put(4, amount);
+        params.put(5, discount);
+        params.put(6, date);
 
-        try{
-            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.customerOrderHistoy,params).executeUpdate();
+        try {
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection, Query.customerOrderHistoy, params).executeUpdate();
 
-            if(affectedRows == 0){
+            if (affectedRows == 0) {
                 getLogInfo("insert in orderHistory not successfull");
                 System.out.println("Value is not inserted");
-            }else {
+            } else {
                 System.out.println("Value inserted Successfully");
                 getLogInfo("insert in orderHistory is successfull");
             }
-        }catch (Exception exp){
+        } catch (Exception exp) {
             getLogWarning(exp.getMessage());
             exp.printStackTrace();
-        }finally {
+        } finally {
             this.closeSqlConnection(connection);
         }
     }
@@ -230,34 +230,34 @@ public class InvoicesDao implements IInvoices {
     public void insertLedgerData(Ledger ledger) {
         float balaance = ledger.getDebit() - ledger.getCredit();
         Connection connection = SqlConnectionServices.getConnection();
-        HashMap<Integer , Object> params = new HashMap<>();
+        HashMap<Integer, Object> params = new HashMap<>();
 
 
-        params.put(1,ledger.getAccountId());
-        params.put(2,ledger.getCutomerId());
-        params.put(3,ledger.getCustomerOrderId());
-        params.put(4,ledger.getCredit());
-        params.put(5,ledger.getDebit());
-        params.put(6,balaance);
-        params.put(7,ledger.getDescription());
-        params.put(8,ledger.getDate());
+        params.put(1, ledger.getAccountId());
+        params.put(2, ledger.getCutomerId());
+        params.put(3, ledger.getCustomerOrderId());
+        params.put(4, ledger.getCredit());
+        params.put(5, ledger.getDebit());
+        params.put(6, balaance);
+        params.put(7, ledger.getDescription());
+        params.put(8, ledger.getDate());
 
         try {
 
-            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.custLedgerData,params).executeUpdate();
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection, Query.custLedgerData, params).executeUpdate();
 
-            if(affectedRows == 0){
+            if (affectedRows == 0) {
                 getLogInfo("ledger data is not inserted successfull");
                 System.out.println("Value is not inserted");
-            }else {
+            } else {
                 getLogInfo("ledger data is inserted successfull");
                 System.out.println("Value inserted Successfully");
             }
 
-        }catch (Exception exp){
+        } catch (Exception exp) {
             getLogWarning(exp.getMessage());
             exp.printStackTrace();
-        }finally {
+        } finally {
             this.closeSqlConnection(connection);
         }
     }
@@ -267,25 +267,25 @@ public class InvoicesDao implements IInvoices {
 
         ObservableList<Integer> list = FXCollections.observableArrayList();
         Connection connection = SqlConnectionServices.getConnection();
-        HashMap<Integer , Object> params = new HashMap<>();
+        HashMap<Integer, Object> params = new HashMap<>();
 
-        params.put(1,recipieId);
+        params.put(1, recipieId);
 
-        try{
+        try {
 
-            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.getIngredentsId,params);
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.getIngredentsId, params);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if(resultSet != null){
-                while (resultSet.next()){
+            if (resultSet != null) {
+                while (resultSet.next()) {
                     list.add(resultSet.getInt(1));
                 }
             }
 
-        }catch (SQLException exp){
+        } catch (SQLException exp) {
             getLogWarning(exp.getMessage());
             exp.printStackTrace();
-        }finally {
+        } finally {
             this.closeSqlConnection(connection);
         }
 
@@ -296,25 +296,25 @@ public class InvoicesDao implements IInvoices {
     public ObservableList<Integer> getQuantityList(int recipieId) {
         ObservableList<Integer> list = FXCollections.observableArrayList();
         Connection connection = SqlConnectionServices.getConnection();
-        HashMap<Integer , Object> params = new HashMap<>();
+        HashMap<Integer, Object> params = new HashMap<>();
 
-        params.put(1,recipieId);
+        params.put(1, recipieId);
 
-        try{
+        try {
 
-            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.getProductQuantity,params);
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.getProductQuantity, params);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if(resultSet != null){
-                while (resultSet.next()){
+            if (resultSet != null) {
+                while (resultSet.next()) {
                     list.add(resultSet.getInt(1));
                 }
             }
 
-        }catch (SQLException exp){
+        } catch (SQLException exp) {
             getLogWarning(exp.getMessage());
             exp.printStackTrace();
-        }finally {
+        } finally {
             this.closeSqlConnection(connection);
         }
 
@@ -326,24 +326,24 @@ public class InvoicesDao implements IInvoices {
         float availableQuantity = 0;
 
         Connection connection = SqlConnectionServices.getConnection();
-        HashMap<Integer , Object> params = new HashMap<>();
+        HashMap<Integer, Object> params = new HashMap<>();
 
 
-        params.put(1 , ProductId);
+        params.put(1, ProductId);
 
-        try{
-            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection,Query.getStockQuantityAvailable,params);
+        try {
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.getStockQuantityAvailable, params);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if(resultSet != null){
-                while (resultSet.next()){
+            if (resultSet != null) {
+                while (resultSet.next()) {
                     availableQuantity = resultSet.getInt(1);
                 }
             }
-        }catch (Exception exp){
+        } catch (Exception exp) {
             getLogWarning(exp.getMessage());
             exp.printStackTrace();
-        }finally {
+        } finally {
             this.closeSqlConnection(connection);
         }
         return availableQuantity;
@@ -353,30 +353,30 @@ public class InvoicesDao implements IInvoices {
     public void insertNewStockHistory(int productId, float totalQuantity, String description, String date) {
 
         Connection connection = SqlConnectionServices.getConnection();
-        HashMap<Integer , Object> params = new HashMap<>();
+        HashMap<Integer, Object> params = new HashMap<>();
 
 
-        params.put(1,productId);
-        params.put(2,totalQuantity);
-        params.put(3,description);
-        params.put(4,date);
+        params.put(1, productId);
+        params.put(2, totalQuantity);
+        params.put(3, description);
+        params.put(4, date);
 
         try {
 
-            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.newStockHistory,params).executeUpdate();
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection, Query.newStockHistory, params).executeUpdate();
 
-            if(affectedRows == 0){
+            if (affectedRows == 0) {
                 getLogInfo("values not inserted in new stock history");
                 System.out.println("Value is not inserted");
-            }else {
+            } else {
                 System.out.println("Value inserted Successfully");
                 getLogInfo("values inserted in new stock history");
             }
 
-        }catch (Exception exp){
+        } catch (Exception exp) {
             getLogWarning(exp.getMessage());
             exp.printStackTrace();
-        }finally {
+        } finally {
             this.closeSqlConnection(connection);
         }
     }
@@ -386,25 +386,25 @@ public class InvoicesDao implements IInvoices {
         float balance = 0;
 
         Connection connection = SqlConnectionServices.getConnection();
-        HashMap<Integer , Object> params = new HashMap<>();
+        HashMap<Integer, Object> params = new HashMap<>();
 
 
-        params.put(1 , customerId);
+        params.put(1, customerId);
         try {
 
-            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection,Query.previousBalance,params);
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.previousBalance, params);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if(resultSet != null) {
+            if (resultSet != null) {
                 while (resultSet.next()) {
                     balance = resultSet.getFloat(1);
                 }
             }
 
-        }catch (Exception exp){
+        } catch (Exception exp) {
             getLogWarning(exp.getMessage());
             exp.printStackTrace();
-        }finally {
+        } finally {
             this.closeSqlConnection(connection);
         }
         return balance;
@@ -413,37 +413,37 @@ public class InvoicesDao implements IInvoices {
     @Override
     public void insertExistingLeger(Ledger ledger, int customerID) {
         float previousBlance = getLatestBalance(customerID);
-        previousBlance = previousBlance +(ledger.getDebit() - ledger.getCredit());
+        previousBlance = previousBlance + (ledger.getDebit() - ledger.getCredit());
 
         Connection connection = SqlConnectionServices.getConnection();
-        HashMap<Integer , Object> params = new HashMap<>();
+        HashMap<Integer, Object> params = new HashMap<>();
 
 
-        params.put(1,ledger.getAccountId());
-        params.put(2,customerID);
-        params.put(3,ledger.getCustomerOrderId());
-        params.put(4,ledger.getCredit());
-        params.put(5,ledger.getDebit());
-        params.put(6,previousBlance);
-        params.put(7,ledger.getDescription());
-        params.put(8,ledger.getDate());
+        params.put(1, ledger.getAccountId());
+        params.put(2, customerID);
+        params.put(3, ledger.getCustomerOrderId());
+        params.put(4, ledger.getCredit());
+        params.put(5, ledger.getDebit());
+        params.put(6, previousBlance);
+        params.put(7, ledger.getDescription());
+        params.put(8, ledger.getDate());
 
         try {
 
-            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.custLedgerData,params).executeUpdate();
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection, Query.custLedgerData, params).executeUpdate();
 
-            if(affectedRows == 0){
+            if (affectedRows == 0) {
                 getLogInfo("existing  ledger data not inserted");
                 System.out.println("Value is not inserted");
-            }else {
+            } else {
                 System.out.println("Value inserted Successfully");
                 getLogInfo("existing edger data inserted");
             }
 
-        }catch (Exception exp){
+        } catch (Exception exp) {
             getLogWarning(exp.getMessage());
             exp.printStackTrace();
-        }finally {
+        } finally {
             this.closeSqlConnection(connection);
         }
     }
@@ -456,21 +456,21 @@ public class InvoicesDao implements IInvoices {
         Connection connection = SqlConnectionServices.getConnection();
 
 
-        try{
+        try {
 
-            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection,Query.getOrderId,null);
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.getOrderId, null);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if(resultSet != null){
-                while (resultSet.next()){
+            if (resultSet != null) {
+                while (resultSet.next()) {
                     list.add(resultSet.getInt(1));
                 }
             }
 
-        }catch (SQLException exp){
+        } catch (SQLException exp) {
             getLogWarning(exp.getMessage());
             exp.printStackTrace();
-        }finally {
+        } finally {
             this.closeSqlConnection(connection);
         }
 
@@ -478,34 +478,33 @@ public class InvoicesDao implements IInvoices {
     }
 
     @Override
-    public ObservableList<Invoices> getOrderHistory(int  orderId) {
-
+    public ObservableList<Invoices> getOrderHistory(int orderId) {
 
 
         ObservableList<Invoices> list = FXCollections.observableArrayList();
 
         Connection connection = SqlConnectionServices.getConnection();
-        HashMap<Integer , Object> params = new HashMap<>();
+        HashMap<Integer, Object> params = new HashMap<>();
 
-        params.put(1 , orderId);
+        params.put(1, orderId);
 
-        try{
+        try {
 
-            PreparedStatement preparedStatement =SqlConnectionServices.prepareAStatement(connection,Query.customerOrderHistoryQuery,params);
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.customerOrderHistoryQuery, params);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if(resultSet != null){
-                while (resultSet.next()){
-                    list.add(new Invoices(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
-                            resultSet.getFloat(4),resultSet.getFloat(5),resultSet.getFloat(7),resultSet.getFloat(6),
+            if (resultSet != null) {
+                while (resultSet.next()) {
+                    list.add(new Invoices(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3),
+                            resultSet.getFloat(4), resultSet.getFloat(5), resultSet.getFloat(7), resultSet.getFloat(6),
                             resultSet.getString(8)));
                 }
             }
 
-        }catch (Exception exp){
+        } catch (Exception exp) {
             getLogWarning(exp.getMessage());
             exp.printStackTrace();
-        }finally {
+        } finally {
             this.closeSqlConnection(connection);
         }
         return list;
@@ -573,5 +572,106 @@ public class InvoicesDao implements IInvoices {
 //        d.open(new File(file));
 //        Messages.getAlert("Exported to Pdf please Wait while file is opening");
 //    }
+    }
+
+
+    public void deleteLedgerData(int custOrderId) {
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer, Object> params = new HashMap<>();
+
+        params.put(1, custOrderId);
+        try {
+
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection, Query.deleteLedgerOrder, params).executeUpdate();
+
+            if (affectedRows == 0) {
+                getLogInfo("ledger data is not deleted");
+                System.out.println("Value is not deleted by orderId");
+            } else {
+                System.out.println("Value deleted Successfully");
+                getLogInfo(" Ledger data is deleted by orderId");
+            }
+
+        } catch (Exception exp) {
+            exp.printStackTrace();
+            getLogWarning(exp.getMessage());
+        } finally {
+            this.closeSqlConnection(connection);
+        }
+    }
+
+    public void deleteCustomerOrderData(int custOrderId) {
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer, Object> params = new HashMap<>();
+
+        params.put(1, custOrderId);
+        try {
+
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection, Query.deleteCustomerOrder, params).executeUpdate();
+
+            if (affectedRows == 0) {
+                getLogInfo("customer order data is not deleted");
+                System.out.println("Value is not deleted by orderId");
+            } else {
+                System.out.println("Value deleted Successfully");
+                getLogInfo("customer order data is deleted by orderId");
+            }
+
+        } catch (Exception exp) {
+            exp.printStackTrace();
+            getLogWarning(exp.getMessage());
+        } finally {
+            this.closeSqlConnection(connection);
+        }
+    }
+
+    public void deleteCustOrderHistoryData(int custOrderId) {
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer, Object> params = new HashMap<>();
+
+        params.put(1, custOrderId);
+        try {
+
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection, Query.deleteOrderhistory, params).executeUpdate();
+
+            if (affectedRows == 0) {
+                getLogInfo("customer order history data is not deleted");
+                System.out.println("Value is not deleted by orderId");
+            } else {
+                System.out.println("Value deleted Successfully");
+                getLogInfo(" customer order history data is deleted by orderId");
+            }
+
+        } catch (Exception exp) {
+            exp.printStackTrace();
+            getLogWarning(exp.getMessage());
+        } finally {
+            this.closeSqlConnection(connection);
+        }
+    }
+
+    public void deleteTempData(int custOrderId) {
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer, Object> params = new HashMap<>();
+
+        params.put(1, custOrderId);
+        try {
+
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection, Query.deleteTemp, params).executeUpdate();
+
+            if (affectedRows == 0) {
+                getLogInfo("temp data is not deleted");
+                System.out.println("Value is not deleted by orderId");
+            } else {
+                System.out.println("Value deleted Successfully");
+                getLogInfo(" temp data is deleted by orderId");
+            }
+
+        } catch (Exception exp) {
+            exp.printStackTrace();
+            getLogWarning(exp.getMessage());
+        } finally {
+            this.closeSqlConnection(connection);
+        }
     }
 }

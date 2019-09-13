@@ -135,6 +135,13 @@ public class OrderHistoryController implements Initializable {
         scene2.setScene(new Scene(root,Config.width,Config.height));
         scene2.show();
     }
+    //button event for update sell price button use to change the scene and goes to another scene
+    public void DeleteOrderButtonEvent(ActionEvent event)throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Invoice/DeleteOrder.fxml"));
+        Stage scene2 =(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene2.setScene(new Scene(root,Config.width,Config.height));
+        scene2.show();
+    }
 
     //set colmn data
     public void setColumnData(){

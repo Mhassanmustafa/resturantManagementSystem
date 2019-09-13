@@ -891,15 +891,15 @@ public class ProductManagementDao implements IProductManagement  {
 
     }
 
-    public void insertTemp(float price ,String date){
+    public void insertTemp(int orderId,float price ,String date){
 
 
         Connection connection = SqlConnectionServices.getConnection();
         HashMap<Integer , Object> params = new HashMap<>();
 
-
-        params.put(1,price);
-        params.put(2,date);
+        params.put(1,orderId);
+        params.put(2,price);
+        params.put(3,date);
 
 
         try{
@@ -921,5 +921,35 @@ public class ProductManagementDao implements IProductManagement  {
         }finally {
             this.closeSqlConnection(connection);
         }
+    }
+
+    public ObservableList<Recipie> getRecipieDetails(int id){
+
+        ObservableList<Recipie> list = FXCollections.observableArrayList();
+        Connection connection = SqlConnectionServices.getConnection();
+
+        HashMap<Integer , Object> params = new HashMap<>();
+
+        params.put(1,id);
+
+        try{
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.getRecipieData,params);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                while (resultSet.next()){
+                    list.add(new Recipie(resultSet.getInt(1),resultSet.getString(2),resultSet.getFloat(3)));
+                }
+            }
+
+        }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+        return list;
     }
 }

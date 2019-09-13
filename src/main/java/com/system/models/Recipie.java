@@ -7,6 +7,7 @@ public class Recipie {
     private float price;
     private String date;
     private float PurPrice;
+    private int recipieID;
 
 
     public Recipie(String productName, float quantity, float price ,float PurPrice) {
@@ -14,6 +15,12 @@ public class Recipie {
         this.quantity = quantity;
         this.price = price;
         this.PurPrice = PurPrice;
+    }
+
+    public Recipie(int recipieID ,String productName, float quantity ) {
+        this.productName = productName;
+        this.quantity = quantity;
+        this.recipieID = recipieID;
     }
 
     public Recipie() {
@@ -65,6 +72,14 @@ public class Recipie {
 
     public void setPurPrice(float purPrice) {
         PurPrice = purPrice;
+    }
+
+    public int getRecipieID() {
+        return recipieID;
+    }
+
+    public void setRecipieID(int recipieID) {
+        this.recipieID = recipieID;
     }
 
     @Override

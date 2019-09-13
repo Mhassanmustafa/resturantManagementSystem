@@ -137,6 +137,12 @@ public class EmployeeInvoiceController implements Initializable {
         scene2.show();
         new SlideInDown(root).play();
     }
+    public void DeleteOrderEvent(ActionEvent event)throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/EmployerLogin/EmployeeDeleteOrder.fxml"));
+        Stage scene2 =(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene2.setScene(new Scene(root, Config.width,Config.height));
+        scene2.show();
+    }
 
     //get total amount in the Total Amount Field
     public void getTotalAmount(){
@@ -365,7 +371,7 @@ public class EmployeeInvoiceController implements Initializable {
         ledger.setDescription("Bill added");
         ledger.setDate(java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
         invoicesDao.insertExistingLeger(ledger,customerId);
-        productManagementDao.insertTemp(getPricelistSum(),java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
+        productManagementDao.insertTemp(orderId,getPricelistSum(),java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
 
         if(!Files.exists(Config.billsPdf)){
             Files.createDirectories(Config.billsPdf);
@@ -425,7 +431,7 @@ public class EmployeeInvoiceController implements Initializable {
         ledger.setDescription("Bill added");
         ledger.setDate(java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
         invoicesDao.insertLedgerData(ledger);
-        productManagementDao.insertTemp(getPricelistSum(),java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
+        productManagementDao.insertTemp(orderId,getPricelistSum(),java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
         customerNamesList.add(customerName.getText());
         customerPhoneList.add(phoneNoField.getText());
 

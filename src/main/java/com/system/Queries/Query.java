@@ -424,7 +424,13 @@ public class Query {
     public static final String getLatestPurchasePrice = " select top 1 boughtPrice from purchaseHistory where productId = ? order by date desc";
     public static final String insertRecipiePurchase = " insert into recipiePurchase (productId , purchasePrice,date) values(?,?,?)";
     public static final String getRecipePurchasePrice = " select top 1 purchasePrice from recipiePurchase where productId = ? order by date desc";
-    public static final String insertTemp = " insert into temp (totalPurchase ,date) values (?,?)";
+    public static final String insertTemp = " insert into temp (orderid,totalPurchase ,date) values (?,?,?)";
     public static final String sqlBackupQuery = "BACKUP DATABASE [data_database] TO  DISK = N'C:\\Program Files\\Microsoft SQL Server\\MSSQL12.MSSQLSERVER\\MSSQL\\Backup\\data_database.bak'";
+    public static final String deleteLedgerOrder = "delete from ledger where ledger.custOrderId = ?";
+    public static final String deleteOrderhistory = "delete from customerOrderHistory where customerOrderId = ?";
+    public static final String deleteCustomerOrder = "delete from customerOrder where id = ?";
+    public static final String getRecipieData = "select recipieIngreidents.recipeProductId , (select product.name from product where product.id = recipieIngreidents.productId) as productName\n" +
+            " , recipieIngreidents.quantity from recipieIngreidents where recipieIngreidents.recipeProductId = ?";
+    public static final String deleteTemp = "delete from temp where temp.orderid = ?";
 
 }

@@ -42,6 +42,17 @@
                                 <Cursor fx:constant="OPEN_HAND" />
                             </cursor>
                         </JFXButton>
+                  <JFXButton alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="10.0" layoutY="101.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#DeleteOrderEvent" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../css/stylesheet.css" text="Delete Order" textAlignment="CENTER" textOverrun="CLIP">
+                     <effect>
+                        <Bloom />
+                     </effect>
+                     <font>
+                        <Font size="13.5" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                  </JFXButton>
                         <JFXButton alignment="TOP_CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#logoutEvent" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../css/stylesheet.css" text="Log out" textAlignment="CENTER">
                             <font>
                                 <Font size="13.5" />

@@ -193,7 +193,13 @@ public class NewInvoiceController implements Initializable {
         scene2.setScene(new Scene(root,Config.width,Config.height));
         scene2.show();
     }
-
+    //button event for update sell price button use to change the scene and goes to another scene
+    public void DeleteOrderButtonEvent(ActionEvent event)throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Invoice/DeleteOrder.fxml"));
+        Stage scene2 =(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene2.setScene(new Scene(root,Config.width,Config.height));
+        scene2.show();
+    }
     //get total amount in the Total Amount Field
     public void getTotalAmount(){
         float amount = 0;
@@ -256,7 +262,7 @@ public class NewInvoiceController implements Initializable {
                 if(productList.contains(productNamesField.getSelectionModel().getSelectedItem())) {
 
                     if(tableData.stream().anyMatch(itemsCheck->productNamesField.getSelectionModel().getSelectedItem().equals(itemsCheck.getProductName()))){
-                        Messages.getWarning("Please select edit and double click on quantity colmn enter new vale and press enter");
+                        Messages.getWarning("Please select edit and double click on quantity colmn enter new value and press enter");
                         clearFieldData();
                     }else {
                         tableData.add(new Invoices(productNamesField.getSelectionModel().getSelectedItem(),
@@ -421,7 +427,7 @@ public class NewInvoiceController implements Initializable {
         ledger.setDescription("Bill added");
         ledger.setDate(java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
         invoicesDao.insertExistingLeger(ledger,customerId);
-        productManagementDao.insertTemp(getPricelistSum(),java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
+        productManagementDao.insertTemp(orderId,getPricelistSum(),java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
 
         if(!Files.exists(Config.billsPdf)){
             Files.createDirectories(Config.billsPdf);
@@ -483,7 +489,7 @@ public class NewInvoiceController implements Initializable {
         ledger.setDescription("Bill added");
         ledger.setDate(java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
         invoicesDao.insertLedgerData(ledger);
-        productManagementDao.insertTemp(getPricelistSum(),java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
+        productManagementDao.insertTemp(orderId,getPricelistSum(),java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
 
         customerNamesList.add(customerName.getText());
         customerPhoneList.add(phoneNoField.getText());

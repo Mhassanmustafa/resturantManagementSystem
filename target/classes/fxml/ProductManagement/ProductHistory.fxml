@@ -2,9 +2,11 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -161,83 +163,124 @@
                 </JFXButton>
             </children>
         </HBox>
-        <HBox layoutX="409.0" layoutY="170.0">
-            <children>
-                <Label prefHeight="25.0" prefWidth="127.0" text="Recipe Name:">
-                    <font>
-                        <Font size="17.0" />
-                    </font>
-                </Label>
-                <JFXComboBox fx:id="recipieNameBox" editable="true" prefHeight="25.0" prefWidth="275.0" />
-            </children>
-        </HBox>
-        <JFXButton id="hboxbtn" layoutX="1021.0" layoutY="635.0" onAction="#addButton" prefHeight="34.0" prefWidth="137.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add Recipe">
-            <padding>
-                <Insets left="-2.0" />
-            </padding>
-            <font>
-                <Font size="16.0" />
-            </font>
-        </JFXButton>
-        <HBox layoutX="409.0" layoutY="218.0">
-            <children>
-                <Label prefHeight="25.0" prefWidth="127.0" text=" ingredient:">
-                    <font>
-                        <Font size="17.0" />
-                    </font>
-                </Label>
-                <JFXComboBox fx:id="ingreidentsBox" editable="true" prefHeight="25.0" prefWidth="275.0" />
-            </children>
-        </HBox>
-        <HBox layoutX="409.0" layoutY="263.0" prefHeight="34.0" prefWidth="294.0" spacing="19.0">
-            <children>
-                <Label prefHeight="26.0" prefWidth="89.0" text="Quantity:">
-                    <font>
-                        <Font size="17.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="quantityField" prefHeight="31.0" prefWidth="82.0" />
-                <JFXButton id="hboxbtn" onAction="#addButtonEvent" prefHeight="31.0" prefWidth="77.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add">
-                    <padding>
-                        <Insets left="-2.0" />
-                    </padding>
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </JFXButton>
-            </children>
-        </HBox>
-        <AnchorPane layoutX="371.0" layoutY="311.0" prefHeight="316.0" prefWidth="1103.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="0.0">
-            <children>
-                <TableView fx:id="recipieTable" layoutX="139.0" layoutY="-2.0" prefHeight="316.0" prefWidth="606.0">
-                    <columns>
-                        <TableColumn fx:id="c1" prefWidth="215.0" text=" ingredient Name" />
-                        <TableColumn fx:id="c2" minWidth="0.0" onEditCommit="#updateColumnData" prefWidth="118.0" text="Quantity" />
-                        <TableColumn fx:id="c3" prefWidth="141.0" text="Estimated Sell price" />
-                  <TableColumn fx:id="c4" prefWidth="131.0" text="Estimated Purchase" />
-                    </columns>
-                </TableView>
-                <JFXButton id="hboxbtn" layoutX="766.0" layoutY="29.0" onAction="#delButtonEvent" prefHeight="42.0" prefWidth="131.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Delete Selected">
-                    <padding>
-                        <Insets left="-2.0" />
-                    </padding>
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </JFXButton>
-                <Label layoutX="766.0" layoutY="97.0" prefHeight="26.0" prefWidth="168.0" text="Estimated Sell Price:">
-                    <font>
-                        <Font size="17.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="estimatedField" editable="false" layoutX="766.0" layoutY="134.0" prefHeight="34.0" prefWidth="194.0" />
-            <Label layoutX="766.0" layoutY="182.0" prefHeight="26.0" prefWidth="194.0" text="Estimated Purchase Price:">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <TextField fx:id="pPf" editable="false" layoutX="766.0" layoutY="219.0" prefHeight="34.0" prefWidth="194.0" />
-            </children>
-        </AnchorPane>
+      <JFXTabPane fx:id="tab" layoutX="254.0" layoutY="146.0" prefHeight="552.0" prefWidth="1096.0">
+         <tabs>
+            <Tab text="Add New Recipie">
+              <content>
+                  <AnchorPane>
+                     <children>
+                        <HBox layoutX="162.0" layoutY="27.0">
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="127.0" text="Recipe Name:">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <JFXComboBox fx:id="recipieNameBox" editable="true" prefHeight="25.0" prefWidth="275.0" />
+                           </children>
+                        </HBox>
+                        <HBox layoutX="162.0" layoutY="75.0">
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="127.0" text=" ingredient:">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <JFXComboBox fx:id="ingreidentsBox" editable="true" prefHeight="25.0" prefWidth="275.0" />
+                           </children>
+                        </HBox>
+                        <HBox layoutX="162.0" layoutY="120.0" prefHeight="34.0" prefWidth="294.0" spacing="19.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="89.0" text="Quantity:">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="quantityField" prefHeight="31.0" prefWidth="82.0" />
+                              <JFXButton id="hboxbtn" onAction="#addButtonEvent" prefHeight="31.0" prefWidth="77.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add">
+                                 <padding>
+                                    <Insets left="-2.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                        <AnchorPane layoutY="168.0" prefHeight="316.0" prefWidth="1103.0">
+                           <children>
+                              <TableView fx:id="recipieTable" layoutX="139.0" layoutY="-2.0" prefHeight="316.0" prefWidth="606.0">
+                                 <columns>
+                                    <TableColumn fx:id="c1" prefWidth="215.0" text=" ingredient Name" />
+                                    <TableColumn fx:id="c2" minWidth="0.0" onEditCommit="#updateColumnData" prefWidth="118.0" text="Quantity" />
+                                    <TableColumn fx:id="c3" prefWidth="141.0" text="Estimated Sell price" />
+                                    <TableColumn fx:id="c4" prefWidth="131.0" text="Estimated Purchase" />
+                                 </columns>
+                              </TableView>
+                              <JFXButton id="hboxbtn" layoutX="766.0" layoutY="29.0" onAction="#delButtonEvent" prefHeight="42.0" prefWidth="131.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Delete Selected">
+                                 <padding>
+                                    <Insets left="-2.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <Label layoutX="766.0" layoutY="97.0" prefHeight="26.0" prefWidth="168.0" text="Estimated Sell Price:">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="estimatedField" editable="false" layoutX="766.0" layoutY="134.0" prefHeight="34.0" prefWidth="194.0" />
+                              <Label layoutX="766.0" layoutY="182.0" prefHeight="26.0" prefWidth="194.0" text="Estimated Purchase Price:">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="pPf" editable="false" layoutX="766.0" layoutY="219.0" prefHeight="34.0" prefWidth="194.0" />
+                              <JFXButton id="hboxbtn" layoutX="763.0" layoutY="285.0" onAction="#addButton" prefHeight="34.0" prefWidth="137.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add Recipe">
+                                 <padding>
+                                    <Insets left="-2.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="View Recipies ">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="193.0" layoutY="47.0" prefHeight="25.0" prefWidth="127.0" text="Recipie Name:">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="recipieNamefield" layoutX="320.0" layoutY="45.0" prefHeight="31.0" prefWidth="295.0" />
+                        <JFXButton id="hboxbtn" layoutX="652.0" layoutY="45.0" onAction="#searchByName" prefHeight="31.0" prefWidth="98.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Search">
+                           <padding>
+                              <Insets left="-2.0" />
+                           </padding>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </JFXButton>
+                        <TableView fx:id="viewTable" layoutX="303.0" layoutY="101.0" prefHeight="311.0" prefWidth="365.0">
+                          <columns>
+                            <TableColumn fx:id="c5" prefWidth="92.0" text="Recipie Id" />
+                            <TableColumn fx:id="c6" prefWidth="137.0" text=" Ingredient Name" />
+                              <TableColumn fx:id="c7" prefWidth="135.0" text="Quantity" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
     </children>
 </AnchorPane>
