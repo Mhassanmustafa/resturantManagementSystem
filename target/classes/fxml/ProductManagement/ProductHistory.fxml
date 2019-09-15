@@ -117,7 +117,7 @@
         </Pane>
         <HBox alignment="TOP_CENTER" layoutX="249.0" layoutY="80.0" prefHeight="78.0" prefWidth="1009.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <JFXButton id="hboxbtn" onAction="#addNewProductButtonEvent" prefHeight="43.0" prefWidth="182.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add new product">
+                <JFXButton id="hboxbtn" onAction="#addNewProductButtonEvent" prefHeight="43.0" prefWidth="182.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add new ingredient">
                     <HBox.margin>
                         <Insets bottom="1.0" left="37.0" right="3.0" top="15.0" />
                     </HBox.margin>
@@ -260,7 +260,6 @@
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="recipieNamefield" layoutX="320.0" layoutY="45.0" prefHeight="31.0" prefWidth="295.0" />
                         <JFXButton id="hboxbtn" layoutX="652.0" layoutY="45.0" onAction="#searchByName" prefHeight="31.0" prefWidth="98.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Search">
                            <padding>
                               <Insets left="-2.0" />
@@ -276,6 +275,7 @@
                               <TableColumn fx:id="c7" prefWidth="135.0" text="Quantity" />
                           </columns>
                         </TableView>
+                        <JFXComboBox fx:id="recipieNamefield" editable="true" layoutX="328.0" layoutY="48.0" prefHeight="25.0" prefWidth="308.0" />
                      </children>
                   </AnchorPane>
               </content>

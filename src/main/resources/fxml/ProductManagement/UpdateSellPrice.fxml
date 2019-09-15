@@ -115,7 +115,7 @@
         </Pane>
         <HBox alignment="TOP_CENTER" layoutX="249.0" layoutY="80.0" prefHeight="78.0" prefWidth="1009.0" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <JFXButton id="hboxbtn" onAction="#addNewProductButtonEvent" prefHeight="43.0" prefWidth="182.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add new product">
+                <JFXButton id="hboxbtn" onAction="#addNewProductButtonEvent" prefHeight="43.0" prefWidth="182.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add new ingredient">
                     <HBox.margin>
                         <Insets bottom="1.0" left="37.0" right="3.0" top="15.0" />
                     </HBox.margin>
@@ -161,9 +161,9 @@
                 </JFXButton>
             </children>
         </HBox>
-      <JFXTabPane fx:id="tab" layoutX="293.0" layoutY="190.0" prefHeight="427.0" prefWidth="936.0">
+      <JFXTabPane fx:id="tab" layoutX="286.0" layoutY="190.0" prefHeight="427.0" prefWidth="943.0">
          <tabs>
-            <Tab text="Update Product sell Price">
+            <Tab text="Ingredient sell Price">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>

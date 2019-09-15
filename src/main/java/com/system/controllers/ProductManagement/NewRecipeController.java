@@ -65,8 +65,7 @@ public class NewRecipeController implements Initializable {
     @FXML
     private TextField pPf;
 
-    @FXML
-    private TextField recipieNamefield;
+
 
     @FXML
     private TableView<Recipie> viewTable;
@@ -82,6 +81,9 @@ public class NewRecipeController implements Initializable {
 
     @FXML
     private JFXTabPane tab;
+
+    @FXML
+    private JFXComboBox<String> recipieNamefield;
 
 
 
@@ -285,11 +287,12 @@ public class NewRecipeController implements Initializable {
         recipieNameBox.getSelectionModel().clearSelection();
         recipieTable.getItems().clear();
         estimatedField.clear();
+        pPf.clear();
     }
 
     public void addButton(){
-
         Recipie sqlData = new Recipie();
+
 
         if(recipieNameBox.getSelectionModel().getSelectedItem().isEmpty() || recipieTable.getItems().isEmpty()){
             Messages.getWarning("Please write the recipie Name first or enter data in table");
@@ -298,8 +301,11 @@ public class NewRecipeController implements Initializable {
                 Messages.getWarning("this recipe is already availabe please create new recipie");
                 getClearData();
             }else {
+                    System.out.println(tableData.size());
 
                     for (int i = 0; i < tableData.size(); i++) {
+
+
                         Recipie recipie = tableData.get(i);
                         sqlData.setRecipieName(recipieNameBox.getSelectionModel().getSelectedItem());
                         sqlData.setProductName(recipie.getProductName());
@@ -307,9 +313,12 @@ public class NewRecipeController implements Initializable {
                         sqlData.setDate(java.time.LocalDate.now() + " " + java.time.LocalTime.now());
                         productManagementDao.addRecipeIngredents(sqlData);
                         sqlData.setPurPrice(Float.parseFloat(pPf.getText()));
-                        productManagementDao.addnewRecipiePurchase(sqlData);
-                        getClearData();
+
+
                     }
+                productManagementDao.addnewRecipiePurchase(sqlData);
+                System.out.println(tableData.size());
+                getClearData();
 
             }
         }
@@ -317,11 +326,11 @@ public class NewRecipeController implements Initializable {
     }
 
     public void searchByName(){
-        int id = productManagementDao.getRecipieId(recipieNamefield.getText());
-        if(recipieNamefield.getText().isEmpty()){
+        int id = productManagementDao.getRecipieId(recipieNamefield.getSelectionModel().getSelectedItem());
+        if(recipieNamefield.getEditor().getText().isEmpty()){
             Messages.getAlert("please write recipie name first");
         }else {
-            if(recipieProducts.contains(recipieNamefield.getText())){
+            if(recipieProducts.contains(recipieNamefield.getSelectionModel().getSelectedItem())){
                 setColumnData2();
                 viewTable.setItems(productManagementDao.getRecipieDetails(id));
 
@@ -337,7 +346,7 @@ public class NewRecipeController implements Initializable {
                     @Override
                     public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
                         viewTable.getItems().clear();
-                        recipieNamefield.clear();
+                        recipieNamefield.getSelectionModel().clearSelection();
                     }
                 }
         );
@@ -349,9 +358,11 @@ public class NewRecipeController implements Initializable {
     };
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         recipieNameBox.setItems(recipieProducts);
+        recipieNamefield.setItems(recipieProducts);
         TextFields.bindAutoCompletion(recipieNameBox.getEditor(),recipieProducts);
-        TextFields.bindAutoCompletion(recipieNamefield,recipieProducts);
+        TextFields.bindAutoCompletion(recipieNamefield.getEditor(),recipieProducts);
         ingreidentsBox.setItems(productList);
         TextFields.bindAutoCompletion(ingreidentsBox.getEditor(),productList);
         quantityField.textProperty().addListener(forceNumberListener);

@@ -692,10 +692,10 @@ public class ProductManagementDao implements IProductManagement  {
 
             if(affectedRows == 0){
                 getLogInfo("new Ingredents not Added try again");
-                Messages.getWarning("new Ingredents not Added try again");
+                System.out.println("new Ingredents not Added try again");
             }else {
-                getLogInfo("new Ingredents not Added ");
-                Messages.getAlert("new Ingredents Added");
+                getLogInfo("new Ingredents  Added ");
+                System.out.println("new Ingredents Added");
             }
 
         }catch (Exception exp){
@@ -844,11 +844,11 @@ public class ProductManagementDao implements IProductManagement  {
 
             if(affectedRows == 0){
                 getLogInfo("recipie purchase is not inserted");
-                System.out.println("Data is not Inserted");
+                Messages.getWarning("Data is not Inserted");
 
             }else {
                 getLogInfo("recipie purchase inserted");
-                System.out.println("Data Inserted SuccessFully");
+                Messages.getAlert("Data inserted successfully");
 
             }
         }catch (Exception exp){
