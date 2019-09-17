@@ -104,6 +104,10 @@
     -fx-text-fill: white;
 }
 
+.text-field-table-cell .text-field {
+    -fx-background-color: derive(white, 10%);
+    -fx-text-fill: black;
+}
 .table-row-cell:hover{
      -fx-background-color: bisque;
 }
@@ -114,7 +118,7 @@
 
 .table-view .column-header .filler,
 .table-view .column-header-background .filler {
-    -fx-background-color: derive(gray, 20%);
+  //  -fx-background-color: derive(gray, 20%);
 }
 
 .table-view .column-header{

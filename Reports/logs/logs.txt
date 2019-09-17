@@ -296,3 +296,73 @@ Sep 15, 2019 5:31:22 PM com.system.dao.AccountManagementDao getLogInfo
 INFO: Admin log in successfull
 Sep 15, 2019 5:33:44 PM com.system.dao.AccountManagementDao getLogInfo
 INFO: Admin log in successfull
+Sep 17, 2019 8:21:58 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:24:19 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:27:29 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:28:24 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:29:36 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:31:06 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:32:06 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:33:36 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:34:46 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:36:32 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:39:29 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:40:49 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:47:29 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:49:33 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:50:05 PM com.system.dao.InvoicesDao getLogInfo
+INFO: new customer add successfull
+Sep 17, 2019 8:50:05 PM com.system.dao.InvoicesDao getLogInfo
+INFO: new order is added in database
+Sep 17, 2019 8:50:05 PM com.system.dao.InvoicesDao getLogInfo
+INFO: insert in orderHistory is successfull
+Sep 17, 2019 8:50:05 PM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 17, 2019 8:50:05 PM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 17, 2019 8:50:05 PM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 17, 2019 8:50:05 PM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 17, 2019 8:50:05 PM com.system.dao.InvoicesDao getLogInfo
+INFO: ledger data is inserted successfull
+Sep 17, 2019 8:50:05 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: temp data inserted
+Sep 17, 2019 8:53:04 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:54:18 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:55:59 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:57:12 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 8:58:32 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 9:00:17 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 9:01:54 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 9:03:40 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 9:06:31 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 9:15:01 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 9:21:05 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 17, 2019 9:22:28 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull

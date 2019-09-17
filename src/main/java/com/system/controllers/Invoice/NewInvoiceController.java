@@ -202,14 +202,24 @@ public class NewInvoiceController implements Initializable {
     }
     //get total amount in the Total Amount Field
     public void getTotalAmount(){
-        float amount = 0;
-        float totalQuantity = Float.parseFloat(quantity.getText());
-        amount = totalQuantity * Float.parseFloat(price.getText());
-        purPri = totalQuantity * tempPri;
-        pricelist.add(purPri);
-        purPri = 0;
-        totalAmount.setText(Float.toString(amount));
+        try {
 
+
+            float amount = 0;
+
+            float totalQuantity = Float.parseFloat(quantity.getText());
+            if (quantity.getText().isEmpty()) {
+                totalQuantity = 0;
+            }
+            amount = totalQuantity * Float.parseFloat(price.getText());
+            purPri = totalQuantity * tempPri;
+            pricelist.add(purPri);
+            purPri = 0;
+            totalAmount.setText(Float.toString(amount));
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            totalAmount.setText("0.0");
+        }
     }
 
     //set  product names combo box action to get the current selling price of the product.
@@ -270,6 +280,7 @@ public class NewInvoiceController implements Initializable {
                         setTableColmnData();
                         invoiceTable.setItems(tableData);
                         subTotal.setText(Float.toString(getSum()));
+                        netAmount.setText(Float.toString(getSum()));
                         clearFieldData();
                     }
                 }else {
@@ -317,6 +328,7 @@ public class NewInvoiceController implements Initializable {
                 invoiceTable.getItems().removeAll(invoiceTable.getSelectionModel().getSelectedItem());
                 invoiceTable.getSelectionModel().clearSelection();
                 subTotal.setText(Float.toString(getSum()));
+                netAmount.setText(Float.toString(getSum()));
             }
         }
     }
@@ -527,6 +539,9 @@ public class NewInvoiceController implements Initializable {
         quantity.textProperty().addListener(forceNumberListener);
         discount.textProperty().addListener(forceNumberListener);
         invoiceTable.setEditable(true);
+        
         quanttiyC.setCellFactory((TextFieldTableCell.forTableColumn(new FloatStringConverter())));
+
+        add.setSelected(true);
     }
 }
