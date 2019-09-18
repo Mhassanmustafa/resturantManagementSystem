@@ -352,6 +352,22 @@ public class NewRecipeController implements Initializable {
         );
     }
 
+    public void delRecipie(){
+        if(recipieNamefield.getEditor().getText().isEmpty()){
+            Messages.getAlert("please enter recpie Name first");
+        }else {
+            if(recipieProducts.contains(recipieNamefield.getSelectionModel().getSelectedItem())){
+                productManagementDao.delRecipieIngreidents(recipieNamefield.getSelectionModel().getSelectedItem());
+                productManagementDao.delRecipiePurchase(recipieNamefield.getSelectionModel().getSelectedItem());
+               // productManagementDao.delRecipieSell(recipieNamefield.getSelectionModel().getSelectedItem());
+               // productManagementDao.delRecipieProduct(recipieNamefield.getSelectionModel().getSelectedItem());
+               // recipieProducts.remove(recipieNamefield.getSelectionModel().getSelectedItem());
+            }else {
+                Messages.getAlert("there is no such recipie with this name");
+            }
+        }
+    }
+
     ChangeListener<String> forceNumberListener = (observable, oldValue, newValue) -> {
         if (!newValue.matches(Config.regix))
             ((StringProperty) observable).set(oldValue);

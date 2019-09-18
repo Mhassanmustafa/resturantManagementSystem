@@ -86,6 +86,8 @@ public class EmployeeAccountController implements Initializable {
     private TableColumn<Customers , String> c7;
     @FXML
     private TableColumn<Customers , String> c8;
+    @FXML
+    private TableColumn<Customers , String> c9;
 
 
 
@@ -182,6 +184,7 @@ public class EmployeeAccountController implements Initializable {
         c6.setCellValueFactory(new PropertyValueFactory<Customers , String>("debit"));
         c7.setCellValueFactory(new PropertyValueFactory<Customers , String>("balance"));
         c8.setCellValueFactory(new PropertyValueFactory<Customers , String>("vistedShop"));
+        c9.setCellValueFactory(new PropertyValueFactory<Customers , String>("dat"));
 
     }
 
@@ -237,6 +240,7 @@ public class EmployeeAccountController implements Initializable {
                     public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
                         clearAddNewEmployeeData();
                         clearDataOfUpdateSalary();
+                        table.getItems().clear();
                     }
                 }
         );
@@ -280,8 +284,12 @@ public class EmployeeAccountController implements Initializable {
     }
 
     public void searchExistingCustomerData(){
-        if(customerNamesList.contains(custNameField.getText()) || custPhnoList.contains(custPhoneField.getText())) {
-            ObservableList<Customers> acclist = FXCollections.observableArrayList(accountManagementDao.getCustomersData(custNameField.getText(),custPhoneField.getText()));
+        String ph = custPhoneField.getText();
+        if(custPhoneField.getText().isEmpty()){
+            ph = "null";
+        }
+        if(customerNamesList.contains(custNameField.getText()) || custPhnoList.contains(ph)) {
+            ObservableList<Customers> acclist = FXCollections.observableArrayList(accountManagementDao.getCustomersData(custNameField.getText(),ph));
             fillColumn();
             table.setItems(acclist);
 

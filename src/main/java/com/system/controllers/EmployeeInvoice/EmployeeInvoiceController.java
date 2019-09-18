@@ -333,8 +333,7 @@ public class EmployeeInvoiceController implements Initializable {
         subTotal.clear();
         discount.clear();
         netAmount.clear();
-        add.setSelected(false);
-        edit.setSelected(false);
+
         invoiceTable.getItems().clear();
         customerName.clear();
         phoneNoField.clear();

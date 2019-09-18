@@ -276,6 +276,14 @@
                           </columns>
                         </TableView>
                         <JFXComboBox fx:id="recipieNamefield" editable="true" layoutX="328.0" layoutY="48.0" prefHeight="25.0" prefWidth="308.0" />
+                        <JFXButton id="hboxbtn" layoutX="701.0" layoutY="427.0" onAction="#delRecipie" prefHeight="35.0" prefWidth="144.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Delete Recipie">
+                           <padding>
+                              <Insets left="-2.0" />
+                           </padding>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </JFXButton>
                      </children>
                   </AnchorPane>
               </content>

@@ -238,6 +238,7 @@ public class CategoryController implements Initializable {
 
                 productManagementDao.addNewRecipieCategory(recpCat.getText());
                 recpCat.clear();
+                recipieCategoryNames.add(recpCat.getText());
 
             }
         }
@@ -262,6 +263,7 @@ public class CategoryController implements Initializable {
                 productManagementDao.addNewRecipieName(recipieCatBox.getSelectionModel().getSelectedItem(),newRecipeName.getText());
                 productManagementDao.addRecipieSellPrice(Float.parseFloat(sellPriceRecipie.getText()),java.time.LocalDate.now()+ " " + java.time.LocalTime.now(),newRecipeName.getText());
                 getClearAllData();
+                newRecipeName.clear();
             }
         }
     }
@@ -285,6 +287,8 @@ public class CategoryController implements Initializable {
                 }
         );
     }
+
+
 
     ChangeListener<String> forceNumberListener = (observable, oldValue, newValue) -> {
         if (!newValue.matches(Config.regix))

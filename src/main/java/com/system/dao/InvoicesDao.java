@@ -412,7 +412,8 @@ public class InvoicesDao implements IInvoices {
 
     @Override
     public void insertExistingLeger(Ledger ledger, int customerID) {
-        float previousBlance = getLatestBalance(customerID);
+        float previousBlance = 0;
+
         previousBlance = previousBlance + (ledger.getDebit() - ledger.getCredit());
 
         Connection connection = SqlConnectionServices.getConnection();

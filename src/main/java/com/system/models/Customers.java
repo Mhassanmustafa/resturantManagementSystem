@@ -57,7 +57,7 @@ public class Customers {
         this.dat = dat;
     }
 
-    public Customers(int id, String name, String phoneNumber, int orderId, float credit, float debit, float balance, int vistedShop) {
+    public Customers(int id, String name, String phoneNumber, int orderId, float credit, float debit, float balance, int vistedShop ,String dat) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -66,6 +66,7 @@ public class Customers {
         this.balance = balance;
         OrderId = orderId;
         this.vistedShop = vistedShop;
+        this.dat = dat;
     }
 
     public Customers() {

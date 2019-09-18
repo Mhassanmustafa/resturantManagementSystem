@@ -291,35 +291,22 @@ public class Query {
     public static final String updateAdminPassword = "UPDATE Admin SET password = ? WHERE userName =? and password = ?";
     public static final String adminLogIn = "select * from admin where userName = ? and password = ?";
     public static final String employeeLogIn = "select * from empLogIn where userName = ? and password = ?";
-    public static final String getCustomerDetails = "SELECT TOP 1 customer.id, \n" +
-            "             customer.NAME, \n" +
-            "             customer.phoneno, \n" +
-            "             (SELECT TOP 1 customerorder.id \n" +
-            "              FROM   customerorder \n" +
-            "              WHERE  customer.id = customerorder.customerid \n" +
-            "              ORDER  BY date DESC)                AS LastOrderId, \n" +
-            "             (SELECT TOP 1 ledger.credit \n" +
-            "              FROM   ledger \n" +
-            "              WHERE  customer.id = ledger.custid \n" +
-            "              ORDER  BY date DESC)                AS credit, \n" +
-            "             (SELECT TOP 1 ledger.debit \n" +
-            "              FROM   ledger \n" +
-            "              WHERE  customer.id = ledger.custid \n" +
-            "              ORDER  BY date DESC)                AS debit, \n" +
-            "             (SELECT TOP 1 ledger.balance \n" +
-            "              FROM   ledger \n" +
-            "              WHERE  customer.id = ledger.custid \n" +
-            "              ORDER  BY date DESC)                AS balance, \n" +
-            "             (SELECT Count(custid) \n" +
-            "              FROM   ledger \n" +
-            "              WHERE  customer.id = ledger.custid) AS visted \n" +
+    public static final String getCustomerDetails = "SELECT customer.id, \n" +
+            "       customer.NAME, \n" +
+            "       customer.phoneno, \n" +
+            "       ledger.custorderid, \n" +
+            "       ledger.credit, \n" +
+            "       ledger.debit, \n" +
+            "       ledger.balance, \n" +
+            "       (SELECT Count(custid) \n" +
+            "        FROM   ledger \n" +
+            "        WHERE  customer.id = ledger.custid) AS visted, \n" +
+            "       ledger.date \n" +
             "FROM   customer \n" +
-            "       INNER JOIN customerorder \n" +
-            "               ON customer.id = customerorder.customerid \n" +
             "       INNER JOIN ledger \n" +
             "               ON customer.id = ledger.custid \n" +
             "WHERE  customer.NAME = ? \n" +
-            "       AND customer.phoneno = ? ";
+            "       AND customer.phoneno = ?  ";
 
     public static final String getCustomerDetailsByPh = "SELECT TOP 1 customer.id, \n" +
             "             customer.NAME, \n" +
@@ -432,5 +419,10 @@ public class Query {
     public static final String getRecipieData = "select recipieIngreidents.recipeProductId , (select product.name from product where product.id = recipieIngreidents.productId) as productName\n" +
             " , recipieIngreidents.quantity from recipieIngreidents where recipieIngreidents.recipeProductId = ?";
     public static final String deleteTemp = "delete from temp where temp.orderid = ?";
+
+    public static final String deleteRecipieIngridents = "DELETE FROM recipieIngreidents WHERE recipeProductId = ?";
+    public static final String deleteRecPur = "delete from recipiePurchase where productId = ?";
+    public static final String deleteRecSell = "delete from recipieSellPrice where productId = ?";
+    public static final String deleteRcipeName = "delete from recipieProduct where id = ?";
 
 }

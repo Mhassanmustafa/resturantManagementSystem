@@ -454,7 +454,7 @@ public class AccountManagementDao  implements IAccountManagement  {
                 while (resultSet.next()){
                     list.add(new Customers(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3)
                     ,resultSet.getInt(4),resultSet.getFloat(5),resultSet.getFloat(6),resultSet.getFloat(7),
-                            resultSet.getInt(8)));
+                            resultSet.getInt(8),resultSet.getString(9)));
                 }
                 getLogInfo("customer data successfully added");
             }
@@ -488,7 +488,7 @@ public class AccountManagementDao  implements IAccountManagement  {
                 while (resultSet.next()){
                     list.add(new Customers(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3)
                             ,resultSet.getInt(4),resultSet.getFloat(5),resultSet.getFloat(6),resultSet.getFloat(7),
-                            resultSet.getInt(8)));
+                            resultSet.getInt(8),resultSet.getString(9)));
                 }
             }
 
@@ -520,7 +520,7 @@ public class AccountManagementDao  implements IAccountManagement  {
                 while (resultSet.next()){
                     list.add(new Customers(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3)
                             ,resultSet.getInt(4),resultSet.getFloat(5),resultSet.getFloat(6),resultSet.getFloat(7),
-                            resultSet.getInt(8)));
+                            resultSet.getInt(8),resultSet.getString(9)));
                 }
             }
 

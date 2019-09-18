@@ -952,4 +952,132 @@ public class ProductManagementDao implements IProductManagement  {
 
         return list;
     }
+
+    public void delRecipieIngreidents(String recipieName){
+        int id = getRecipieId(recipieName);
+
+
+        Connection connection = SqlConnectionServices.getConnection();
+
+        HashMap<Integer , Object> params = new HashMap<>();
+
+        params.put(1,id);
+
+        try{
+
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.deleteRecipieIngridents,params).executeUpdate();
+
+            if(affectedRows == 0){
+                getLogInfo("Ingriedents data is not deleted");
+                System.out.println("Data is not Inserted");
+
+            }else {
+                getLogInfo("Ingriedents data delete SuccessFully");
+                System.out.println("Ingriedents data SuccessFully");
+
+            }
+        }catch (Exception exp){
+            getLogWarning(exp.getMessage());
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+    }
+
+    public void delRecipiePurchase(String recipieName){
+        int id = getRecipieId(recipieName);
+
+
+        Connection connection = SqlConnectionServices.getConnection();
+
+        HashMap<Integer , Object> params = new HashMap<>();
+
+        params.put(1,id);
+
+        try{
+
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.deleteRecPur,params).executeUpdate();
+
+            if(affectedRows == 0){
+                getLogInfo("rcipie purchase data is not deleted");
+                System.out.println("Data is not Inserted");
+
+            }else {
+                getLogInfo("Recipie purchase  data deleted");
+                System.out.println("Ingriedents data SuccessFully");
+
+            }
+        }catch (Exception exp){
+            getLogWarning(exp.getMessage());
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+    }
+
+    public void delRecipieSell(String recipieName){
+        int id = getRecipieId(recipieName);
+
+
+        Connection connection = SqlConnectionServices.getConnection();
+
+        HashMap<Integer , Object> params = new HashMap<>();
+
+        params.put(1,id);
+
+        try{
+
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.deleteRecSell,params).executeUpdate();
+
+            if(affectedRows == 0){
+                getLogInfo("recipie sell data is not deleted");
+                System.out.println("Data is not Inserted");
+
+            }else {
+                getLogInfo("recipie sell data deleted");
+                System.out.println("Ingriedents data SuccessFully");
+
+            }
+        }catch (Exception exp){
+            getLogWarning(exp.getMessage());
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+    }
+
+    public void delRecipieProduct(String recipieName){
+        int id = getRecipieId(recipieName);
+
+        ObservableList<Recipie> list = FXCollections.observableArrayList();
+        Connection connection = SqlConnectionServices.getConnection();
+
+        HashMap<Integer , Object> params = new HashMap<>();
+
+        params.put(1,id);
+
+        try{
+
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection,Query.deleteRcipeName,params).executeUpdate();
+
+            if(affectedRows == 0){
+                getLogInfo("recipie product data is not deleted");
+                System.out.println("Data is not Inserted");
+
+            }else {
+                getLogInfo("recipie product data is deleted");
+                System.out.println("Ingriedents data SuccessFully");
+
+            }
+        }catch (Exception exp){
+            getLogWarning(exp.getMessage());
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+    }
 }
