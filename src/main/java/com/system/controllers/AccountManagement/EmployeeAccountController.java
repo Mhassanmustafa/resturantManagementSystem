@@ -95,7 +95,7 @@ public class EmployeeAccountController implements Initializable {
     InvoicesDao invoicesDao = new InvoicesDao();
 
     ObservableList<String> userNameList = FXCollections.observableArrayList(accountManagementDao.getAllUserNames());
-    ObservableList<String> empNameList = FXCollections.observableArrayList(accountManagementDao.getAllUserNames());
+    ObservableList<String> empNameList = FXCollections.observableArrayList(accountManagementDao.getEmployeeName());
     ObservableList<String> customerNamesList = FXCollections.observableArrayList(invoicesDao.getCustomerNames());
     ObservableList<String> custPhnoList = FXCollections.observableArrayList(invoicesDao.getCustomerPhoneNos());
 
@@ -228,7 +228,9 @@ public class EmployeeAccountController implements Initializable {
                 accountManagementDao.addNewEmployee(employee);
                 accountManagementDao.addNewSalary(employee);
                 accountManagementDao.addNewEmployeeUser(employee);
+                updateSalaryNameFielld.setItems(accountManagementDao.getEmployeeName());
                 clearAddNewEmployeeData();
+                empassword.clear();
             }
         }
     }
@@ -284,12 +286,9 @@ public class EmployeeAccountController implements Initializable {
     }
 
     public void searchExistingCustomerData(){
-        String ph = custPhoneField.getText();
-        if(custPhoneField.getText().isEmpty()){
-            ph = "null";
-        }
-        if(customerNamesList.contains(custNameField.getText()) || custPhnoList.contains(ph)) {
-            ObservableList<Customers> acclist = FXCollections.observableArrayList(accountManagementDao.getCustomersData(custNameField.getText(),ph));
+
+        if(customerNamesList.contains(custNameField.getText()) || custPhnoList.contains(custPhoneField.getText())) {
+            ObservableList<Customers> acclist = FXCollections.observableArrayList(accountManagementDao.getCustomersData(custNameField.getText(),custPhoneField.getText()));
             fillColumn();
             table.setItems(acclist);
 
@@ -300,37 +299,53 @@ public class EmployeeAccountController implements Initializable {
     }
 
 
-//    public void serchByPhoneNo(){
-//        if(custPhnoList.contains(custPhoneField.getText())){
-//            table.getItems().clear();
-//            ObservableList<Customers> acclist = FXCollections.observableArrayList(accountManagementDao.getCustomersDataByPh(custPhoneField.getText()));
-//            fillColumn();
-//            table.setItems(acclist);
-//        }else{
-//            Messages.getWarning("there is no such phone no in dataBase");
-//        }
-//    }
-//    public void searchByName(){
-//        if(customerNamesList.contains(custNameField.getText())){
-//            table.getItems().clear();
-//            ObservableList<Customers> acclist = FXCollections.observableArrayList(accountManagementDao.getCustomersDataByName(custNameField.getText()));
-//            fillColumn();
-//            table.setItems(acclist);
-//        }else{
-//            Messages.getWarning("there is no such phone no in dataBase");
-//        }
-//    }
+    public void searchByPhoneNo(){
+        if(custPhnoList.contains(custPhoneField.getText())){
+            table.getItems().clear();
+            ObservableList<Customers> acclist = FXCollections.observableArrayList(accountManagementDao.getCustomersDataByPh(custPhoneField.getText()));
+            fillColumn();
+            table.setItems(acclist);
+        }else{
+            Messages.getWarning("there is no such phone no in dataBase");
+        }
+    }
+    public void searchByName(){
+        if(customerNamesList.contains(custNameField.getText())){
+            table.getItems().clear();
+            ObservableList<Customers> acclist = FXCollections.observableArrayList(accountManagementDao.getCustomersDataByName(custNameField.getText()));
+            fillColumn();
+            table.setItems(acclist);
+        }else{
+            Messages.getWarning("there is no such phone no in dataBase");
+        }
+    }
 
 
     public void getSearchData(){
         if(custNameField.getText().trim().isEmpty() && custPhoneField.getText().trim().isEmpty()){
             Messages.getWarning("please enter customer name or phone numbers");
         }else{
-            searchExistingCustomerData();
-            if(table.getItems().isEmpty()){
-                Messages.getWarning("Customer not found try again ");
-                custNameField.clear();
-                custPhoneField.clear();
+            if(!(custNameField.getText().trim().isEmpty()) && !(custPhoneField.getText().trim().isEmpty())){
+                searchExistingCustomerData();
+                if (table.getItems().isEmpty()) {
+                    Messages.getWarning("Customer not found try again ");
+                    custNameField.clear();
+                    custPhoneField.clear();
+                }
+            }else if(!(custNameField.getText().trim().isEmpty()) && custPhoneField.getText().trim().isEmpty()) {
+                searchByName();
+                if (table.getItems().isEmpty()) {
+                    Messages.getWarning("Customer not found try again ");
+                    custNameField.clear();
+                    custPhoneField.clear();
+                }
+            }else if(!(custPhoneField.getText().trim().isEmpty()) && custNameField.getText().trim().isEmpty()){
+                searchByPhoneNo();
+                if (table.getItems().isEmpty()) {
+                    Messages.getWarning("Customer not found try again ");
+                    custNameField.clear();
+                    custPhoneField.clear();
+                }
             }
         }
     }

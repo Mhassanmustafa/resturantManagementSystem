@@ -238,11 +238,17 @@ public class CategoryController implements Initializable {
 
                 productManagementDao.addNewRecipieCategory(recpCat.getText());
                 recpCat.clear();
+              recipieCategoryNames.clear();
+               // recipieCategoryNames.addAll(recpCat.getText());
                 recipieCategoryNames.add(recpCat.getText());
+                recipieCatBox.setItems(productManagementDao.getRecipieCategorys());
+
 
             }
         }
     }
+
+
 
     public void getClearAllData(){
         recipieNames.clear();
@@ -300,7 +306,8 @@ public class CategoryController implements Initializable {
         tabRefresh();
         spNameBox.setItems(suppliearNames);
         TextFields.bindAutoCompletion(catName,categoryNames);
-        recipieCatBox.setItems(recipieCategoryNames);
+        recipieCatBox.setItems(productManagementDao.getRecipieCategorys());
+
         sellPriceRecipie.textProperty().addListener(forceNumberListener);
 
     }

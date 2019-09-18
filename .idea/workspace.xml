@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed3671e0-8356-4071-8a31-47a3f0b173be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reports/logs/logs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/logs/logs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/system/Queries/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/Queries/Query.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/system/controllers/AccountManagement/EmployeeAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/controllers/AccountManagement/EmployeeAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/controllers/EmployeeInvoice/EmployeeInvoiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/controllers/EmployeeInvoice/EmployeeInvoiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/controllers/Invoice/NewInvoiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/controllers/Invoice/NewInvoiceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/system/controllers/ProductManagement/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/controllers/ProductManagement/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/controllers/ProductManagement/NewRecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/controllers/ProductManagement/NewRecipeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/dao/AccountManagementDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/dao/AccountManagementDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/dao/InvoicesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/dao/InvoicesDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/dao/ProductManagementDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/dao/ProductManagementDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/system/models/Customers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/system/models/Customers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/AccountManagement/EmployeeAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/AccountManagement/EmployeeAccount.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/ProductManagement/ProductHistory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/ProductManagement/ProductHistory.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,33 +35,9 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/ProductManagement/NewRecipeController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-215">
-              <caret line="363" column="17" selection-start-line="363" selection-start-column="17" selection-end-line="363" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/dao/InvoicesDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-45">
-              <caret line="415" selection-start-line="415" selection-end-line="415" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/Invoice/NewInvoiceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
+            <state relative-caret-position="71">
               <caret line="536" column="79" selection-start-line="536" selection-start-column="79" selection-end-line="536" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -80,11 +46,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/AccountManagement/AccountHistoryController.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/ProductManagement/CategoryController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2241">
-              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+            <state relative-caret-position="227">
+              <caret line="243" column="81" selection-start-line="243" selection-start-column="81" selection-end-line="243" selection-end-column="81" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/AccountManagement/EmployeeAccountController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="104">
+              <caret line="230" column="86" selection-start-line="230" selection-start-column="86" selection-end-line="230" selection-end-column="86" />
             </state>
           </provider>
         </entry>
@@ -101,8 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/system/Queries/Query.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="425" column="89" selection-start-line="425" selection-start-column="89" selection-end-line="425" selection-end-column="89" />
+            <state relative-caret-position="306">
+              <caret line="340" column="33" selection-start-line="340" selection-start-column="33" selection-end-line="340" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -134,9 +109,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>adminlo</find>
-      <find>Files</find>
-      <find>insert into ledgerr</find>
       <find>new Log();</find>
       <find>insertTemp</find>
       <find>productQuantitylist</find>
@@ -164,6 +136,9 @@
       <find>add.</find>
       <find>recipieCategoryNames</find>
       <find>insertle</find>
+      <find>getCus</find>
+      <find>userNameList</find>
+      <find>empNameList</find>
     </findStrings>
     <replaceStrings>
       <replace>@../css/stylesheet.css</replace>
@@ -223,13 +198,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/system/dao/InvoicesDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/models/Customers.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/dao/AccountManagementDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/system/controllers/AccountManagement/EmployeeAccountController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/controllers/EmployeeInvoice/EmployeeInvoiceController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/system/controllers/ProductManagement/CategoryController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/system/Queries/Query.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/dao/ProductManagementDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/controllers/ProductManagement/NewRecipeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/system/controllers/Invoice/NewInvoiceController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/system/controllers/ProductManagement/CategoryController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/system/Queries/Query.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/system/controllers/AccountManagement/EmployeeAccountController.java" />
       </list>
     </option>
   </component>
@@ -504,12 +479,12 @@
       <workItem from="1568650761458" duration="28000" />
       <workItem from="1568651149748" duration="26000" />
       <workItem from="1568733353925" duration="4617000" />
-      <workItem from="1568817139143" duration="8810000" />
+      <workItem from="1568817139143" duration="13095000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="227150000" />
+    <option name="totallyTimeSpent" value="231435000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -599,7 +574,6 @@
     </SUITE>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.6" />
     <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.9" />
     <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.7.lck" />
     <entry file="file://$PROJECT_DIR$/Reports/logs/logs.txt.8.lck" />
@@ -865,38 +839,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/AccountManagement/EmployeeAccountController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="291" column="137" selection-start-line="291" selection-start-column="137" selection-end-line="291" selection-end-column="137" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/EmployeeInvoice/EmployeeInvoiceController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
           <caret line="335" selection-start-line="335" selection-end-line="335" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/AccountManagement/AccountHistoryController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2241">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/Queries/Query.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="425" column="89" selection-start-line="425" selection-start-column="89" selection-end-line="425" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/ProductManagement/CategoryController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1018">
-          <caret line="65" column="47" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -912,18 +858,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/ProductManagement/NewRecipeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-215">
+        <state relative-caret-position="-201">
           <caret line="363" column="17" selection-start-line="363" selection-start-column="17" selection-end-line="363" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/Invoice/NewInvoiceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="536" column="79" selection-start-line="536" selection-start-column="79" selection-end-line="536" selection-end-column="79" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -937,6 +873,51 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/Invoice/NewInvoiceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="536" column="79" selection-start-line="536" selection-start-column="79" selection-end-line="536" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/ProductManagementController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="110" column="33" selection-start-line="110" selection-start-column="33" selection-end-line="110" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/AccountManagement/AccountHistoryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2241">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/Queries/Query.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="340" column="33" selection-start-line="340" selection-start-column="33" selection-end-line="340" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/AccountManagement/EmployeeAccountController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="230" column="86" selection-start-line="230" selection-start-column="86" selection-end-line="230" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/system/controllers/ProductManagement/CategoryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="243" column="81" selection-start-line="243" selection-start-column="81" selection-end-line="243" selection-end-column="81" />
         </state>
       </provider>
     </entry>
