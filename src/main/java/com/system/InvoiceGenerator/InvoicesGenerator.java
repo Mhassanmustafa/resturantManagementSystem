@@ -67,6 +67,7 @@ public class InvoicesGenerator {
 
             service.lineBreak(6);
 
+
             service.setTextTypeBold();
             service.printLn(makeLine());
 
@@ -189,7 +190,7 @@ public class InvoicesGenerator {
         try {
 
             OutputStream file = new FileOutputStream(new File(pdfFilename));
-            Document document = new Document(PageSize.A8);
+            Document document = new Document(PageSize.A4);
             PdfWriter.getInstance(document, file);
 
             PdfPTable heading = new PdfPTable(1);

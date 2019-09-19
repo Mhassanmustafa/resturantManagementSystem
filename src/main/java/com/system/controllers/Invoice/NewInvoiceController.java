@@ -402,6 +402,12 @@ public class NewInvoiceController implements Initializable {
             clearAllFields();
         } else {
             Date date = new Date();
+
+            String date1 = invoicesDao.getLatestDate();
+            if(!(java.time.LocalDate.now().toString().equals(date1))){
+
+                invoicesDao.truncateTable();
+            }
             String ph;
             if (phoneNoField.getText().trim().isEmpty()) {
                 ph = "null";
@@ -444,7 +450,7 @@ public class NewInvoiceController implements Initializable {
             ledger.setDate(java.time.LocalDate.now() + " " + java.time.LocalTime.now());
             invoicesDao.insertExistingLeger(ledger, customerId);
             productManagementDao.insertTemp(orderId, getPricelistSum(), java.time.LocalDate.now() + " " + java.time.LocalTime.now());
-            invoicesDao.addCallOrder(orderId, java.time.LocalDate.now() + " " + java.time.LocalTime.now());
+            invoicesDao.addCallOrder(orderId, java.time.LocalDate.now().toString());
             if (!Files.exists(Config.billsPdf)) {
                 Files.createDirectories(Config.billsPdf);
             }
@@ -467,7 +473,16 @@ public class NewInvoiceController implements Initializable {
             Messages.getAlert("Please enter amount or bill discarded");
             clearAllFields();
         } else {
+
+
+
             Date date = new Date();
+
+            String date1 = invoicesDao.getLatestDate();
+            if(!(java.time.LocalDate.now().toString().equals(date1))){
+
+                invoicesDao.truncateTable();
+            }
             Customers customer = getNewCustomer();
 
             invoicesDao.addnewCustomer(customer);
@@ -514,7 +529,7 @@ public class NewInvoiceController implements Initializable {
             ledger.setDate(java.time.LocalDate.now() + " " + java.time.LocalTime.now());
             invoicesDao.insertLedgerData(ledger);
             productManagementDao.insertTemp(orderId, getPricelistSum(), java.time.LocalDate.now() + " " + java.time.LocalTime.now());
-            invoicesDao.addCallOrder(orderId, java.time.LocalDate.now() + " " + java.time.LocalTime.now());
+            invoicesDao.addCallOrder(orderId, java.time.LocalDate.now().toString());
             customerNamesList.add(customerName.getText());
             customerPhoneList.add(phoneNoField.getText());
 

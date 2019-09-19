@@ -729,4 +729,51 @@ public class InvoicesDao implements IInvoices {
         return order;
 
     }
+
+
+    public String getLatestDate(){
+        String date = "";
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer, Object> params = new HashMap<>();
+
+
+
+        try {
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.getLatestDate, null);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet != null) {
+                while (resultSet.next()) {
+                    date = resultSet.getString(1);
+                }
+            }
+        } catch (Exception exp) {
+            getLogWarning(exp.getMessage());
+            exp.printStackTrace();
+        } finally {
+            this.closeSqlConnection(connection);
+        }
+        return date;
+    }
+
+
+
+    public void truncateTable(){
+        Connection connection = SqlConnectionServices.getConnection();
+
+        try {
+            Statement statement = connection.createStatement();
+            statement.execute(Query.trucateCallOrder);
+
+            System.out.println("truncated");
+            getLogInfo("table truncated");
+        }catch (Exception e){
+            e.printStackTrace();
+
+            getLogWarning(e.getMessage());
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+    }
 }

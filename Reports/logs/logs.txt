@@ -826,3 +826,249 @@ Sep 19, 2019 9:34:50 PM com.system.dao.ProductManagementDao getLogInfo
 INFO: new Ingredents  Added 
 Sep 19, 2019 9:34:50 PM com.system.dao.ProductManagementDao getLogInfo
 INFO: recipie purchase inserted
+Sep 20, 2019 12:05:53 AM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 20, 2019 12:06:20 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new customer add successfull
+Sep 20, 2019 12:06:20 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new order is added in database
+Sep 20, 2019 12:06:20 AM com.system.dao.InvoicesDao getLogInfo
+INFO: insert in orderHistory is successfull
+Sep 20, 2019 12:06:20 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:06:20 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:06:20 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:06:20 AM com.system.dao.InvoicesDao getLogInfo
+INFO: ledger data is inserted successfull
+Sep 20, 2019 12:06:20 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: temp data inserted
+Sep 20, 2019 12:06:20 AM com.system.dao.InvoicesDao getLogInfo
+INFO:  call order data is added
+Sep 20, 2019 12:37:52 AM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 20, 2019 12:38:15 AM com.system.dao.InvoicesDao getLogInfo
+INFO: table truncated
+Sep 20, 2019 12:38:15 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new customer add successfull
+Sep 20, 2019 12:38:15 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new order is added in database
+Sep 20, 2019 12:38:15 AM com.system.dao.InvoicesDao getLogInfo
+INFO: insert in orderHistory is successfull
+Sep 20, 2019 12:38:15 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:38:15 AM com.system.dao.InvoicesDao getLogInfo
+INFO: ledger data is inserted successfull
+Sep 20, 2019 12:38:15 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: temp data inserted
+Sep 20, 2019 12:38:15 AM com.system.dao.InvoicesDao getLogInfo
+INFO:  call order data is added
+Sep 20, 2019 12:39:31 AM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 20, 2019 12:39:46 AM com.system.dao.InvoicesDao getLogInfo
+INFO: table truncated
+Sep 20, 2019 12:39:46 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new customer add successfull
+Sep 20, 2019 12:39:46 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new order is added in database
+Sep 20, 2019 12:39:46 AM com.system.dao.InvoicesDao getLogInfo
+INFO: insert in orderHistory is successfull
+Sep 20, 2019 12:39:46 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:39:46 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:39:46 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:39:46 AM com.system.dao.InvoicesDao getLogInfo
+INFO: ledger data is inserted successfull
+Sep 20, 2019 12:39:47 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: temp data inserted
+Sep 20, 2019 12:39:47 AM com.system.dao.InvoicesDao getLogInfo
+INFO:  call order data is added
+Sep 20, 2019 12:42:16 AM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 20, 2019 12:42:35 AM com.system.dao.InvoicesDao getLogInfo
+INFO: table truncated
+Sep 20, 2019 12:42:35 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new customer add successfull
+Sep 20, 2019 12:42:35 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new order is added in database
+Sep 20, 2019 12:42:35 AM com.system.dao.InvoicesDao getLogInfo
+INFO: insert in orderHistory is successfull
+Sep 20, 2019 12:42:35 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:42:36 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:42:36 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:42:36 AM com.system.dao.InvoicesDao getLogInfo
+INFO: ledger data is inserted successfull
+Sep 20, 2019 12:42:36 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: temp data inserted
+Sep 20, 2019 12:42:36 AM com.system.dao.InvoicesDao getLogInfo
+INFO:  call order data is added
+Sep 20, 2019 12:45:00 AM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 20, 2019 12:45:14 AM com.system.dao.InvoicesDao getLogInfo
+INFO: table truncated
+Sep 20, 2019 12:45:14 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new customer add successfull
+Sep 20, 2019 12:45:14 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new order is added in database
+Sep 20, 2019 12:45:14 AM com.system.dao.InvoicesDao getLogInfo
+INFO: insert in orderHistory is successfull
+Sep 20, 2019 12:45:14 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:45:14 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:45:14 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:45:14 AM com.system.dao.InvoicesDao getLogInfo
+INFO: ledger data is inserted successfull
+Sep 20, 2019 12:45:14 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: temp data inserted
+Sep 20, 2019 12:45:14 AM com.system.dao.InvoicesDao getLogInfo
+INFO:  call order data is added
+Sep 20, 2019 12:47:07 AM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 20, 2019 12:47:25 AM com.system.dao.InvoicesDao getLogInfo
+INFO: table truncated
+Sep 20, 2019 12:47:25 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new customer add successfull
+Sep 20, 2019 12:47:25 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new order is added in database
+Sep 20, 2019 12:47:25 AM com.system.dao.InvoicesDao getLogInfo
+INFO: insert in orderHistory is successfull
+Sep 20, 2019 12:47:26 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:47:26 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:47:26 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:47:26 AM com.system.dao.InvoicesDao getLogInfo
+INFO: ledger data is inserted successfull
+Sep 20, 2019 12:47:26 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: temp data inserted
+Sep 20, 2019 12:47:26 AM com.system.dao.InvoicesDao getLogInfo
+INFO:  call order data is added
+Sep 20, 2019 12:51:22 AM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 20, 2019 12:51:38 AM com.system.dao.InvoicesDao getLogInfo
+INFO: table truncated
+Sep 20, 2019 12:51:38 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new customer add successfull
+Sep 20, 2019 12:51:38 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new order is added in database
+Sep 20, 2019 12:51:38 AM com.system.dao.InvoicesDao getLogInfo
+INFO: insert in orderHistory is successfull
+Sep 20, 2019 12:51:38 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:51:38 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:51:38 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:51:38 AM com.system.dao.InvoicesDao getLogInfo
+INFO: ledger data is inserted successfull
+Sep 20, 2019 12:51:38 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: temp data inserted
+Sep 20, 2019 12:51:38 AM com.system.dao.InvoicesDao getLogInfo
+INFO:  call order data is added
+Sep 20, 2019 12:52:35 AM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 20, 2019 12:52:58 AM com.system.dao.InvoicesDao getLogInfo
+INFO: table truncated
+Sep 20, 2019 12:52:58 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new customer add successfull
+Sep 20, 2019 12:52:59 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new order is added in database
+Sep 20, 2019 12:52:59 AM com.system.dao.InvoicesDao getLogInfo
+INFO: insert in orderHistory is successfull
+Sep 20, 2019 12:52:59 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:52:59 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:52:59 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:52:59 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:52:59 AM com.system.dao.InvoicesDao getLogInfo
+INFO: ledger data is inserted successfull
+Sep 20, 2019 12:52:59 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: temp data inserted
+Sep 20, 2019 12:52:59 AM com.system.dao.InvoicesDao getLogInfo
+INFO:  call order data is added
+Sep 20, 2019 12:54:19 AM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 20, 2019 12:54:40 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new customer add successfull
+Sep 20, 2019 12:54:40 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new order is added in database
+Sep 20, 2019 12:54:40 AM com.system.dao.InvoicesDao getLogInfo
+INFO: insert in orderHistory is successfull
+Sep 20, 2019 12:54:40 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:54:40 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:54:40 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:54:40 AM com.system.dao.InvoicesDao getLogInfo
+INFO: ledger data is inserted successfull
+Sep 20, 2019 12:54:40 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: temp data inserted
+Sep 20, 2019 12:54:40 AM com.system.dao.InvoicesDao getLogInfo
+INFO:  call order data is added
+Sep 20, 2019 12:56:14 AM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 20, 2019 12:56:31 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new customer add successfull
+Sep 20, 2019 12:56:32 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new order is added in database
+Sep 20, 2019 12:56:32 AM com.system.dao.InvoicesDao getLogInfo
+INFO: insert in orderHistory is successfull
+Sep 20, 2019 12:56:32 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:56:32 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:56:32 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:56:32 AM com.system.dao.InvoicesDao getLogInfo
+INFO: ledger data is inserted successfull
+Sep 20, 2019 12:56:32 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: temp data inserted
+Sep 20, 2019 12:56:32 AM com.system.dao.InvoicesDao getLogInfo
+INFO:  call order data is added
+Sep 20, 2019 12:57:46 AM com.system.dao.InvoicesDao getLogInfo
+INFO: table truncated
+Sep 20, 2019 12:57:46 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new customer add successfull
+Sep 20, 2019 12:57:46 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new order is added in database
+Sep 20, 2019 12:57:47 AM com.system.dao.InvoicesDao getLogInfo
+INFO: insert in orderHistory is successfull
+Sep 20, 2019 12:57:47 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:57:47 AM com.system.dao.InvoicesDao getLogInfo
+INFO: ledger data is inserted successfull
+Sep 20, 2019 12:57:47 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: temp data inserted
+Sep 20, 2019 12:57:47 AM com.system.dao.InvoicesDao getLogInfo
+INFO:  call order data is added
+Sep 20, 2019 12:58:12 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new customer add successfull
+Sep 20, 2019 12:58:12 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new order is added in database
+Sep 20, 2019 12:58:12 AM com.system.dao.InvoicesDao getLogInfo
+INFO: insert in orderHistory is successfull
+Sep 20, 2019 12:58:12 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:58:12 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:58:12 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 20, 2019 12:58:12 AM com.system.dao.InvoicesDao getLogInfo
+INFO: ledger data is inserted successfull
+Sep 20, 2019 12:58:13 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: temp data inserted
+Sep 20, 2019 12:58:13 AM com.system.dao.InvoicesDao getLogInfo
+INFO:  call order data is added

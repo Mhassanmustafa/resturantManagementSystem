@@ -398,7 +398,10 @@ public class Query {
     public static final String deleteRcipeName = "delete from recipieProduct where id = ?";
 
     public static final String addCallOrder = "insert into callOrder (orderId , date) values (?,?) ";
-    public static final String getCallOrder = "select top 1 id from callOrder order by date desc";
+    public static final String getCallOrder = "select top 1 id from callOrder order by id desc";
     public static final String getIngriedentsProductId = "select recipeProductId from recipieIngreidents";
+    public static final String getLatestDate = "select top 1 date from callOrder order by id desc";
+
+    public static final String trucateCallOrder = "truncate table callOrder";
 
 }
