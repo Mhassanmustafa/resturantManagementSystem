@@ -1080,4 +1080,30 @@ public class ProductManagementDao implements IProductManagement  {
         }
 
     }
+
+    public ObservableList<Integer> getIngredentsProductId(){
+
+        ObservableList<Integer> list = FXCollections.observableArrayList();
+        Connection connection = SqlConnectionServices.getConnection();
+
+        try{
+
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.getIngriedentsProductId,null);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                while (resultSet.next()){
+                    list.add(resultSet.getInt(1));
+                }
+            }
+
+        }catch (SQLException exp){
+            getLogWarning(exp.getMessage());
+            exp.printStackTrace();
+        }finally {
+            this.closeSqlConnection(connection);
+        }
+
+        return list;
+    }
 }

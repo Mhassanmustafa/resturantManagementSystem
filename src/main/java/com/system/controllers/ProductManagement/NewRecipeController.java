@@ -65,8 +65,6 @@ public class NewRecipeController implements Initializable {
     @FXML
     private TextField pPf;
 
-
-
     @FXML
     private TableView<Recipie> viewTable;
 
@@ -93,6 +91,7 @@ public class NewRecipeController implements Initializable {
     ObservableList<String> productList = FXCollections.observableArrayList(productManagementDao.getAllProductsNames());
     ObservableList<Recipie> tableData = FXCollections.observableArrayList();
     ObservableList<Integer> recipeIdList = FXCollections.observableArrayList(productManagementDao.getRecipieId());
+    ObservableList<Integer> recipieProductList = FXCollections.observableArrayList(productManagementDao.getIngredentsProductId());
     ObservableList<Recipie> tableList = FXCollections.observableArrayList();
 
     //button event for the home button use to change the scene and come to dashBoard
@@ -248,6 +247,7 @@ public class NewRecipeController implements Initializable {
             recipieTable.getSelectionModel().clearSelection();
             estimatedField.setText(Float.toString(getSum()));
             pPf.setText(Float.toString(getSumP()));
+
         }
     }
 
@@ -297,7 +297,7 @@ public class NewRecipeController implements Initializable {
         if(recipieNameBox.getSelectionModel().getSelectedItem().isEmpty() || recipieTable.getItems().isEmpty()){
             Messages.getWarning("Please write the recipie Name first or enter data in table");
         }else {
-            if(recipeIdList.contains(productManagementDao.getRecipieId(recipieNameBox.getSelectionModel().getSelectedItem()))){
+            if(recipieProductList.contains(productManagementDao.getRecipieId(recipieNameBox.getSelectionModel().getSelectedItem()))){
                 Messages.getWarning("this recipe is already availabe please create new recipie");
                 getClearData();
             }else {
@@ -318,6 +318,8 @@ public class NewRecipeController implements Initializable {
                     }
                 productManagementDao.addnewRecipiePurchase(sqlData);
                 System.out.println(tableData.size());
+                recipieProductList.clear();
+                recipieProductList.addAll(productManagementDao.getIngredentsProductId());
                 getClearData();
 
             }
@@ -347,6 +349,7 @@ public class NewRecipeController implements Initializable {
                     public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
                         viewTable.getItems().clear();
                         recipieNamefield.getSelectionModel().clearSelection();
+
                     }
                 }
         );
@@ -362,6 +365,11 @@ public class NewRecipeController implements Initializable {
                // productManagementDao.delRecipieSell(recipieNamefield.getSelectionModel().getSelectedItem());
                // productManagementDao.delRecipieProduct(recipieNamefield.getSelectionModel().getSelectedItem());
                // recipieProducts.remove(recipieNamefield.getSelectionModel().getSelectedItem());
+                recipieProductList.clear();
+                recipieProductList.addAll(productManagementDao.getIngredentsProductId());
+                recipieNamefield.getSelectionModel().clearSelection();
+                viewTable.getItems().clear();
+
             }else {
                 Messages.getAlert("there is no such recipie with this name");
             }

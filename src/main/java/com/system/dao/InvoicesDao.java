@@ -675,4 +675,58 @@ public class InvoicesDao implements IInvoices {
             this.closeSqlConnection(connection);
         }
     }
+
+    public void addCallOrder(int orderId,String date){
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer, Object> params = new HashMap<>();
+
+        params.put(1, orderId);
+        params.put(2, date);
+        try {
+
+            int affectedRows = SqlConnectionServices.prepareAStatement(connection, Query.addCallOrder, params).executeUpdate();
+
+            if (affectedRows == 0) {
+                getLogInfo("call order data is not added");
+                System.out.println("Value is not deleted by orderId");
+            } else {
+                System.out.println("Value deleted Successfully");
+                getLogInfo(" call order data is added");
+            }
+
+        } catch (Exception exp) {
+            exp.printStackTrace();
+            getLogWarning(exp.getMessage());
+        } finally {
+            this.closeSqlConnection(connection);
+        }
+    }
+
+
+    public int getCallOrder(){
+        int order = 0;
+
+        Connection connection = SqlConnectionServices.getConnection();
+        HashMap<Integer, Object> params = new HashMap<>();
+
+
+
+        try {
+            PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.getCallOrder, params);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet != null) {
+                while (resultSet.next()) {
+                    order = resultSet.getInt(1);
+                }
+            }
+        } catch (Exception exp) {
+            getLogWarning(exp.getMessage());
+            exp.printStackTrace();
+        } finally {
+            this.closeSqlConnection(connection);
+        }
+        return order;
+
+    }
 }

@@ -340,124 +340,141 @@ public class EmployeeInvoiceController implements Initializable {
 
     }
 
-    public void callExistingCustomerInvoice() throws Exception{
-        Date date = new Date();
-        String ph ;
-        if(phoneNoField.getText().trim().isEmpty()){
-            ph = "null";
-        }else{
-            ph = phoneNoField.getText();
-        }
-        Customers customer = accountManagementDao.getCustomerInfo(customerName.getText(),ph);
-        int customerId = customer.getId();
+    public void callExistingCustomerInvoice() throws Exception {
         float amountPaid = getAmountPaid();
+        if (amountPaid == 0) {
+            Messages.getAlert("Please enter amount or bill discarded");
+            clearAllFields();
+        } else {
+            Date date = new Date();
+            String ph;
+            if (phoneNoField.getText().trim().isEmpty()) {
+                ph = "null";
+            } else {
+                ph = phoneNoField.getText();
+            }
+            Customers customer = accountManagementDao.getCustomerInfo(customerName.getText(), ph);
+            int customerId = customer.getId();
 
-        invoicesDao.addNewOrder(customerId,java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
-        int orderId = invoicesDao.getOrderId(customerId);
 
-        for (int i = 0 ; i < tableData.size();i++ ){
-            Invoices invoices = tableData.get(i);
-            int productId = productManagementDao.getRecipieId(invoices.getProductName());
-            invoicesDao.insertOrderHistory(orderId,productId,invoices.getQuantity(),invoices.getTotalAmount(),0,java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
+            invoicesDao.addNewOrder(customerId, java.time.LocalDate.now() + " " + java.time.LocalTime.now());
+            int orderId = invoicesDao.getOrderId(customerId);
 
-            ObservableList<Integer> productIdList = FXCollections.observableArrayList(invoicesDao.getProductIdList(productId));
-            ObservableList<Integer> productQuantityList = FXCollections.observableArrayList(invoicesDao.getQuantityList(productId));
+            for (int i = 0; i < tableData.size(); i++) {
+                Invoices invoices = tableData.get(i);
+                int productId = productManagementDao.getRecipieId(invoices.getProductName());
+                invoicesDao.insertOrderHistory(orderId, productId, invoices.getQuantity(), invoices.getTotalAmount(), 0, java.time.LocalDate.now() + " " + java.time.LocalTime.now());
 
-            for(int j = 0; j < productIdList.size() && j < productQuantityList.size() ; j++){
+                ObservableList<Integer> productIdList = FXCollections.observableArrayList(invoicesDao.getProductIdList(productId));
+                ObservableList<Integer> productQuantityList = FXCollections.observableArrayList(invoicesDao.getQuantityList(productId));
 
-                float totalQuantity = invoicesDao.getStockAvailableQuantity(productIdList.get(j));
-                float availableQuantity = (invoices.getQuantity() * productQuantityList.get(j));
-                invoicesDao.insertNewStockHistory(productIdList.get(j),totalQuantity - availableQuantity,"Product sell",
-                        java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
+                for (int j = 0; j < productIdList.size() && j < productQuantityList.size(); j++) {
+
+                    float totalQuantity = invoicesDao.getStockAvailableQuantity(productIdList.get(j));
+                    float availableQuantity = (invoices.getQuantity() * productQuantityList.get(j));
+                    invoicesDao.insertNewStockHistory(productIdList.get(j), totalQuantity - availableQuantity, "Product sell",
+                            java.time.LocalDate.now() + " " + java.time.LocalTime.now());
+
+                }
 
             }
 
+            Ledger ledger = new Ledger();
+            ledger.setAccountId(1);
+            ledger.setCutomerId(customerId);
+            ledger.setCustomerOrderId(orderId);
+            ledger.setCredit(Float.parseFloat(netAmount.getText()));
+            ledger.setDebit(amountPaid);
+            ledger.setDescription("Bill added");
+            ledger.setDate(java.time.LocalDate.now() + " " + java.time.LocalTime.now());
+            invoicesDao.insertExistingLeger(ledger, customerId);
+            productManagementDao.insertTemp(orderId, getPricelistSum(), java.time.LocalDate.now() + " " + java.time.LocalTime.now());
+            invoicesDao.addCallOrder(orderId, java.time.LocalDate.now() + " " + java.time.LocalTime.now());
+            if (!Files.exists(Config.billsPdf)) {
+                Files.createDirectories(Config.billsPdf);
+            }
+
+            String file = Paths.get(Config.billsPdf.toAbsolutePath().toString(),
+                    String.format(customerName.getText() + "-Bill-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
+            generator.createPDF(file, tableData, Integer.toString(orderId), java.time.LocalDate.now().toString()
+                    , customer, netAmount.getText(), subTotal.getText(), discount.getText(), Float.toString(amountPaid));
+            clearAllFields();
+
         }
-
-        Ledger ledger = new Ledger();
-        ledger.setAccountId(1);
-        ledger.setCutomerId(customerId);
-        ledger.setCustomerOrderId(orderId);
-        ledger.setCredit(Float.parseFloat(netAmount.getText()));
-        ledger.setDebit( amountPaid);
-        ledger.setDescription("Bill added");
-        ledger.setDate(java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
-        invoicesDao.insertExistingLeger(ledger,customerId);
-        productManagementDao.insertTemp(orderId,getPricelistSum(),java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
-
-        if(!Files.exists(Config.billsPdf)){
-            Files.createDirectories(Config.billsPdf);
-        }
-
-        String file = Paths.get(Config.billsPdf.toAbsolutePath().toString(),
-                String.format(customerName.getText() + "-Bill-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
-        generator.createPDF(file, tableData, Integer.toString(orderId), java.time.LocalDate.now().toString()
-                , customer, netAmount.getText(), subTotal.getText(), discount.getText(), Float.toString(amountPaid));
-        clearAllFields();
-        clearAllFields();
     }
 
 
-    public void callNewCustomerInvoice() throws Exception{
-        Date date = new Date();
-        Customers customer = getNewCustomer();
+    public void callNewCustomerInvoice() throws Exception {
+
         float amountPaid = getAmountPaid();
-        invoicesDao.addnewCustomer(customer);
-        String ph ;
-        if(phoneNoField.getText().trim().isEmpty()){
-            ph = "null";
-        }else{
-            ph = phoneNoField.getText();
-        }
-        Customers currentCustomer = accountManagementDao.getCustomerInfo(customerName.getText(),ph);
-        int customerId = currentCustomer.getId();
-        invoicesDao.addNewOrder(customerId,java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
 
-        int orderId = invoicesDao.getOrderId(customerId);
+        if (amountPaid == 0) {
+            Messages.getAlert("Please enter amount or bill discarded");
+            clearAllFields();
+        } else {
+            Date date = new Date();
+            Customers customer = getNewCustomer();
 
-        for (int i = 0 ; i < tableData.size();i++ ){
-            Invoices invoices = tableData.get(i);
-            int productId = productManagementDao.getRecipieId(invoices.getProductName());
-            invoicesDao.insertOrderHistory(orderId,productId,invoices.getQuantity(),invoices.getTotalAmount(),0,java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
+            invoicesDao.addnewCustomer(customer);
 
-            ObservableList<Integer> productIdList = FXCollections.observableArrayList(invoicesDao.getProductIdList(productId));
-            ObservableList<Integer> productQuantityList = FXCollections.observableArrayList(invoicesDao.getQuantityList(productId));
+            String ph;
+            if (phoneNoField.getText().trim().isEmpty()) {
+                ph = "null";
+            } else {
+                ph = phoneNoField.getText();
+            }
 
-            for(int j = 0; j < productIdList.size() && j < productQuantityList.size() ; j++){
+            Customers currentCustomer = accountManagementDao.getCustomerInfo(customerName.getText(), ph);
+            int customerId = currentCustomer.getId();
+            invoicesDao.addNewOrder(customerId, java.time.LocalDate.now() + " " + java.time.LocalTime.now());
 
-                float totalQuantity = invoicesDao.getStockAvailableQuantity(productIdList.get(j));
-                float availableQuantity = (invoices.getQuantity() * productQuantityList.get(j));
-                invoicesDao.insertNewStockHistory(productIdList.get(j),totalQuantity - availableQuantity,"Product sell",
-                        java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
+            int orderId = invoicesDao.getOrderId(customerId);
+
+            for (int i = 0; i < tableData.size(); i++) {
+                Invoices invoices = tableData.get(i);
+                int productId = productManagementDao.getRecipieId(invoices.getProductName());
+                invoicesDao.insertOrderHistory(orderId, productId, invoices.getQuantity(), invoices.getTotalAmount(), 0, java.time.LocalDate.now() + " " + java.time.LocalTime.now());
+
+                ObservableList<Integer> productIdList = FXCollections.observableArrayList(invoicesDao.getProductIdList(productId));
+                ObservableList<Integer> productQuantityList = FXCollections.observableArrayList(invoicesDao.getQuantityList(productId));
+
+                for (int j = 0; j < productIdList.size() && j < productQuantityList.size(); j++) {
+
+                    float totalQuantity = invoicesDao.getStockAvailableQuantity(productIdList.get(j));
+                    float availableQuantity = (invoices.getQuantity() * productQuantityList.get(j));
+                    invoicesDao.insertNewStockHistory(productIdList.get(j), totalQuantity - availableQuantity, "Product sell",
+                            java.time.LocalDate.now() + " " + java.time.LocalTime.now());
+
+                }
 
             }
 
+            Ledger ledger = new Ledger();
+            ledger.setAccountId(1);
+            ledger.setCutomerId(customerId);
+            ledger.setCustomerOrderId(orderId);
+            ledger.setCredit(Float.parseFloat(netAmount.getText()));
+            ledger.setDebit(amountPaid);
+            ledger.setDescription("Bill added");
+            ledger.setDate(java.time.LocalDate.now() + " " + java.time.LocalTime.now());
+            invoicesDao.insertLedgerData(ledger);
+            productManagementDao.insertTemp(orderId, getPricelistSum(), java.time.LocalDate.now() + " " + java.time.LocalTime.now());
+            invoicesDao.addCallOrder(orderId, java.time.LocalDate.now() + " " + java.time.LocalTime.now());
+            customerNamesList.add(customerName.getText());
+            customerPhoneList.add(phoneNoField.getText());
+
+            if (!Files.exists(Config.billsPdf)) {
+                Files.createDirectories(Config.billsPdf);
+            }
+
+            String file = Paths.get(Config.billsPdf.toAbsolutePath().toString(),
+                    String.format(customerName.getText() + "-Bill-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
+            generator.createPDF(file, tableData, Integer.toString(orderId), java.time.LocalDate.now().toString()
+                    , customer, netAmount.getText(), subTotal.getText(), discount.getText(), Float.toString(amountPaid));
+            clearAllFields();
+
+
         }
-
-        Ledger ledger = new Ledger();
-        ledger.setAccountId(1);
-        ledger.setCutomerId(customerId);
-        ledger.setCustomerOrderId(orderId);
-        ledger.setCredit(Float.parseFloat(netAmount.getText()));
-        ledger.setDebit( amountPaid);
-        ledger.setDescription("Bill added");
-        ledger.setDate(java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
-        invoicesDao.insertLedgerData(ledger);
-        productManagementDao.insertTemp(orderId,getPricelistSum(),java.time.LocalDate.now()+ " " + java.time.LocalTime.now());
-        customerNamesList.add(customerName.getText());
-        customerPhoneList.add(phoneNoField.getText());
-
-        if(!Files.exists(Config.billsPdf)){
-            Files.createDirectories(Config.billsPdf);
-        }
-
-        String file = Paths.get(Config.billsPdf.toAbsolutePath().toString(),
-                String.format(customerName.getText() + "-Bill-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
-        generator.createPDF(file, tableData, Integer.toString(orderId), java.time.LocalDate.now().toString()
-                , customer, netAmount.getText(), subTotal.getText(), discount.getText(), Float.toString(amountPaid));
-        clearAllFields();
-
-
     }
 
     //print button action

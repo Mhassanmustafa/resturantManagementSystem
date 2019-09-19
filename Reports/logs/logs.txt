@@ -726,3 +726,103 @@ Sep 19, 2019 12:28:02 AM com.system.dao.AccountManagementDao getLogInfo
 INFO: Data is  inserted in Employee Salary table
 Sep 19, 2019 12:28:03 AM com.system.dao.AccountManagementDao getLogInfo
 INFO: Employee log in data inserted 
+Sep 19, 2019 12:39:07 AM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 19, 2019 12:57:42 AM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 19, 2019 12:58:55 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: Ingriedents data delete SuccessFully
+Sep 19, 2019 12:58:55 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: Recipie purchase  data deleted
+Sep 19, 2019 12:59:22 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: Ingriedents data is not deleted
+Sep 19, 2019 12:59:22 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: rcipie purchase data is not deleted
+Sep 19, 2019 1:04:57 AM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 19, 2019 1:05:17 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: recipie category added succeddfully
+Sep 19, 2019 1:05:35 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: new recipie added successfull
+Sep 19, 2019 1:05:35 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: new recipie sell price is added
+Sep 19, 2019 1:06:17 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: new Ingredents  Added 
+Sep 19, 2019 1:06:17 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: new Ingredents  Added 
+Sep 19, 2019 1:06:17 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: recipie purchase inserted
+Sep 19, 2019 1:07:22 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new customer add successfull
+Sep 19, 2019 1:07:22 AM com.system.dao.InvoicesDao getLogInfo
+INFO: new order is added in database
+Sep 19, 2019 1:07:22 AM com.system.dao.InvoicesDao getLogInfo
+INFO: insert in orderHistory is successfull
+Sep 19, 2019 1:07:22 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 19, 2019 1:07:22 AM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 19, 2019 1:07:22 AM com.system.dao.InvoicesDao getLogInfo
+INFO: ledger data is inserted successfull
+Sep 19, 2019 1:07:22 AM com.system.dao.ProductManagementDao getLogInfo
+INFO: temp data inserted
+Sep 19, 2019 9:00:20 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 19, 2019 9:00:57 PM com.system.dao.InvoicesDao getLogInfo
+INFO: new customer add successfull
+Sep 19, 2019 9:00:57 PM com.system.dao.InvoicesDao getLogInfo
+INFO: new order is added in database
+Sep 19, 2019 9:00:57 PM com.system.dao.InvoicesDao getLogInfo
+INFO: insert in orderHistory is successfull
+Sep 19, 2019 9:00:57 PM com.system.dao.InvoicesDao getLogInfo
+INFO: values inserted in new stock history
+Sep 19, 2019 9:00:57 PM com.system.dao.InvoicesDao getLogInfo
+INFO: ledger data is inserted successfull
+Sep 19, 2019 9:00:57 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: temp data inserted
+Sep 19, 2019 9:00:58 PM com.system.dao.InvoicesDao getLogInfo
+INFO:  call order data is added
+Sep 19, 2019 9:05:44 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 19, 2019 9:18:50 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 19, 2019 9:19:16 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: Ingriedents data delete SuccessFully
+Sep 19, 2019 9:19:16 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: rcipie purchase data is not deleted
+Sep 19, 2019 9:24:56 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 19, 2019 9:25:21 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: Ingriedents data delete SuccessFully
+Sep 19, 2019 9:25:21 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: rcipie purchase data is not deleted
+Sep 19, 2019 9:25:37 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: new Ingredents  Added 
+Sep 19, 2019 9:25:37 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: recipie purchase inserted
+Sep 19, 2019 9:29:38 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 19, 2019 9:29:59 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: Ingriedents data delete SuccessFully
+Sep 19, 2019 9:29:59 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: Recipie purchase  data deleted
+Sep 19, 2019 9:30:20 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: new Ingredents  Added 
+Sep 19, 2019 9:30:20 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: new Ingredents  Added 
+Sep 19, 2019 9:30:20 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: recipie purchase inserted
+Sep 19, 2019 9:30:40 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: new Ingredents  Added 
+Sep 19, 2019 9:30:40 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: recipie purchase inserted
+Sep 19, 2019 9:33:53 PM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
+Sep 19, 2019 9:34:34 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: Ingriedents data delete SuccessFully
+Sep 19, 2019 9:34:34 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: Recipie purchase  data deleted
+Sep 19, 2019 9:34:50 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: new Ingredents  Added 
+Sep 19, 2019 9:34:50 PM com.system.dao.ProductManagementDao getLogInfo
+INFO: recipie purchase inserted
