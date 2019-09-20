@@ -19,13 +19,12 @@ import com.system.models.Invoices;
 import io.github.escposjava.PrinterService;
 import io.github.escposjava.print.Printer;
 import io.github.escposjava.print.SerialPrinter;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.awt.*;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
+import java.nio.file.Files;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -84,7 +83,33 @@ public class InvoicesGenerator {
                                    String netPrice, String subTotal, String discount, String amountPaid, int orderID) {
 
         InvoicesDao invoicesDao = new InvoicesDao();
-        Printer printer = new SerialPrinter(3);
+        ObservableList<String> list = FXCollections.observableArrayList();
+        try {
+            File file = new File(Config.filePath);
+            if(!Files.exists(Config.logFile)){
+                Files.createDirectories(Config.logFile);
+                if(!file.exists()){
+                    file.createNewFile();
+                    Messages.getWarning("Please add server details first in config files and try again");
+                }
+            }else{
+
+                FileReader fr = new FileReader(file);
+                BufferedReader br = new BufferedReader(fr);
+                String line;
+                while ((line = br.readLine()) != null) {
+
+                    list.add(line);
+                }
+            }
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+        Printer printer = new SerialPrinter(Integer.parseInt(list.get(4)));
         PrinterService service = new PrinterService(printer);
 
         service.setTextAlignCenter();
@@ -188,9 +213,11 @@ public class InvoicesGenerator {
         service.setTextNormal();
         service.setTextAlignLeft();
         service.setTextTypeBold();
-        service.printLn("fb.com/bnbburger");
+        service.printLn("Like and follow us on facebook and instagram");
         service.setTextTypeBold();
-        service.printLn("instagram.com/bnbburger");
+        service.printLn("www.facebook.com/bigbngbrgr");
+        service.setTextTypeBold();
+        service.printLn("www.instagram.com/bigbngbrgr");
         service.lineBreak(4);
         service.cutFull();
         service.close();
