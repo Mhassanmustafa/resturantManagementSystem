@@ -114,94 +114,96 @@ public class NewInvoiceController implements Initializable {
     };
 
     //button event for the home button use to change the scene and come to dashBoard
-    public void homeButtonEvent(ActionEvent event)throws IOException {
+    public void homeButtonEvent(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashBoard.fxml"));
-        Stage scene2 =(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene2.setScene(new Scene(root, Config.width,Config.height));
+        Stage scene2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene2.setScene(new Scene(root, Config.width, Config.height));
         scene2.show();
     }
 
     //button event for the invoice button use to change the scene and goes to invoice scene
-    public void invoiceButtonEvent(ActionEvent event)throws IOException {
+    public void invoiceButtonEvent(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Invoice.fxml"));
-        Stage scene2 =(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene2.setScene(new Scene(root,Config.width,Config.height));
+        Stage scene2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene2.setScene(new Scene(root, Config.width, Config.height));
         scene2.show();
     }
 
     //button event for the product managemet button use to change the scene and goes to product management scene
-    public void productManagementButtonEvent(ActionEvent event)throws IOException {
+    public void productManagementButtonEvent(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/ProductManagement.fxml"));
-        Stage scene2 =(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene2.setScene(new Scene(root,Config.width,Config.height));
+        Stage scene2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene2.setScene(new Scene(root, Config.width, Config.height));
         scene2.show();
     }
 
     //button event for the stock managemet button use to change the scene and goes to stock management scene
-    public void stockManagementButtonEvent(ActionEvent event)throws IOException {
+    public void stockManagementButtonEvent(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/StockManagement.fxml"));
-        Stage scene2 =(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene2.setScene(new Scene(root,Config.width,Config.height));
+        Stage scene2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene2.setScene(new Scene(root, Config.width, Config.height));
         scene2.show();
     }
 
     //button event for the account managemet button use to change the scene and goes to account management scene
-    public void accManagementButtonEvent(ActionEvent event)throws IOException {
+    public void accManagementButtonEvent(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/AccountManagement.fxml"));
-        Stage scene2 =(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene2.setScene(new Scene(root,Config.width,Config.height));
+        Stage scene2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene2.setScene(new Scene(root, Config.width, Config.height));
         scene2.show();
     }
 
     //button event for the statistic button use to change the scene and goes to statistic scene
-    public void statisticsButtonEvent(ActionEvent event)throws IOException {
+    public void statisticsButtonEvent(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Statistics.fxml"));
-        Stage scene2 =(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene2.setScene(new Scene(root,Config.width,Config.height));
+        Stage scene2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene2.setScene(new Scene(root, Config.width, Config.height));
         scene2.show();
     }
 
     //button event for settings
-    public void settingsButtonEvent(ActionEvent event)throws IOException {
+    public void settingsButtonEvent(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Settings.fxml"));
-        Stage scene2 =(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene2.setScene(new Scene(root,Config.width,Config.height));
+        Stage scene2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene2.setScene(new Scene(root, Config.width, Config.height));
         scene2.show();
     }
 
     //button event for logout button use to change the scene and goes to logout scene
-    public void logoutButtonEvent(ActionEvent event)throws IOException {
+    public void logoutButtonEvent(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
-        Stage scene2 =(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene2.setScene(new Scene(root,882,543));
+        Stage scene2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene2.setScene(new Scene(root, 882, 543));
         scene2.show();
         new SlideInDown(root).play();
     }
 
     //button event for  new invoice button use to change the scene and goes to add new button scene
-    public void NewInvoiceButtonEvent(ActionEvent event)throws IOException {
+    public void NewInvoiceButtonEvent(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Invoice/NewInvoice.fxml"));
-        Stage scene2 =(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene2.setScene(new Scene(root,Config.width,Config.height));
+        Stage scene2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene2.setScene(new Scene(root, Config.width, Config.height));
         scene2.show();
     }
 
     //button event for update sell price button use to change the scene and goes to another scene
-    public void OrderHistoryButtonEvent(ActionEvent event)throws IOException {
+    public void OrderHistoryButtonEvent(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Invoice/OrderHistory.fxml"));
-        Stage scene2 =(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene2.setScene(new Scene(root,Config.width,Config.height));
+        Stage scene2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene2.setScene(new Scene(root, Config.width, Config.height));
         scene2.show();
     }
+
     //button event for update sell price button use to change the scene and goes to another scene
-    public void DeleteOrderButtonEvent(ActionEvent event)throws IOException {
+    public void DeleteOrderButtonEvent(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Invoice/DeleteOrder.fxml"));
-        Stage scene2 =(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene2.setScene(new Scene(root,Config.width,Config.height));
+        Stage scene2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene2.setScene(new Scene(root, Config.width, Config.height));
         scene2.show();
     }
+
     //get total amount in the Total Amount Field
-    public void getTotalAmount(){
+    public void getTotalAmount() {
         try {
 
 
@@ -216,17 +218,17 @@ public class NewInvoiceController implements Initializable {
             pricelist.add(purPri);
             purPri = 0;
             totalAmount.setText(Float.toString(amount));
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             totalAmount.setText("0.0");
         }
     }
 
     //set  product names combo box action to get the current selling price of the product.
-    public void ProductNamesFieldAction(){
-        if(productNamesField.getSelectionModel().getSelectedItem() == null){
+    public void ProductNamesFieldAction() {
+        if (productNamesField.getSelectionModel().getSelectedItem() == null) {
             System.out.println("Do nothing");
-        }else{
+        } else {
             Recipie recipie = new Recipie();
             recipie.setRecipieName(productNamesField.getSelectionModel().getSelectedItem());
             price.setText(Float.toString(productManagementDao.getRecipeCurrentPrice(recipie)));
@@ -235,13 +237,13 @@ public class NewInvoiceController implements Initializable {
     }
 
     //get new Customer
-    public Customers getNewCustomer(){
-        Customers customer  = new Customers();
+    public Customers getNewCustomer() {
+        Customers customer = new Customers();
         customer.setName(customerName.getText());
         String ph;
-        if(phoneNoField.getText().trim().isEmpty()){
+        if (phoneNoField.getText().trim().isEmpty()) {
             ph = "null";
-        }else{
+        } else {
             ph = phoneNoField.getText();
         }
         customer.setPhoneNumber(ph);
@@ -249,7 +251,7 @@ public class NewInvoiceController implements Initializable {
     }
 
     //set column data of table
-    public void setTableColmnData(){
+    public void setTableColmnData() {
         productNameC.setCellValueFactory(new PropertyValueFactory<>("productName"));
         priceC.setCellValueFactory(new PropertyValueFactory<>("price"));
         quanttiyC.setCellValueFactory(new PropertyValueFactory<>("quantity"));
@@ -258,23 +260,23 @@ public class NewInvoiceController implements Initializable {
 
     //set add button action event
 
-    public void productAddButtonEvent(){
+    public void productAddButtonEvent() {
 
-        if(add.isSelected() == false && edit.isSelected() == false ){
+        if (add.isSelected() == false && edit.isSelected() == false) {
             Messages.getWarning("Please select any one option add or edit");
-        }else if(edit.isSelected()) {
+        } else if (edit.isSelected()) {
             Messages.getAlert("Please select add to enter data");
-        }else if(add.isSelected()){
-            if(productNamesField.getEditor().getText().isEmpty() ||
-                    quantity.getText().trim().isEmpty() ||totalAmount.getText().trim().isEmpty()){
+        } else if (add.isSelected()) {
+            if (productNamesField.getEditor().getText().isEmpty() ||
+                    quantity.getText().trim().isEmpty() || totalAmount.getText().trim().isEmpty()) {
                 Messages.getWarning("please enter data about unit ,product ,totalQuantity and quantity");
-            }else {
-                if(productList.contains(productNamesField.getSelectionModel().getSelectedItem())) {
+            } else {
+                if (productList.contains(productNamesField.getSelectionModel().getSelectedItem())) {
 
-                    if(tableData.stream().anyMatch(itemsCheck->productNamesField.getSelectionModel().getSelectedItem().equals(itemsCheck.getProductName()))){
+                    if (tableData.stream().anyMatch(itemsCheck -> productNamesField.getSelectionModel().getSelectedItem().equals(itemsCheck.getProductName()))) {
                         Messages.getWarning("Please select edit and double click on quantity colmn enter new value and press enter");
                         clearFieldData();
-                    }else {
+                    } else {
                         tableData.add(new Invoices(productNamesField.getSelectionModel().getSelectedItem(),
                                 Float.parseFloat(price.getText()), Float.parseFloat(quantity.getText()), Float.parseFloat(totalAmount.getText())));
                         setTableColmnData();
@@ -283,7 +285,7 @@ public class NewInvoiceController implements Initializable {
                         netAmount.setText(Float.toString(getSum()));
                         clearFieldData();
                     }
-                }else {
+                } else {
                     Messages.getWarning("There is no such product you have please check your product name ");
                 }
 
@@ -292,14 +294,14 @@ public class NewInvoiceController implements Initializable {
     }
 
     //clear data of the fields
-    public void clearFieldData(){
+    public void clearFieldData() {
         productNamesField.getSelectionModel().clearSelection();
         price.clear();
         quantity.clear();
         totalAmount.clear();
     }
 
-    public float getSum(){
+    public float getSum() {
         TableView<Invoices> table = totalAmountC.getTableView();
         float total = 0;
         for (Invoices value : table.getItems()) {
@@ -308,23 +310,23 @@ public class NewInvoiceController implements Initializable {
         return total;
     }
 
-    public float getPricelistSum(){
+    public float getPricelistSum() {
         float total = 0;
-        for(int i =0 ; i<pricelist.size() ; i++){
+        for (int i = 0; i < pricelist.size(); i++) {
             total = total + pricelist.get(i);
         }
         return total;
     }
 
-    public void productRemoveActionEvent(){
-        if(add.isSelected() == false && edit.isSelected() == false ){
+    public void productRemoveActionEvent() {
+        if (add.isSelected() == false && edit.isSelected() == false) {
             Messages.getWarning("Please select any one option add or edit");
-        }else if(add.isSelected()) {
+        } else if (add.isSelected()) {
             Messages.getAlert("Please select edit to delete the row");
-        }else if(edit.isSelected()) {
-            if(invoiceTable.getItems().isEmpty()){
+        } else if (edit.isSelected()) {
+            if (invoiceTable.getItems().isEmpty()) {
                 Messages.getWarning("please Add some Data First before Continue");
-            }else {
+            } else {
                 invoiceTable.getItems().removeAll(invoiceTable.getSelectionModel().getSelectedItem());
                 invoiceTable.getSelectionModel().clearSelection();
                 subTotal.setText(Float.toString(getSum()));
@@ -334,12 +336,12 @@ public class NewInvoiceController implements Initializable {
     }
 
     //edit the quantity colmn
-    public void updateColumnData(TableColumn.CellEditEvent<Invoices , Float> editEvent){
-        if(add.isSelected() == false && edit.isSelected() == false ){
+    public void updateColumnData(TableColumn.CellEditEvent<Invoices, Float> editEvent) {
+        if (add.isSelected() == false && edit.isSelected() == false) {
             Messages.getWarning("Please select any one option add or edit");
-        }else if(add.isSelected()) {
+        } else if (add.isSelected()) {
             Messages.getAlert("Please select edit to edit the row");
-        }else if(edit.isSelected()) {
+        } else if (edit.isSelected()) {
 
             Invoices invoices = invoiceTable.getSelectionModel().getSelectedItem();
             invoices.setQuantity(editEvent.getNewValue());
@@ -351,13 +353,13 @@ public class NewInvoiceController implements Initializable {
     }
 
     //get discount action
-    public void discountAction(){
+    public void discountAction() {
         float subtract = 0;
-        if(discount.getText().trim().isEmpty()){
+        if (discount.getText().trim().isEmpty()) {
             discount.setText("0.0");
             subtract = getSum() - Float.parseFloat(discount.getText());
             netAmount.setText(Float.toString(subtract));
-        }else{
+        } else {
             subtract = getSum() - Float.parseFloat(discount.getText());
             netAmount.setText(Float.toString(subtract));
 
@@ -365,7 +367,7 @@ public class NewInvoiceController implements Initializable {
     }
 
     //get total amount paid
-    public float getAmountPaid(){
+    public float getAmountPaid() {
         float paid = 0;
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Enter Amount Paid");
@@ -373,14 +375,14 @@ public class NewInvoiceController implements Initializable {
         dialog.setContentText("Enter Amount:");
 
         Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()){
+        if (result.isPresent()) {
             paid = Integer.parseInt(result.get());
         }
         return paid;
     }
 
     //get clear all fields
-    public void clearAllFields(){
+    public void clearAllFields() {
         productNamesField.getSelectionModel().clearSelection();
         price.clear();
         quantity.clear();
@@ -404,7 +406,7 @@ public class NewInvoiceController implements Initializable {
             Date date = new Date();
 
             String date1 = invoicesDao.getLatestDate();
-            if(!(java.time.LocalDate.now().toString().equals(date1))){
+            if (!(java.time.LocalDate.now().toString().equals(date1))) {
 
                 invoicesDao.truncateTable();
             }
@@ -455,10 +457,10 @@ public class NewInvoiceController implements Initializable {
                 Files.createDirectories(Config.billsPdf);
             }
 
-            String file = Paths.get(Config.billsPdf.toAbsolutePath().toString(),
-                    String.format(customerName.getText() + "-Bill-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
-            generator.createPDF(file, tableData, Integer.toString(orderId), java.time.LocalDate.now().toString()
-                    , customer, netAmount.getText(), subTotal.getText(), discount.getText(), Float.toString(amountPaid));
+//            String file = Paths.get(Config.billsPdf.toAbsolutePath().toString(),
+//                    String.format(customerName.getText() + "-Bill-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
+            generator.createThermalPrint(tableData,
+                    customer, netAmount.getText(), subTotal.getText(), discount.getText(), Float.toString(amountPaid), orderId);
             clearAllFields();
 
         }
@@ -475,11 +477,10 @@ public class NewInvoiceController implements Initializable {
         } else {
 
 
-
             Date date = new Date();
 
             String date1 = invoicesDao.getLatestDate();
-            if(!(java.time.LocalDate.now().toString().equals(date1))){
+            if (!(java.time.LocalDate.now().toString().equals(date1))) {
 
                 invoicesDao.truncateTable();
             }
@@ -537,10 +538,10 @@ public class NewInvoiceController implements Initializable {
                 Files.createDirectories(Config.billsPdf);
             }
 
-            String file = Paths.get(Config.billsPdf.toAbsolutePath().toString(),
-                    String.format(customerName.getText() + "-Bill-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
-            generator.createPDF(file, tableData, Integer.toString(orderId), java.time.LocalDate.now().toString()
-                    , customer, netAmount.getText(), subTotal.getText(), discount.getText(), Float.toString(amountPaid));
+//            String file = Paths.get(Config.billsPdf.toAbsolutePath().toString(),
+//                    String.format(customerName.getText() + "-Bill-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
+            generator.createThermalPrint(tableData,
+                    customer, netAmount.getText(), subTotal.getText(), discount.getText(), Float.toString(amountPaid), orderId);
             clearAllFields();
 
 
@@ -563,11 +564,11 @@ public class NewInvoiceController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         productNamesField.setItems(productList);
-        TextFields.bindAutoCompletion(productNamesField.getEditor(),productList);
+        TextFields.bindAutoCompletion(productNamesField.getEditor(), productList);
         quantity.textProperty().addListener(forceNumberListener);
         discount.textProperty().addListener(forceNumberListener);
         invoiceTable.setEditable(true);
-        
+
         quanttiyC.setCellFactory((TextFieldTableCell.forTableColumn(new FloatStringConverter())));
 
         add.setSelected(true);

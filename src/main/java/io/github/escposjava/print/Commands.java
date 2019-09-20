@@ -4,6 +4,8 @@ public class Commands {
    // Feed control sequences
    public static final byte[] CTL_LF          = {0x0a};          // Print and line feed
 
+   // Horizontal Tab
+   public static final byte[] TAB             = {0x09};
    // Beeper
    public static final byte[] BEEPER          = {0x1b,0x42,0x05,0x09}; // Beeps 5 times for 9*50ms each time
 
@@ -30,6 +32,9 @@ public class Commands {
    public static final byte[] TXT_2HEIGHT     = {0x1b,0x21,0x10}; // Double height text
    public static final byte[] TXT_2WIDTH      = {0x1b,0x21,0x20}; // Double width text
    public static final byte[] TXT_4SQUARE     = {0x1b,0x21,0x30}; // Quad area text
+   public static final byte[] TXT_BIG         = {0x1d,0x21,0x3c};
+
+
    public static final byte[] TXT_UNDERL_OFF  = {0x1b,0x2d,0x00}; // Underline font OFF
    public static final byte[] TXT_UNDERL_ON   = {0x1b,0x2d,0x01}; // Underline font 1-dot ON
    public static final byte[] TXT_UNDERL2_ON  = {0x1b,0x2d,0x02}; // Underline font 2-dot ON

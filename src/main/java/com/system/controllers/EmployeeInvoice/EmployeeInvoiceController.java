@@ -400,10 +400,10 @@ public class EmployeeInvoiceController implements Initializable {
                 Files.createDirectories(Config.billsPdf);
             }
 
-            String file = Paths.get(Config.billsPdf.toAbsolutePath().toString(),
-                    String.format(customerName.getText() + "-Bill-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
-            generator.createPDF(file, tableData, Integer.toString(orderId), java.time.LocalDate.now().toString()
-                    , customer, netAmount.getText(), subTotal.getText(), discount.getText(), Float.toString(amountPaid));
+//            String file = Paths.get(Config.billsPdf.toAbsolutePath().toString(),
+//                    String.format(customerName.getText() + "-Bill-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
+            generator.createThermalPrint(tableData,
+                    customer, netAmount.getText(), subTotal.getText(), discount.getText(), Float.toString(amountPaid),orderId);
             clearAllFields();
 
         }
@@ -478,10 +478,10 @@ public class EmployeeInvoiceController implements Initializable {
                 Files.createDirectories(Config.billsPdf);
             }
 
-            String file = Paths.get(Config.billsPdf.toAbsolutePath().toString(),
-                    String.format(customerName.getText() + "-Bill-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
-            generator.createPDF(file, tableData, Integer.toString(orderId), java.time.LocalDate.now().toString()
-                    , customer, netAmount.getText(), subTotal.getText(), discount.getText(), Float.toString(amountPaid));
+//            String file = Paths.get(Config.billsPdf.toAbsolutePath().toString(),
+//                    String.format(customerName.getText() + "-Bill-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
+            generator.createThermalPrint(tableData,
+                    customer, netAmount.getText(), subTotal.getText(), discount.getText(), Float.toString(amountPaid),orderId);
             clearAllFields();
 
 
