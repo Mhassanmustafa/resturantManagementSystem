@@ -1138,3 +1138,5 @@ Sep 20, 2019 2:34:03 AM com.system.dao.ProductManagementDao getLogInfo
 INFO: temp data inserted
 Sep 20, 2019 2:34:03 AM com.system.dao.InvoicesDao getLogInfo
 INFO:  call order data is added
+Sep 21, 2019 12:29:29 AM com.system.dao.AccountManagementDao getLogInfo
+INFO: Admin log in successfull
