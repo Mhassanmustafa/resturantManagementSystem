@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1350.0" styleClass="parent" stylesheets="@../../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.system.controllers.ProductManagement.UpdateSellPriceController">
+    <children>
+        <AnchorPane layoutY="-14.0" prefHeight="694.0" prefWidth="249.0" style="-fx-background-color: #2A2E37;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <VBox alignment="CENTER" layoutY="268.0" AnchorPane.bottomAnchor="149.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="210.0">
+                    <children>
+                        <JFXButton alignment="TOP_CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#homeButtonEvent" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../css/stylesheet.css" text="Home" textAlignment="CENTER">
+                            <font>
+                                <Font size="13.5" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="OPEN_HAND" />
+                            </cursor>
+                        </JFXButton>
+                        <JFXButton alignment="TOP_CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#invoiceButtonEvent" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../css/stylesheet.css" text="Invoice" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+                            <font>
+                                <Font size="13.5" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="OPEN_HAND" />
+                            </cursor>
+                        </JFXButton>
+                        <JFXButton alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#productManagementButtonEvent" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../css/stylesheet.css" text="Product Management" textAlignment="CENTER" textOverrun="CLIP">
+                            <effect>
+                                <Bloom />
+                            </effect>
+                            <font>
+                                <Font size="13.5" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="OPEN_HAND" />
+                            </cursor>
+                        </JFXButton>
+                        <JFXButton alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#stockManagementButtonEvent" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../css/stylesheet.css" text="Stock Management" textAlignment="CENTER">
+                            <effect>
+                                <Bloom />
+                            </effect>
+                            <font>
+                                <Font size="13.5" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="OPEN_HAND" />
+                            </cursor>
+                        </JFXButton>
+                        <JFXButton alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#accManagementButtonEvent" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../css/stylesheet.css" text="Account Management" textAlignment="CENTER">
+                            <effect>
+                                <Bloom />
+                            </effect>
+                            <font>
+                                <Font size="13.5" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="OPEN_HAND" />
+                            </cursor>
+                        </JFXButton>
+                        <JFXButton alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="10.0" layoutY="178.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#statisticsButtonEvent" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../css/stylesheet.css" text="Statistics" textAlignment="CENTER">
+                            <effect>
+                                <Bloom />
+                            </effect>
+                            <font>
+                                <Font size="13.5" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="OPEN_HAND" />
+                            </cursor>
+                        </JFXButton>
+                        <JFXButton alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="10.0" layoutY="154.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#settingsButtonEvent" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../css/stylesheet.css" text="Settings" textAlignment="CENTER">
+                            <effect>
+                                <Bloom />
+                            </effect>
+                            <font>
+                                <Font size="13.5" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="OPEN_HAND" />
+                            </cursor>
+                        </JFXButton>
+                        <JFXButton alignment="TOP_CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#logoutButtonEvent" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../css/stylesheet.css" text="Log out" textAlignment="CENTER">
+                            <font>
+                                <Font size="13.5" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="OPEN_HAND" />
+                            </cursor>
+                        </JFXButton>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+        <Pane layoutX="249.0" prefHeight="92.0" prefWidth="1254.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label layoutX="273.0" layoutY="14.0" prefHeight="32.0" prefWidth="403.0" text="Product Management">
+                    <font>
+                        <Font size="38.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <HBox alignment="TOP_CENTER" layoutX="249.0" layoutY="80.0" prefHeight="78.0" prefWidth="1009.0" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <JFXButton id="hboxbtn" onAction="#addNewProductButtonEvent" prefHeight="43.0" prefWidth="182.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add new ingredient">
+                    <HBox.margin>
+                        <Insets bottom="1.0" left="37.0" right="3.0" top="15.0" />
+                    </HBox.margin>
+                    <padding>
+                        <Insets left="-2.0" />
+                    </padding>
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton id="hboxbtn" onAction="#UpdateSellPriceButtonEvent" prefHeight="43.0" prefWidth="175.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Update selling price">
+                    <HBox.margin>
+                        <Insets bottom="1.0" left="37.0" right="3.0" top="15.0" />
+                    </HBox.margin>
+                    <padding>
+                        <Insets left="-2.0" />
+                    </padding>
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton id="hboxbtn" onAction="#ProductHistoryButtonEvent" prefHeight="43.0" prefWidth="168.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Add new Recipie">
+                    <HBox.margin>
+                        <Insets bottom="1.0" left="37.0" right="3.0" top="15.0" />
+                    </HBox.margin>
+                    <padding>
+                        <Insets left="-2.0" />
+                    </padding>
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton id="hboxbtn" onAction="#CategoryButtonEvent" prefHeight="43.0" prefWidth="182.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Category &amp; Supplier">
+                    <padding>
+                        <Insets left="-2.0" />
+                    </padding>
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets bottom="1.0" left="37.0" right="3.0" top="15.0" />
+                    </HBox.margin>
+                </JFXButton>
+            </children>
+        </HBox>
+      <JFXTabPane fx:id="tab" layoutX="286.0" layoutY="190.0" prefHeight="427.0" prefWidth="943.0">
+         <tabs>
+            <Tab text="Ingredient sell Price">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                          <Pane layoutX="196.0" layoutY="31.0" prefHeight="248.0" prefWidth="504.0" style="-fx-border-color: transparent;" AnchorPane.bottomAnchor="108.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="236.0" AnchorPane.topAnchor="31.0">
+                              <children>
+                                  <Label layoutX="87.0" layoutY="20.0" prefHeight="25.0" prefWidth="127.0" text="Product Name">
+                                      <font>
+                                          <Font size="17.0" />
+                                      </font>
+                                  </Label>
+                                  <ComboBox fx:id="productNameBox" layoutX="222.0" layoutY="21.0" onAction="#getPreviousSellPrice" prefHeight="25.0" prefWidth="249.0" promptText="Drop Down to see Products Names" />
+                                  <Label layoutX="88.0" layoutY="69.0" prefHeight="25.0" prefWidth="127.0" text="Current Price">
+                                      <font>
+                                          <Font size="17.0" />
+                                      </font>
+                                  </Label>
+                                  <TextField fx:id="currentPriceField" editable="false" layoutX="223.0" layoutY="70.0" prefHeight="25.0" prefWidth="81.0" />
+                                  <JFXButton id="hboxbtn" layoutX="220.0" layoutY="158.0" onAction="#updateButtonEvent" prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Update">
+                                      <padding>
+                                          <Insets left="-2.0" />
+                                      </padding>
+                                      <font>
+                                          <Font size="16.0" />
+                                      </font>
+                                  </JFXButton>
+                                  <Label layoutX="88.0" layoutY="112.0" prefHeight="25.0" prefWidth="127.0" text="New Price">
+                                      <font>
+                                          <Font size="17.0" />
+                                      </font>
+                                  </Label>
+                                  <TextField fx:id="newPriceField" layoutX="223.0" layoutY="113.0" prefHeight="25.0" prefWidth="81.0" />
+                              </children>
+                          </Pane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Update Recipie Sell Price">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane layoutX="109.0" layoutY="31.0" prefHeight="248.0" prefWidth="504.0" style="-fx-border-color: transparent;" AnchorPane.bottomAnchor="108.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="236.0" AnchorPane.topAnchor="31.0">
+                           <children>
+                              <Label layoutX="87.0" layoutY="20.0" prefHeight="25.0" prefWidth="127.0" text="Recipie Name:">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="productNameBox1" layoutX="222.0" layoutY="21.0" onAction="#getRecipieCurrentPrice" prefHeight="25.0" prefWidth="249.0" promptText="Drop Down to see Recipie Names" />
+                              <Label layoutX="88.0" layoutY="69.0" prefHeight="25.0" prefWidth="127.0" text="Current Price">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="currentPriceField1" editable="false" layoutX="223.0" layoutY="70.0" prefHeight="25.0" prefWidth="81.0" />
+                              <JFXButton id="hboxbtn" layoutX="220.0" layoutY="158.0" onAction="#updateEvent" prefHeight="32.0" prefWidth="121.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Update">
+                                 <padding>
+                                    <Insets left="-2.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <Label layoutX="88.0" layoutY="112.0" prefHeight="25.0" prefWidth="127.0" text="New Price">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="newPriceField1" layoutX="223.0" layoutY="113.0" prefHeight="25.0" prefWidth="81.0" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+    </children>
+</AnchorPane>

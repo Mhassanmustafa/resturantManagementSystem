@@ -4,6 +4,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.system.InvoiceGenerator.InvoicesGenerator;
 import com.system.Logs.Log;
 import com.system.Message.Messages;
 import com.system.Queries.Query;
@@ -511,68 +512,26 @@ public class InvoicesDao implements IInvoices {
         return list;
     }
 
-    @Override
-    public void printOrderHistory(int orderId) throws Exception {
+    public float getTotalAmount(ObservableList<Invoices> list){
+        float total = 0;
+        for (int i = 0; i < list.size(); i++) {
+            Invoices invoices = list.get(i);
+            total = total + invoices.getDiscount();
+        }
 
-//        Document doc = new Document(PageSize.A4.rotate());
-//        Date date = new Date();
-//
-//       // String file = Paths.get(Config.OrderHistoryPdf.toAbsolutePath().toString(),
-//                String.format("OrderDetails-%tF-%tI-%tM-%tS.pdf", date, date, date, date)).toString();
-//
-//        FileOutputStream fileStream = new FileOutputStream(file);
-//        PdfWriter writer = PdfWriter.getInstance(doc, fileStream);
-//        doc.open();
-//        doc.add(new Paragraph(Config.address, Config.font));
-//        doc.add(new Paragraph(Config.contactNumber, Config.font));
-//        doc.add(new Paragraph("Customer shop name: " + shopName, Config.simpleFont));
-//        Paragraph paraDate = new Paragraph(new Date().toString());
-//        paraDate.setAlignment(Config.alignRight);
-//        doc.add(paraDate);
-//
-//        Paragraph shopTitle = new Paragraph(shopName, Config.boldFont);
-//        shopTitle.setAlignment(Config.alignCenter);
-//        doc.add(shopTitle);
-//
-//        doc.add(new Paragraph(Config.rotateLines));
-//        doc.add(new Paragraph("The Order history is given"));
-//        doc.add(new Paragraph("\n"));
-//
-//        Connection connection = SqlConnectionServices.getConnection();
-//        HashMap<Integer , Object> params = new HashMap<>();
-//
-//
-//        params.put(1 , orderId);
-//
-//        PreparedStatement preparedStatement = SqlConnectionServices.prepareAStatement(connection, Query.customerOrderHistoryQuery, params);
-//        ResultSet resultSet = preparedStatement.executeQuery();
-//
-//        ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
-//        PdfPTable table = new PdfPTable(resultSetMetaData.getColumnCount());
-//        table.setWidthPercentage(100);
-//
-//        String header[] = {"Invoice Id", "Customer Name","product Name","Unit price","Quantity", "Amount" ,"Discount","Date"};
-//        for (int i = 0; i < header.length; i++) {
-//            PdfPCell pdfPCell = new PdfPCell(new Paragraph(header[i], FontFactory.getFont(FontFactory.HELVETICA, 11, Font.BOLD
-//                    , BaseColor.DARK_GRAY)));
-//            table.addCell(pdfPCell);
-//        }
-//
-//        while (resultSet.next()) {
-//            for (int i = 1; i <= resultSetMetaData.getColumnCount(); i++) {
-//                PdfPCell cell = new PdfPCell(new Paragraph(resultSet.getString(i)));
-//                table.addCell(cell);
-//            }
-//        }
-//
-//        doc.add(table);
-//        doc.addCreationDate();
-//        doc.close();
-//        writer.close();
-//        Desktop d = Desktop.getDesktop();
-//        d.open(new File(file));
-//        Messages.getAlert("Exported to Pdf please Wait while file is opening");
-//    }
+        return total;
+    }
+
+    @Override
+    public void printOrderHistory(ObservableList<Invoices> data) throws Exception {
+        Invoices invoices = data.get(0);
+        Customers customer = new Customers();
+        String discount = Float.toString(invoices.getPrice());
+        customer.setName(invoices.getCustomerName());
+        int orderId = invoices.getInvoiceId();
+        InvoicesGenerator invoicesGenerator = new InvoicesGenerator();
+        invoicesGenerator.createOrderBill(data,customer,Float.toString(getTotalAmount(data)),Float.toString(getTotalAmount(data)),discount,orderId);
+
     }
 
 

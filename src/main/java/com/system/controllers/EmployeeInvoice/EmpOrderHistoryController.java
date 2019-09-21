@@ -119,6 +119,14 @@ public class EmpOrderHistoryController implements Initializable {
         }
     }
 
+    public void declarePrint(){
+        InvoicesDao invoicesDao = new InvoicesDao();
+        try {
+            invoicesDao.printOrderHistory(tableList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     ChangeListener<String> forceNumberListener = (observable, oldValue, newValue) -> {
         if (!newValue.matches(Config.regix))

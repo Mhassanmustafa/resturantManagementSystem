@@ -1,7 +1,6 @@
 package com.system.InvoiceGenerator;
 
 
-
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
@@ -11,6 +10,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.sun.scenario.effect.ImageData;
+
 import com.system.config.Config;
 import com.system.Message.Messages;
 import com.system.dao.InvoicesDao;
@@ -81,18 +81,188 @@ public class InvoicesGenerator {
 
     public void createThermalPrint(ObservableList<Invoices> tableData, Customers customer,
                                    String netPrice, String subTotal, String discount, String amountPaid, int orderID) {
+        for (int j = 0; j <2 ; j++) {
+
+
+            String dis = discount;
+            if (discount.isEmpty()) {
+                dis = "0.0";
+            }
+            float change = Float.parseFloat(amountPaid) - Float.parseFloat(netPrice);
+
+            InvoicesDao invoicesDao = new InvoicesDao();
+            ObservableList<String> list = FXCollections.observableArrayList();
+            try {
+                File file = new File(Config.filePath);
+                if (!Files.exists(Config.logFile)) {
+                    Files.createDirectories(Config.logFile);
+                    if (!file.exists()) {
+                        file.createNewFile();
+                        Messages.getWarning("Please add server details first in config files and try again");
+                    }
+                } else {
+
+                    FileReader fr = new FileReader(file);
+                    BufferedReader br = new BufferedReader(fr);
+                    String line;
+                    while ((line = br.readLine()) != null) {
+
+                        list.add(line);
+                    }
+                }
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            Printer printer = new SerialPrinter(Integer.parseInt(list.get(4)));
+            PrinterService service = new PrinterService(printer);
+
+            service.setTextAlignCenter();
+            try {
+//            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+//            String path = classLoader.getResource("images/small270.png").getPath();
+
+                service.printImage(Config.imagePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            service.init();
+            service.setTextNormal();
+
+            service.setTextAlignCenter();
+            printBold(service, "Welcome to " + Config.shopName, true);
+            service.setTextAlignCenter();
+            printBold(service, "Address : " + Config.address, true);
+            service.setTextAlignCenter();
+            printBold(service, "Phone no : " + Config.contactNumber, true);
+//        service.lineBreak();
+            makeLine(service, false);
+
+            // order numbner
+            service.setTextAlignCenter();
+            printBold(service, "Your Order No. Is", true);
+            service.setTextBig();
+            service.setTextAlignCenter();
+            service.printLn(Integer.toString(invoicesDao.getCallOrder()));
+            service.setTextNormal();
+            makeLine(service, false);
+            service.setTextNormal();
+
+            String date = LocalDate.now().toString();
+            System.out.println(date + " " + date.length());
+            String time = LocalTime.now().toString();
+            System.out.println(time + " " + time.length());
+
+            service.setTextAlignLeft();
+            service.print(date);
+            service.insertSpaces(26);
+            service.print(time);
+
+            makeLine(service, true);
+            service.lineBreak();
+            service.setTextTypeBold();
+            service.printLn("Customer Name :  " + customer.getName());
+            service.setTextTypeBold();
+            service.printLn("Trans ID : " + orderID);
+            makeLine(service, true);
+
+
+            service.setTextTypeBold();
+            service.print("Qty");
+            service.insertSpaces(6);
+            service.print("Name");
+            service.insertSpaces(27);
+            service.print("Price");
+            service.insertSpaces(3);
+            service.lineBreak();
+            makeLine(service, true);
+
+            for (int i = 0; i < tableData.size(); i++) {
+                Invoices invoices = tableData.get(i);
+                printItemLine(service, Float.toString(invoices.getQuantity()), invoices.getProductName(), Float.toString(invoices.getPrice()));
+            }
+            makeLine(service, true);
+
+            service.lineBreak();
+            service.setTextAlignRight();
+            service.setTextTypeBold();
+            service.print("SubTotal =    " + subTotal);
+            service.insertSpaces(5);
+            service.lineBreak();
+            service.setTextAlignRight();
+            service.setTextTypeBold();
+            service.print("Discount =    " + dis);
+            service.insertSpaces(5);
+            service.lineBreak();
+            service.setTextAlignRight();
+            service.setTextTypeBold();
+            service.print("Net amount =    " + netPrice);
+            service.insertSpaces(5);
+            service.lineBreak();
+            service.setTextAlignRight();
+            service.setTextTypeBold();
+            service.print("Cash Recieved =    " + amountPaid);
+            service.insertSpaces(5);
+            service.lineBreak();
+            service.setTextAlignRight();
+            service.setTextTypeBold();
+            service.print("Change =    " + change);
+            service.insertSpaces(5);
+            service.lineBreak();
+            makeLine(service, true);
+
+            // normalize that baby
+            service.lineBreak();
+            service.setTextAlignCenter();
+            service.setText4Square();
+            service.setTextTypeBold();
+            service.printLn("Thank You ");
+            service.lineBreak(1);
+
+            makeLine(service, false);
+            service.lineBreak();
+            service.setTextNormal();
+            service.setTextAlignLeft();
+
+            service.printLn("Powered By HR DEVELOPERS for BIG BANG BRGR");
+            service.lineBreak();
+            service.setTextTypeBold();
+            service.printLn("Like and follow us on facebook and instagram");
+            service.setTextTypeBold();
+            service.printLn("www.facebook.com/bigbngbrgr");
+            service.setTextTypeBold();
+            service.printLn("www.instagram.com/bigbngbrgr");
+            service.lineBreak(4);
+            service.cutFull();
+            service.close();
+        }
+
+    }
+
+    public void createOrderBill(ObservableList<Invoices> tableData, Customers customer,
+                                String netPrice, String subTotal, String discount, int orderID) {
+
+        String dis = discount;
+        if (discount.isEmpty()) {
+            dis = "0.0";
+        }
+
 
         InvoicesDao invoicesDao = new InvoicesDao();
         ObservableList<String> list = FXCollections.observableArrayList();
         try {
             File file = new File(Config.filePath);
-            if(!Files.exists(Config.logFile)){
+            if (!Files.exists(Config.logFile)) {
                 Files.createDirectories(Config.logFile);
-                if(!file.exists()){
+                if (!file.exists()) {
                     file.createNewFile();
                     Messages.getWarning("Please add server details first in config files and try again");
                 }
-            }else{
+            } else {
 
                 FileReader fr = new FileReader(file);
                 BufferedReader br = new BufferedReader(fr);
@@ -104,7 +274,7 @@ public class InvoicesGenerator {
             }
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -114,7 +284,18 @@ public class InvoicesGenerator {
 
         service.setTextAlignCenter();
         try {
-            service.printImage("G:\\resturantManagementSystem\\src\\main\\resources\\images\\small270.png");
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+//            String path = classLoader.getResource("images/small270.png").getPath();
+//
+//
+//
+//            File file = new File(path);
+//            if(file.exists()){
+//                System.out.println("exit");
+//            }else {
+//                System.out.println("not exit");
+//            }
+            service.printImage(Config.imagePath);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -125,19 +306,10 @@ public class InvoicesGenerator {
         service.setTextAlignCenter();
         printBold(service, "Welcome to " + Config.shopName, true);
         service.setTextAlignCenter();
-        printBold(service,"Address : "+ Config.address,true);
+        printBold(service, "Address : " + Config.address, true);
         service.setTextAlignCenter();
-        printBold(service,"Phone no : " + Config.contactNumber,true);
-//        service.lineBreak();
-        makeLine(service, false);
+        printBold(service, "Phone no : " + Config.contactNumber, true);
 
-        // order numbner
-        service.setTextAlignCenter();
-        printBold(service, "Your Order No. Is", true);
-        service.setTextBig();
-        service.setTextAlignCenter();
-        service.printLn(Integer.toString(invoicesDao.getCallOrder()));
-        service.setTextNormal();
         makeLine(service, false);
         service.setTextNormal();
 
@@ -152,6 +324,7 @@ public class InvoicesGenerator {
         service.print(time);
 
         makeLine(service, true);
+        service.lineBreak();
         service.setTextTypeBold();
         service.printLn("Customer Name :  " + customer.getName());
         service.setTextTypeBold();
@@ -169,12 +342,13 @@ public class InvoicesGenerator {
         service.lineBreak();
         makeLine(service, true);
 
-        for(int i = 0 ; i < tableData.size() ; i++) {
+        for (int i = 0; i < tableData.size(); i++) {
             Invoices invoices = tableData.get(i);
-            printItemLine(service,Float.toString(invoices.getQuantity()) , invoices.getProductName(), Float.toString(invoices.getPrice()));
+            printItemLine(service, Float.toString(invoices.getQuantity()), invoices.getProductName(), Float.toString(invoices.getDiscount()));
         }
         makeLine(service, true);
 
+        service.lineBreak();
         service.setTextAlignRight();
         service.setTextTypeBold();
         service.print("SubTotal =    " + subTotal);
@@ -182,7 +356,7 @@ public class InvoicesGenerator {
         service.lineBreak();
         service.setTextAlignRight();
         service.setTextTypeBold();
-        service.print("Discount =  " + discount);
+        service.print("Discount =    " + dis);
         service.insertSpaces(5);
         service.lineBreak();
         service.setTextAlignRight();
@@ -190,19 +364,10 @@ public class InvoicesGenerator {
         service.print("Net amount =    " + netPrice);
         service.insertSpaces(5);
         service.lineBreak();
-        service.setTextAlignRight();
-        service.setTextTypeBold();
-        service.print("Cash Recieved =   " + amountPaid);
-        service.insertSpaces(5);
-        service.lineBreak();
-        service.setTextAlignRight();
-        service.setTextTypeBold();
-        service.print("Change =   " + (Float.parseFloat(amountPaid) - (Float.parseFloat(subTotal) - Float.parseFloat(discount))));
-        service.insertSpaces(5);
-        service.lineBreak();
-        makeLine(service, true);
+        makeLine(service,true);
 
         // normalize that baby
+        service.lineBreak();
         service.setTextAlignCenter();
         service.setText4Square();
         service.setTextTypeBold();
@@ -210,8 +375,12 @@ public class InvoicesGenerator {
         service.lineBreak(1);
 
         makeLine(service, false);
+        service.lineBreak();
         service.setTextNormal();
         service.setTextAlignLeft();
+
+        service.printLn("Powered By HR DEVELOPERS for BIG BANG BRGR");
+        service.lineBreak();
         service.setTextTypeBold();
         service.printLn("Like and follow us on facebook and instagram");
         service.setTextTypeBold();

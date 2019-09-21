@@ -292,6 +292,7 @@ public class EmployeeInvoiceController implements Initializable {
             invoiceTable.refresh();
             invoiceTable.getSelectionModel().clearSelection();
             subTotal.setText(Float.toString(getSum()));
+            netAmount.setText(Float.toString(getSum()));
         }
     }
 
@@ -300,10 +301,10 @@ public class EmployeeInvoiceController implements Initializable {
         float subtract = 0;
         if(discount.getText().trim().isEmpty()){
             discount.setText("0.0");
-            subtract = getSum() - Float.parseFloat(discount.getText());
+            subtract = getSum() - ((Float.parseFloat(subTotal.getText()) * Float.parseFloat(discount.getText()))/100 );
             netAmount.setText(Float.toString(subtract));
         }else{
-            subtract = getSum() - Float.parseFloat(discount.getText());
+            subtract = getSum() - ((Float.parseFloat(subTotal.getText()) * Float.parseFloat(discount.getText()))/100 );
             netAmount.setText(Float.toString(subtract));
 
         }

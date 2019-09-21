@@ -172,6 +172,15 @@ public class OrderHistoryController implements Initializable {
         }
     }
 
+    public void declarePrint(){
+        InvoicesDao invoicesDao = new InvoicesDao();
+        try {
+            invoicesDao.printOrderHistory(tableList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         TextFields.bindAutoCompletion(shopNameField,idList);

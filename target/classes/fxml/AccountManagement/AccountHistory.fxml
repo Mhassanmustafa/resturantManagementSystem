@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1350.0" styleClass="parent" stylesheets="@../../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.system.controllers.Invoice.OrderHistoryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1350.0" styleClass="parent" stylesheets="@../../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.system.controllers.AccountManagement.AccountHistoryController">
     <children>
         <AnchorPane layoutY="-14.0" prefHeight="694.0" prefWidth="249.0" style="-fx-background-color: #2A2E37;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -105,16 +106,16 @@
         </AnchorPane>
         <Pane layoutX="249.0" prefHeight="92.0" prefWidth="1254.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label layoutX="273.0" layoutY="14.0" prefHeight="57.0" prefWidth="367.0" text="Invoices">
+                <Label layoutX="273.0" layoutY="14.0" prefHeight="32.0" prefWidth="403.0" text="Account Management">
                     <font>
-                        <Font size="39.0" />
+                        <Font size="38.0" />
                     </font>
                 </Label>
             </children>
         </Pane>
-        <HBox alignment="TOP_CENTER" layoutX="14.0" layoutY="79.0" prefHeight="78.0" prefWidth="1015.0" spacing="2.0" AnchorPane.bottomAnchor="537.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.0">
+        <HBox alignment="TOP_CENTER" layoutX="249.0" layoutY="80.0" prefHeight="78.0" prefWidth="1009.0" AnchorPane.bottomAnchor="546.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
             <children>
-                <JFXButton id="hboxbtn" onAction="#NewInvoiceButtonEvent" prefHeight="43.0" prefWidth="157.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="New Invoice">
+                <JFXButton id="hboxbtn" onAction="#EmployeeAccountButtonEvent" prefHeight="43.0" prefWidth="175.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Employee Account">
                     <HBox.margin>
                         <Insets bottom="1.0" left="37.0" right="3.0" top="15.0" />
                     </HBox.margin>
@@ -125,74 +126,90 @@
                         <Font size="16.0" />
                     </font>
                 </JFXButton>
-                <JFXButton id="hboxbtn" onAction="#OrderHistoryButtonEvent" prefHeight="43.0" prefWidth="157.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Order History">
-                    <HBox.margin>
-                        <Insets bottom="1.0" left="37.0" right="3.0" top="15.0" />
-                    </HBox.margin>
+                <JFXButton id="hboxbtn" onAction="#accountHistoryButtonEvent" prefHeight="43.0" prefWidth="182.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Accounts History">
                     <padding>
                         <Insets left="-2.0" />
                     </padding>
                     <font>
                         <Font size="16.0" />
                     </font>
+                    <HBox.margin>
+                        <Insets bottom="1.0" left="37.0" right="3.0" top="15.0" />
+                    </HBox.margin>
                 </JFXButton>
-            <JFXButton id="hboxbtn" onAction="#DeleteOrderButtonEvent" prefHeight="43.0" prefWidth="157.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Delete Order">
-               <padding>
-                  <Insets left="-2.0" />
-               </padding>
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets bottom="1.0" left="37.0" right="3.0" top="15.0" />
-               </HBox.margin>
-            </JFXButton>
             </children>
         </HBox>
-        <VBox layoutX="260.0" layoutY="122.0" prefHeight="558.0" prefWidth="998.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="122.0">
-            <children>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="515.0" prefWidth="998.0">
-                    <children>
-                        <VBox prefHeight="30.0" prefWidth="367.0" AnchorPane.bottomAnchor="423.0" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="443.0" AnchorPane.topAnchor="62.0">
+        <JFXTabPane layoutX="556.0" layoutY="241.0" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="283.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="157.0">
+            <tabs>
+                <Tab text="Customer Accounts">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="975.0">
                             <children>
-                                <HBox prefHeight="29.0" prefWidth="382.0">
+                                <VBox layoutX="-4.0" layoutY="28.0" prefHeight="397.0" prefWidth="986.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="81.0" AnchorPane.topAnchor="28.0">
                                     <children>
-                                        <Label prefHeight="29.0" prefWidth="120.0" text="Order ID:">
-                                            <font>
-                                                <Font size="17.0" />
-                                            </font>
-                                        </Label>
-                                        <TextField fx:id="shopNameField" prefHeight="25.0" prefWidth="245.0" promptText="Maching ID appear upon typing" />
+                                        <TableView fx:id="customerTable" prefHeight="391.0" prefWidth="1041.0">
+                                            <columns>
+                                                <TableColumn fx:id="c1" prefWidth="53.0" text="Id" />
+                                                <TableColumn fx:id="c2" prefWidth="144.0" text="Customer Name" />
+                                                <TableColumn fx:id="c3" prefWidth="164.0" text="Visted Shop" />
+                                                <TableColumn fx:id="c4" prefWidth="129.0" text="Phone No" />
+                                                <TableColumn fx:id="c5" prefWidth="101.0" text="Credit" />
+                                                <TableColumn fx:id="c6" prefWidth="101.0" text="Debit" />
+                                                <TableColumn fx:id="c7" minWidth="0.0" prefWidth="141.0" text="Balance" />
+                                                <TableColumn fx:id="c8" prefWidth="151.0" text="date" />
+                                            </columns>
+                                        </TableView>
                                     </children>
-                                </HBox>
+                                </VBox>
+                                <HBox layoutX="847.0" layoutY="430.0" prefHeight="30.0" prefWidth="107.0" spacing="14.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="847.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="430.0" />
                             </children>
-                        </VBox>
-                        <JFXButton id="hboxbtn" layoutX="583.0" layoutY="62.0" onAction="#searchButtonAction" prefHeight="16.0" prefWidth="107.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Search">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </JFXButton>
-                        <TableView fx:id="table" layoutX="43.0" layoutY="103.0" prefHeight="359.0" prefWidth="894.0" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="43.0" AnchorPane.topAnchor="103.0">
-                            <columns>
-                                <TableColumn fx:id="invoiceIdC" prefWidth="86.0" text="Invoice Id" />
-                                <TableColumn fx:id="customerNameC" prefWidth="157.0" text="Customer Name" />
-                                <TableColumn fx:id="productNameC" prefWidth="154.0" text="Product Name" />
-                                <TableColumn fx:id="unitPriceC" minWidth="18.0" prefWidth="109.0" text="Price" />
-                                <TableColumn fx:id="quantityC" prefWidth="73.0" text="Quantity" />
-                                <TableColumn fx:id="amountC" prefWidth="71.0" text="Amount" />
-                                <TableColumn fx:id="discountC" prefWidth="90.0" text="Discount" />
-                                <TableColumn fx:id="dateC" prefWidth="153.0" text="Date" />
-                            </columns>
-                        </TableView>
-                        <HBox layoutX="661.0" layoutY="478.0" prefHeight="30.0" prefWidth="136.0" spacing="14.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="661.0" AnchorPane.rightAnchor="201.0" />
-                        <JFXButton id="hboxbtn" layoutX="793.0" layoutY="478.0" onAction="#declarePrint" prefHeight="36.0" prefWidth="144.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Print">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </JFXButton>
-                    </children>
-                </AnchorPane>
-            </children>
-        </VBox>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Employee Accounts">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="511.0" prefWidth="975.0">
+                            <children>
+                                <JFXTabPane layoutY="14.0" prefHeight="481.0" prefWidth="975.0" AnchorPane.bottomAnchor="-21.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
+                                    <tabs>
+                                        <Tab text="Employee Details">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="975.0">
+                                                    <children>
+                                                        <VBox layoutY="14.0" prefHeight="364.0" prefWidth="848.0" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="14.0">
+                                                            <children>
+                                                                <TableView fx:id="EmployeeTable1" prefHeight="364.0" prefWidth="861.0">
+                                                                    <columns>
+                                                                        <TableColumn fx:id="ec1" prefWidth="64.0" text="Id" />
+                                                                        <TableColumn fx:id="ec2" prefWidth="146.0" text="Employee Name" />
+                                                                        <TableColumn fx:id="ec3" prefWidth="164.0" text="Phone Number" />
+                                                                        <TableColumn fx:id="ec4" prefWidth="149.0" text="Designation" />
+                                                                        <TableColumn fx:id="ec5" prefWidth="147.0" text="Basic Salary" />
+                                                                        <TableColumn fx:id="ec6" minWidth="0.0" prefWidth="175.0" text="Date" />
+                                                                    </columns>
+                                                                </TableView>
+                                                            </children>
+                                                        </VBox>
+                                                        <HBox layoutX="739.0" layoutY="387.0" prefHeight="29.0" prefWidth="109.0" spacing="14.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="739.0" AnchorPane.rightAnchor="127.0" AnchorPane.topAnchor="387.0">
+                                                            <children>
+                                                                <JFXButton id="hboxbtn" prefHeight="16.0" prefWidth="107.0" styleClass="hboxbtn" stylesheets="@../../css/stylesheet.css" text="Save">
+                                                                    <font>
+                                                                        <Font size="14.0" />
+                                                                    </font>
+                                                                </JFXButton>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                    </tabs>
+                                </JFXTabPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </JFXTabPane>
     </children>
 </AnchorPane>

@@ -22,5 +22,5 @@ public interface IInvoices {
     public float getLatestBalance(int customerId);
     public ObservableList<Integer> getAllCustomerOrderId();
     public ObservableList<Invoices> getOrderHistory(int  orderId);
-    public void printOrderHistory(int orderId) throws Exception;
+    public void printOrderHistory(ObservableList<Invoices> data) throws Exception;
 }

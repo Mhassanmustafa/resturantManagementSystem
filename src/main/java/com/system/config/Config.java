@@ -32,6 +32,7 @@ public class Config {
     public static final String filePath = Paths.get(logFile.toAbsolutePath().toString(),String.format("Config.txt")).toString();
     public static final Path stockDetailPath = Paths.get("\\resturantManagementSystem\\ReportsAndSheets\\StockDetailsReports");  //path of folder where the reports are save
     public static final Font font = FontFactory.getFont(FontFactory.HELVETICA,10, BaseColor.BLACK); //font
+    public static final String imagePath = Paths.get(logFile.toAbsolutePath().toString(),String.format("small270.png")).toString();
     public static final String address = "Shop no 14, 33 civic center Main Plaza Johar Town Lahore."; //shop address
     public static final String shopName = "BIG BNG BRGR"; //shop name
     public static final int alignRight = Element.ALIGN_RIGHT; //align right
